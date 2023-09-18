@@ -8,7 +8,7 @@
   cursor: pointer;
   opacity: 0.8;
   transition: 0.3s;
-  margin: 5px 5px 5px 5px;
+
   border-radius: 20px;
 }
 
@@ -44,11 +44,12 @@
 .image-button-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .image-button-link {
   text-decoration: none;
+  margin: 5px 5px 5px 5px;
 }
 
 @media screen and (max-width: 960px) {
