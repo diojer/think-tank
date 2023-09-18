@@ -39,6 +39,7 @@ nav .wrapper {
 }
 .wrapper .nav-links {
   display: inline-flex;
+  margin: 0;
 }
 .nav-links li {
   list-style: none;
