@@ -1,0 +1,70 @@
+.email-input-label {
+  color: white;
+  margin: 0;
+  text-align: left;
+  font-size: 2.5em;
+  font-family: Inter, sans-serif;
+  font-weight: bold;
+  width: 50%;
+}
+
+.email-forename {
+  width: 48%;
+}
+
+.email-surname {
+  width: 48%;
+}
+
+.email-email {
+  width: 90%;
+}
+
+.email-input-textbox {
+  padding: 8px;
+  margin: 6px;
+  border: grey 3px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+  font-weight: bold;
+}
+
+.email-signup-form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.email-signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  height: 200px;
+}
+
+.email-form-second-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.email-form-errors {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-self: baseline;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 6px;
+}
+
+.email-form-errors p {
+  margin: 0;
+}

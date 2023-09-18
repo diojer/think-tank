@@ -1,0 +1,72 @@
+.aboutus-title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.aboutus-list-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 16px;
+}
+
+.aboutus-text,
+.aboutus-text > li {
+  font-family: Poppins, sans-serif;
+  margin-top: 0;
+  line-height: 1.8;
+  font-size: 1.2em;
+  font-weight: 450;
+}
+
+.aboutus-text > li {
+  color: var(--primary);
+  margin: 4px;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.aboutus-text > li:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ul.aboutus-text {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.aboutus-text-wrapper {
+  padding: 64px;
+  padding-top: 32px;
+}
+
+@media screen and (max-width: 890px) {
+  .aboutus-text-wrapper {
+    padding: 32px;
+    padding-top: 16px;
+  }
+
+  .aboutus-list-wrapper {
+    margin-top: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  ul.aboutus-text {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  ul.second-row {
+    padding-bottom: 16px;
+  }
+
+  .aboutus-text > li {
+    font-size: 1em;
+    width: 100%;
+  }
+}

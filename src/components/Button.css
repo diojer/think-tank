@@ -1,0 +1,47 @@
+.btn {
+  font-family: Inter, sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn--primary {
+  font-size: 0.9em;
+  padding: 10px 20px 10px 20px;
+  background: var(--primary);
+  border: none;
+  color: var(--fontPrimary);
+}
+
+.btn--primary:hover {
+  background-color: var(--secondary);
+}
+
+.btn--secondary {
+  background: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: var(--fontPrimary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--secondary);
+}
+
+.btn--third {
+  background: transparent;
+  border: 3px solid white;
+  padding: 10px;
+  font-size: 0.9em;
+  border-radius: 10px;
+  color: var(--fontPrimary);
+}
+
+.btn--third:hover {
+  border: 3px solid rgb(160, 160, 160);
+}
