@@ -7,7 +7,7 @@ import axios from "axios";
 
 const addToMailingList = (data, helpers) => {
   helpers.resetForm(initialValues);
-  axios.post("http://localhost:3001/mailinglist", data);
+  axios.post("https://leeds-think-tank-server.onrender.com/mailinglist", data);
 };
 
 const initialValues = {
