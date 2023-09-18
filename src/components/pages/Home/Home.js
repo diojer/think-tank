@@ -11,9 +11,11 @@ import { EmailForm } from "./components/EmailForm";
 function HomeSection() {
   const [listOfArticles, setListOfArticles] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:3001/articles").then((response) => {
-      setListOfArticles(response.data.reverse());
-    });
+    axios
+      .get("https://leeds-think-tank-server.onrender.com/articles")
+      .then((response) => {
+        setListOfArticles(response.data.reverse());
+      });
   }, []);
   const carouselOptions = {
     speed: 1750,
