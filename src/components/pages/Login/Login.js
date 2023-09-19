@@ -1,6 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import { Button } from "../../Button";
@@ -18,9 +19,18 @@ const validationSchema = Yup.object().shape({
   remember: Yup.boolean(),
 });
 
-const login = () => {};
-
 function Login() {
+  const [uploadMessage, setUploadMessage] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(null);
+  const login = (data, helpers) => {
+    axios.post("http://localhost:3001/users/login", data).then((response) => {
+      setUploadMessage(response.data.message);
+      setUploadStatus(response.data.valid);
+      if (response.data.valid == true) {
+        helpers.resetForm(initialValues);
+      }
+    });
+  };
   return (
     <div className="background-image">
       <div className="login-form-box">
@@ -58,9 +68,15 @@ function Login() {
                 Login
               </Button>
               <Link className="register" to="/register">
-                If you are part of the committee and don't have an account,
-                click here to signup.
+                If you don't have an account, click here to signup.
               </Link>
+              {uploadMessage ? (
+                <p className={`upload-message ${uploadStatus}`}>
+                  {uploadMessage}
+                </p>
+              ) : (
+                ""
+              )}
             </Form>
           </Formik>
         </div>

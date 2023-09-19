@@ -70,6 +70,7 @@ function HomeSection() {
         className="fixed-scroll-image"
         style={{
           backgroundImage: "url(/images/mailbox-field.jpg)",
+          backgroundColor: `rgb(121, 103, 52)`,
         }}
       >
         <div className="email-signup">
@@ -92,20 +93,6 @@ function HomeSection() {
             />
           );
         })}
-      </div>
-      <div
-        className="fixed-scroll-image"
-        style={{
-          backgroundImage: "url(/images/leeds-bridge.jpg)",
-          backgroundColor: "rgb(121, 103, 52)",
-        }}
-      >
-        <div className="quote-wrapper">
-          <p className="quote">
-            "The Leeds Student Think Tank is really cool."
-          </p>
-          <p className="quotee">-Mr. Cheese, Da Press</p>
-        </div>
       </div>
     </>
   );

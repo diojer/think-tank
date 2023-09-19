@@ -64,3 +64,15 @@
   margin: 0;
   color: red;
 }
+
+.upload-message {
+  margin-bottom: 0;
+}
+
+.false {
+  color: red;
+}
+
+.true {
+  color: green;
+}
