@@ -15,6 +15,7 @@ import Team from "./components/pages/Team/Team";
 import Articles from "./components/pages/Articles/Articles";
 import Reports from "./components/pages/Reports/Reports";
 import Login from "./components/pages/Login/Login";
+import Register from "./components/pages/Register/Register";
 
 //FA Imports
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -48,6 +49,7 @@ function App() {
             <Route path="/sponsors" exact element={<AboutUs />}></Route>
             <Route path="/resources" exact element={<AboutUs />}></Route>
             <Route path="/login" exact element={<Login />}></Route>
+            <Route path="/register" exact element={<Register />}></Route>
           </Routes>
         </div>
         <Footer />

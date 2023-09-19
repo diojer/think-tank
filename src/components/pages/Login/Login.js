@@ -4,15 +4,18 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { Button } from "../../Button";
+import { Link } from "react-router-dom";
 
 const initialValues = {
   username: "",
   password: "",
+  remember: false,
 };
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required(),
   password: Yup.string().required(),
+  remember: Yup.boolean(),
 });
 
 const login = () => {};
@@ -42,6 +45,11 @@ function Login() {
                 type="password"
                 placeholder="Type your Password"
               />
+              <Link className="forgot-password">Forgot your password?</Link>
+              <label className="remember-me">
+                <Field type="checkbox" name="remember" /> Remember me (stay
+                logged in for 30 days)
+              </label>
               <Button
                 type="submit"
                 buttonStyle="btn--primary"
@@ -49,6 +57,10 @@ function Login() {
               >
                 Login
               </Button>
+              <Link className="register" to="/register">
+                If you are part of the committee and don't have an account,
+                click here to signup.
+              </Link>
             </Form>
           </Formik>
         </div>
