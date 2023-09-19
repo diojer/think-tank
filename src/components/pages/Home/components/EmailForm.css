@@ -68,3 +68,9 @@
 .email-form-errors p {
   margin: 0;
 }
+
+@media screen and (max-width: 770px) {
+  .email-input-label {
+    font-size: 1.2em;
+  }
+}

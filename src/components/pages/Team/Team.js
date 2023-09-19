@@ -92,15 +92,6 @@ function Team() {
           >
             {team.aboutme[6]}
           </Profile>
-          <Profile
-            image="/images/img-21.jpeg"
-            name="Tree"
-            position="Head of Environmental Research"
-            degree="Mycology PhD"
-            year_of_study="Post-Grad"
-          >
-            {team.aboutme[7]}
-          </Profile>
         </div>
       </div>
     </>

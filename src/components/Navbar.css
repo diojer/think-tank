@@ -32,6 +32,11 @@ nav .wrapper {
   align-items: center;
 }
 
+.logo-text {
+  font-size: 1em;
+  margin: 0;
+}
+
 .wrapper .logo a {
   color: var(--fontPrimary);
   font-size: 30px;
@@ -143,7 +148,7 @@ nav .wrapper {
   top: 10px;
 }
 
-@media screen and (max-width: 1235px) {
+@media screen and (max-width: 1096px) {
   .wrapper .btn {
     display: block;
   }
@@ -263,8 +268,8 @@ nav .wrapper {
     font-size: 19px;
   }
 }
-@media screen and (max-width: 365px) {
-  .wrapper .logo a {
+@media screen and (max-width: 400px) {
+  .logo-text {
     font-size: 24px;
   }
 }

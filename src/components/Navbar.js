@@ -12,7 +12,7 @@ function Navbar() {
           <div className="logo">
             <Link to="/" className="logo-wrapper">
               <img className="navbar-logo" src="/images/img-20.png" />
-              Leeds Think Tank
+              <p className="logo-text">Leeds Think Tank</p>
             </Link>
           </div>
           <input type="radio" name="slider" id="menu-btn" />
@@ -26,10 +26,6 @@ function Navbar() {
             </li>
             <li>
               <Link to="/aboutus">About Us</Link>
-            </li>
-
-            <li>
-              <Link to="/team">Team</Link>
             </li>
             <li>
               <a
@@ -47,6 +43,11 @@ function Navbar() {
             </li>
             <li>
               <Link to="/sponsors">Sponsors</Link>
+            </li>
+            <li>
+              <Link to="/login">
+                <FontAwesomeIcon icon="fa-solid fa-user" />
+              </Link>
             </li>
             <li>
               <Link>

@@ -1,0 +1,55 @@
+.background-image {
+  background-image: url("../../../../public/images/leeds-clocktower.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-form-box {
+  width: 500px;
+  height: 400px;
+  padding: 16px;
+  margin: 64px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-title {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.login-form-wrapper {
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px;
+}
+
+.login-label {
+  font-weight: bold;
+  font-family: Inter, sans-serif;
+}
+
+.login-input {
+  border: none;
+  box-shadow: 0 2px 0 0 var(--primary);
+  margin-bottom: 32px;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.login-input:focus {
+  outline: none;
+}

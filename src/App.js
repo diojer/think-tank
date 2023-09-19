@@ -14,6 +14,7 @@ import AboutUs from "./components/pages/AboutUs/AboutUs";
 import Team from "./components/pages/Team/Team";
 import Articles from "./components/pages/Articles/Articles";
 import Reports from "./components/pages/Reports/Reports";
+import Login from "./components/pages/Login/Login";
 
 //FA Imports
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -22,12 +23,13 @@ import {
   faMagnifyingGlass,
   faTimes,
   faBars,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 //utility Imports
 import ScrollToTop from "./utility/ScrollToTop";
 
-library.add(fab, faMagnifyingGlass, faTimes, faBars);
+library.add(fab, faMagnifyingGlass, faTimes, faBars, faUser);
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
             <Route path="/reports" exact element={<Reports />}></Route>
             <Route path="/sponsors" exact element={<AboutUs />}></Route>
             <Route path="/resources" exact element={<AboutUs />}></Route>
+            <Route path="/login" exact element={<Login />}></Route>
           </Routes>
         </div>
         <Footer />
