@@ -36,9 +36,11 @@ library.add(fab, faMagnifyingGlass, faTimes, faBars, faUser);
 function App() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get("http://localhost:3001/users/login").then((response) => {
-      console.log(response);
-    });
+    axios
+      .get("https://leeds-think-tank-server.onrender.com/users/login")
+      .then((response) => {
+        console.log(response);
+      });
   }, []);
   return (
     <>

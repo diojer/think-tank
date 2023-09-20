@@ -31,13 +31,15 @@ function Register() {
   const [uploadMessage, setUploadMessage] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const registration = (data, helpers) => {
-    axios.post("http://localhost:3001/users", data).then((response) => {
-      setUploadMessage(response.data.message);
-      setUploadStatus(response.data.valid);
-      if (response.data.valid == true) {
-        helpers.resetForm(initialValues);
-      }
-    });
+    axios
+      .post("https://leeds-think-tank-server.onrender.com/users", data)
+      .then((response) => {
+        setUploadMessage(response.data.message);
+        setUploadStatus(response.data.valid);
+        if (response.data.valid == true) {
+          helpers.resetForm(initialValues);
+        }
+      });
   };
   return (
     <div className="background-image">

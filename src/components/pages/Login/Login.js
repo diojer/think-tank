@@ -23,13 +23,15 @@ function Login() {
   const [uploadMessage, setUploadMessage] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const login = (data, helpers) => {
-    axios.post("http://localhost:3001/users/login", data).then((response) => {
-      setUploadMessage(response.data.message);
-      setUploadStatus(response.data.valid);
-      if (response.data.valid == true) {
-        helpers.resetForm(initialValues);
-      }
-    });
+    axios
+      .post("https://leeds-think-tank-server.onrender.com/users/login", data)
+      .then((response) => {
+        setUploadMessage(response.data.message);
+        setUploadStatus(response.data.valid);
+        if (response.data.valid == true) {
+          helpers.resetForm(initialValues);
+        }
+      });
   };
   return (
     <div className="background-image">
@@ -82,7 +84,7 @@ function Login() {
           <button
             onClick={() => {
               axios
-                .get("http://localhost:3001/users/login")
+                .get("https://leeds-think-tank-server.onrender.com/users/login")
                 .then((response) => {
                   console.log(response);
                 });
