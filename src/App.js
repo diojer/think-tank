@@ -30,17 +30,17 @@ import {
 
 //utility Imports
 import ScrollToTop from "./utility/ScrollToTop";
+import { URLS } from "./utility/URLS";
+const VPS = URLS.VPS;
 
 library.add(fab, faMagnifyingGlass, faTimes, faBars, faUser);
 
 function App() {
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios
-      .get("https://leeds-think-tank-server.onrender.com/users/login")
-      .then((response) => {
-        console.log(response);
-      });
+    axios.get(`${VPS}/users/login`).then((response) => {
+      console.log(response);
+    });
   }, []);
   return (
     <>

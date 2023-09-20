@@ -6,6 +6,11 @@ import * as Yup from "yup";
 import axios from "axios";
 import { Button } from "../../Button";
 import { Link } from "react-router-dom";
+import App from "../../../App";
+
+//utility imports
+import { URLS } from "../../../utility/URLS";
+const VPS = URLS.VPS;
 
 const initialValues = {
   username: "",
@@ -23,15 +28,13 @@ function Login() {
   const [uploadMessage, setUploadMessage] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const login = (data, helpers) => {
-    axios
-      .post("https://leeds-think-tank-server.onrender.com/users/login", data)
-      .then((response) => {
-        setUploadMessage(response.data.message);
-        setUploadStatus(response.data.valid);
-        if (response.data.valid == true) {
-          helpers.resetForm(initialValues);
-        }
-      });
+    axios.post("http://localhost:3001/users/login", data).then((response) => {
+      setUploadMessage(response.data.message);
+      setUploadStatus(response.data.valid);
+      if (response.data.valid == true) {
+        helpers.resetForm(initialValues);
+      }
+    });
   };
   return (
     <div className="background-image">
@@ -83,11 +86,9 @@ function Login() {
           </Formik>
           <button
             onClick={() => {
-              axios
-                .get("https://leeds-think-tank-server.onrender.com/users/login")
-                .then((response) => {
-                  console.log(response);
-                });
+              axios.get(`${VPS}/users/login`).then((response) => {
+                console.log(response);
+              });
             }}
           >
             CLICK ME

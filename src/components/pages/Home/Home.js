@@ -8,14 +8,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { EmailForm } from "./components/EmailForm";
 
+//utility import
+import { URLS } from "../../../utility/URLS";
+const VPS = URLS.VPS;
+
 function HomeSection() {
   const [listOfArticles, setListOfArticles] = useState([]);
   useEffect(() => {
-    axios
-      .get("https://leeds-think-tank-server.onrender.com/articles")
-      .then((response) => {
-        setListOfArticles(response.data.reverse());
-      });
+    axios.get(`${VPS}/articles`).then((response) => {
+      setListOfArticles(response.data.reverse());
+    });
   }, []);
   const carouselOptions = {
     speed: 1750,

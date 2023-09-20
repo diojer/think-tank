@@ -8,6 +8,10 @@ import { Button } from "../../Button";
 import { Link, useNavigate } from "react-router-dom";
 import App from "../../../App";
 
+//utility imports
+import { URLS } from "../../../utility/URLS";
+const VPS = URLS.VPS;
+
 const initialValues = {
   username: "",
   password: "",
@@ -31,15 +35,13 @@ function Register() {
   const [uploadMessage, setUploadMessage] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const registration = (data, helpers) => {
-    axios
-      .post("https://leeds-think-tank-server.onrender.com/users", data)
-      .then((response) => {
-        setUploadMessage(response.data.message);
-        setUploadStatus(response.data.valid);
-        if (response.data.valid == true) {
-          helpers.resetForm(initialValues);
-        }
-      });
+    axios.post(`${VPS}/users`, data).then((response) => {
+      setUploadMessage(response.data.message);
+      setUploadStatus(response.data.valid);
+      if (response.data.valid == true) {
+        helpers.resetForm(initialValues);
+      }
+    });
   };
   return (
     <div className="background-image">

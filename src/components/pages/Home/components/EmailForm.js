@@ -5,9 +5,13 @@ import * as Yup from "yup";
 import "./EmailForm.css";
 import axios from "axios";
 
+//utility imports
+import { URLS } from "../../../../utility/URLS";
+const VPS = URLS.VPS;
+
 const addToMailingList = (data, helpers) => {
   helpers.resetForm(initialValues);
-  axios.post("https://leeds-think-tank-server.onrender.com/mailinglist", data);
+  axios.post(`${VPS}/mailinglist`, data);
 };
 
 const initialValues = {
