@@ -32,11 +32,13 @@
 }
 
 .fixed-scroll-image {
-  /* background-blend-mode: overlay; */
+  background-blend-mode: overlay;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   background-size: 100%, auto;
+  overflow: hidden;
+  position: relative;
 }
 
 .article-cards-wrapper {

@@ -79,6 +79,17 @@ function Login() {
               )}
             </Form>
           </Formik>
+          <button
+            onClick={() => {
+              axios
+                .get("http://localhost:3001/users/login")
+                .then((response) => {
+                  console.log(response);
+                });
+            }}
+          >
+            CLICK ME
+          </button>
         </div>
       </div>
     </div>

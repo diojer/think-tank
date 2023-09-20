@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useEffect } from "react";
+import axios from "axios";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -33,6 +34,12 @@ import ScrollToTop from "./utility/ScrollToTop";
 library.add(fab, faMagnifyingGlass, faTimes, faBars, faUser);
 
 function App() {
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios.get("http://localhost:3001/users/login").then((response) => {
+      console.log(response);
+    });
+  }, []);
   return (
     <>
       <Router>
