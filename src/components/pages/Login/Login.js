@@ -37,8 +37,8 @@ function Login() {
     axios.post(`${VPS}/users/login`, data).then((response) => {
       setUploadMessage(response.data.message);
       setUploadStatus(response.data.valid);
-      if (response.data.valid === true) {
-        window.location.reload(false);
+      if (response.data.valid) {
+        window.open("leedsthinktank.org.uk");
       }
     });
   };
