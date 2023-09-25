@@ -11,7 +11,12 @@ const aboutus = {
 function Aboutus() {
   return (
     <>
-      <TitleBox image="/images/img-30.jpg" color="#2e2d2b" font="white">
+      <TitleBox
+        image="/images/img-30.jpg"
+        color="#2e2d2b"
+        font="white"
+        type="center"
+      >
         About Us
         <span className="orange">.</span>
       </TitleBox>

@@ -18,7 +18,12 @@ const team = {
 function Team() {
   return (
     <>
-      <TitleBox image="/images/img-4.jpg" color="#2e2d2b" font="white">
+      <TitleBox
+        image="/images/img-4.jpg"
+        color="#2e2d2b"
+        font="white"
+        type="center"
+      >
         LTT Committee 2023/24<span className="orange">:</span>
       </TitleBox>
       <div className="profiles-wrapper">
@@ -29,6 +34,7 @@ function Team() {
             position="President"
             degree="BA Politics, Philosophy and Economics"
             year_of_study="2nd Year"
+            linkedin="https://www.linkedin.com/in/nicolas-padula-pinho-luu-ltt-lcc/"
           >
             {team.aboutme[0]}
           </Profile>
@@ -58,6 +64,7 @@ function Team() {
             position="Treasurer"
             degree="BA Politics, Philosophy and Economics"
             year_of_study="2nd Year"
+            linkedin="https://www.linkedin.com/in/natasha-dawson-441560237/"
           >
             {team.aboutme[3]}
           </Profile>
@@ -69,6 +76,7 @@ function Team() {
             position="Head of Research"
             degree="Bsc Economics"
             year_of_study="2nd Year"
+            linkedin="https://www.linkedin.com/in/hubertkucharski/"
           >
             {team.aboutme[4]}
           </Profile>
@@ -78,6 +86,7 @@ function Team() {
             position="Social Media Secretary"
             degree="BA Economics and Politics"
             year_of_study="2nd Year"
+            linkedin="https://www.linkedin.com/in/archie-ryan-b81897282/"
           >
             {team.aboutme[5]}
           </Profile>
@@ -89,6 +98,7 @@ function Team() {
             position="Head of Public Affairs"
             degree="Bsc Economics"
             year_of_study="2nd Year"
+            linkedin="https://www.linkedin.com/in/josephsamuelclark/"
           >
             {team.aboutme[6]}
           </Profile>

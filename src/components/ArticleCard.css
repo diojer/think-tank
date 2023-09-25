@@ -17,12 +17,23 @@
   background-size: cover;
 }
 
+a.article-card-title,
 .article-card-title {
   width: 100%;
   text-align: justified;
   font-size: 1.5em;
   font-weight: 550;
   font-family: Inter, sans-serif;
+}
+
+.article-card-headlines {
+  margin: 8px 0 8px 0;
+  font-weight: 300;
+}
+
+a.article-card-title {
+  text-decoration: none;
+  color: black;
 }
 
 .article-card-title:hover {
@@ -39,15 +50,15 @@
 }
 
 .article-author {
-  margin: 0;
+  margin: 0 0 16px 0;
   font-weight: bold;
   font-stretch: ultra-expanded;
   font-family: Inter, sans-serif;
 }
-.article-author:hover {
+/* .article-author:hover {
   text-decoration: underline;
   cursor: pointer;
-}
+} */
 
 .suggested-article-title {
   font-style: italic;

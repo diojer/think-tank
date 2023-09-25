@@ -28,7 +28,7 @@ export const Profile = ({
           <p className="profile-degree">{degree}</p>
           <p className="profile-year_of_study">{year_of_study}</p>
           <p className="profile-linkedin-logo">
-            <a href={`${linkedin}`}>
+            <a href={`${linkedin}`} target="_blank">
               <FontAwesomeIcon icon="fab fa-linkedin" />
             </a>
           </p>

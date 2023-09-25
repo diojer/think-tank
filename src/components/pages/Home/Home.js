@@ -34,10 +34,13 @@ function HomeSection() {
   };
   return (
     <>
-      <ImageCarousel
-        articles={listOfArticles.slice(0, 3)}
-        options={carouselOptions}
-      />
+      {listOfArticles[1] && (
+        <ImageCarousel
+          articles={listOfArticles.slice(0, 3)}
+          options={carouselOptions}
+        />
+      )}
+
       <div className="tagline-wrapper">
         <p className="tagline-primary">
           Research for <span className="underline">Everyone</span>
@@ -53,11 +56,12 @@ function HomeSection() {
           shape="imgb--rect"
           color="#4d5c4e"
           paths={["/reports", "/articles"]}
+          newTabs={[false, false]}
         />
       </div>
       <div className="image-buttons-second-row">
         <ImageButtons
-          text={["Latest News", "Join Us", "Contact Us"]}
+          text={["Latest Events", "Join Us", "Contact Us"]}
           images={[
             "/images/img-6.jpg",
             "/images/img-21.jpeg",
@@ -65,7 +69,12 @@ function HomeSection() {
           ]}
           shape="imgb--thin"
           color="#706731"
-          paths={["/events", "/aboutus", "/aboutus"]}
+          paths={[
+            "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/events",
+            "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/memberships",
+            "/aboutus",
+          ]}
+          newTabs={[true, true, false]}
         />
       </div>
       <div
@@ -91,7 +100,8 @@ function HomeSection() {
               thumbnail={value.cardImage}
               title={value.title}
               type="Article"
-              author={value.authors}
+              author={value.author}
+              path={`articles/${value.id}`}
             />
           );
         })}

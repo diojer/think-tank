@@ -1,5 +1,5 @@
 import React from "react";
 
 export const URLS = {
-  VPS: "http://localhost:3001",
+  VPS: "https://leeds-think-tank-server.onrender.com",
 };

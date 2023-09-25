@@ -2,7 +2,14 @@ import React from "react";
 import { ImageButton } from "./ImageButton";
 import "./ImageButton.css";
 
-export const ImageButtons = ({ text, images, shape, color, paths }) => {
+export const ImageButtons = ({
+  text,
+  images,
+  shape,
+  color,
+  paths,
+  newTabs,
+}) => {
   return (
     <div className="image-button-wrapper">
       {images.map((value, key) => {
@@ -13,6 +20,7 @@ export const ImageButtons = ({ text, images, shape, color, paths }) => {
             shape={shape}
             path={paths[key]}
             key={key}
+            newTab={newTabs[key]}
           >
             {text[key]}
           </ImageButton>

@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import axios from "axios";
 import { Button } from "../../Button";
 import { Link, useNavigate } from "react-router-dom";
-import App from "../../../App";
 
 //utility imports
 import { URLS } from "../../../utility/URLS";

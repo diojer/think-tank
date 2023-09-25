@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
+import axios from "axios";
+
+//utility imports
+import { URLS } from "../utility/URLS";
+const VPS = URLS.VPS;
 
 function Navbar() {
+  const [permissions, setPermissions] = useState();
+  useEffect(() => {
+    axios.get(`${VPS}/users/permissions`).then((response) => {
+      setPermissions(response.data.admin);
+    });
+  }, []);
   return (
     <>
       <nav>
@@ -28,6 +40,9 @@ function Navbar() {
               <Link to="/aboutus">About Us</Link>
             </li>
             <li>
+              <Link to="/team">Team</Link>
+            </li>
+            <li>
               <a
                 href="https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/events"
                 target="_blank"
@@ -44,16 +59,27 @@ function Navbar() {
             <li>
               <Link to="/sponsors">Sponsors</Link>
             </li>
+            {/* Login Page */}
             <li>
               <Link to="/login">
                 <FontAwesomeIcon icon="fa-solid fa-user" />
               </Link>
             </li>
+            {/* Searchbar */}
             <li>
               <Link>
                 <FontAwesomeIcon icon="fa-magnifying-glass" />
               </Link>
             </li>
+            {permissions ? (
+              <li>
+                <Link to="/upload">
+                  <FontAwesomeIcon icon="fa-solid fa-pencil" />
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
           <label htmlFor="menu-btn" className="btn menu-btn">
             <FontAwesomeIcon icon="fa-bars" />
