@@ -32,7 +32,7 @@ function Articles() {
         Articles<span className="orange">.</span>
       </TitleBox>
       <div className="articles-wrapper">
-        {listOfArticles[1] ? (
+        {listOfArticles[1] ? ( //starts rendering articles when the API responds
           listOfArticles.map((value, key) => {
             return (
               <ArticleCard

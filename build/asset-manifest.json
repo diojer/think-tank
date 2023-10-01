@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.3dadf15f.css",
-    "main.js": "/static/js/main.386ace03.js",
+    "main.css": "/static/css/main.a75d97fc.css",
+    "main.js": "/static/js/main.315853e1.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/leeds-clocktower.jpg": "/static/media/leeds-clocktower.c0e850f9324930e5e0ab.jpg",
     "index.html": "/index.html",
-    "main.3dadf15f.css.map": "/static/css/main.3dadf15f.css.map",
-    "main.386ace03.js.map": "/static/js/main.386ace03.js.map",
+    "main.a75d97fc.css.map": "/static/css/main.a75d97fc.css.map",
+    "main.315853e1.js.map": "/static/js/main.315853e1.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3dadf15f.css",
-    "static/js/main.386ace03.js"
+    "static/css/main.a75d97fc.css",
+    "static/js/main.315853e1.js"
   ]
 }

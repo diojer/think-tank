@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+//This page isn't really used, nothing links to /events, most just redirect directly to the LUU event
+//engage page.
 
 function Events() {
   useEffect(() => {

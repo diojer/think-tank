@@ -16,10 +16,11 @@ function HomeSection() {
   const [listOfArticles, setListOfArticles] = useState([]);
   useEffect(() => {
     axios.get(`${VPS}/articles`).then((response) => {
-      setListOfArticles(response.data.reverse());
+      setListOfArticles(response.data.reverse()); //reversed so that newer entries show up first
     });
   }, []);
   const carouselOptions = {
+    //Options, for more information see https://splidejs.com/guides/options/
     speed: 1750,
     autoplay: true,
     pause: false,
@@ -34,7 +35,7 @@ function HomeSection() {
   };
   return (
     <>
-      {listOfArticles[1] && (
+      {listOfArticles[1] && ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
         <ImageCarousel
           articles={listOfArticles.slice(0, 3)}
           options={carouselOptions}

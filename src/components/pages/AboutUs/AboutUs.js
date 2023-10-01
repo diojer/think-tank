@@ -3,9 +3,7 @@ import { TitleBox } from "../../TitleBox";
 import "./AboutUs.css";
 
 const aboutus = {
-  aims: `We are a UK-based student-led Think Tank affiliated with Leeds University Union
-  (a registered UK charity), dedicated to undertaking empirically-driven and nonpartisan policy research that centres on challenges disproportionately impacting
-  the North of England.`,
+  aims: `We are a UK-based student-led Think Tank affiliated with Leeds University Union (a registered UK charity), dedicated to undertaking empirically driven and non-partisan policy research. Our research will cover both local and national issues.`,
 };
 
 function Aboutus() {

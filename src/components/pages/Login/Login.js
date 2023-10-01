@@ -38,7 +38,7 @@ function Login() {
       setUploadMessage(response.data.message);
       setUploadStatus(response.data.valid);
       if (response.data.valid) {
-        window.open("leedsthinktank.org.uk");
+        console.log(response.data); //for debug purposes
       }
     });
   };

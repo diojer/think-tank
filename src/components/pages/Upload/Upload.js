@@ -1,12 +1,11 @@
 import React from "react";
 import { Button } from "../../Button";
 import "./Upload.css";
-import { TitleBox } from "../../TitleBox";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 //Routes
-import UploadArticle from "./UploadArticle/UploadArticle.js";
+import UploadArticle from "./UploadArticle";
 
 function Upload() {
   const [selectedPage, setSelectedPage] = useState("");

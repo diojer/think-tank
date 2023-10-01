@@ -40,3 +40,19 @@
   font-weight: 600;
   font-size: 2em;
 }
+
+@media screen and (max-width: 800px) {
+  .selected-article-wrapper {
+    padding: 0 32px 0 32px;
+    line-height: 230%;
+  }
+  .selected-article-content p,
+  .selected-article-content h4 {
+    font-size: 1.1em;
+  }
+
+  .selected-article-author {
+    font-weight: 600;
+    font-size: 1em;
+  }
+}

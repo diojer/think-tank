@@ -10,13 +10,7 @@ export const ArticleCard = ({
   author,
   path,
 }) => {
-  // const suggestList = [
-  //   <p className="suggested-article-title">test article...</p>,
-  // ];
-  // const placeHolderForFunction = 0;
-  // for (let i = 0; i < placeHolderForFunction; i++) {
-  //   suggestList.push(<p className="suggested-article-title"></p>);
-  // }
+  //We need to develop a function that searches the database for similar articles and pushes them to a suggestList variable
   return (
     <div className="article-card-whole">
       <div className="article-card">
@@ -30,7 +24,7 @@ export const ArticleCard = ({
         {path ? (
           <Link to={path} className="article-card-title">
             <p className="article-card-headlines">{title}</p>
-          </Link>
+          </Link> //Modelled after the Carnegie Endowment webite, only the text is a hyperlink, image, etc. isn't clickable
         ) : (
           <p className="article-card-title">{title}</p>
         )}

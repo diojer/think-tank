@@ -15,6 +15,7 @@ function Navbar() {
   useEffect(() => {
     axios.get(`${VPS}/users/permissions`).then((response) => {
       setPermissions(response.data.admin);
+      console.log(response.data);
     });
   }, []);
   return (
