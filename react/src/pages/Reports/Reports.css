@@ -1,0 +1,18 @@
+.reports-wrapper {
+  padding: 16px;
+  display: flex;
+}
+
+.reports-WIP-message {
+  text-align: left;
+  color: grey;
+}
+
+.reports-WIP-message-title {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+.reports-WIP-message-text {
+  font-size: 1.2em;
+  margin-top: 0;
+}

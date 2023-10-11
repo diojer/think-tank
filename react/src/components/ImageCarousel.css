@@ -1,0 +1,38 @@
+.carousel-article-title,
+.carousel-article-author,
+.carousel-article-button {
+  font-family: "Inter", sans-serif;
+}
+
+.carousel-article-title {
+  color: var(--fontPrimary);
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-article-author {
+  color: var(--fontPrimary);
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  padding-top: 10px;
+}
+
+.button-wrapper {
+  margin-top: 10px;
+}
+.text-wrapper {
+  background-color: rgba(0, 0, 0, 0.447);
+  padding: 20px;
+  margin: 60px;
+  margin-right: 50%;
+  width: auto;
+}
+
+@media screen and (max-width: 800px) {
+  .text-wrapper {
+    margin-right: 60px;
+  }
+}

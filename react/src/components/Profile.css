@@ -1,0 +1,80 @@
+.profiles-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0 0 0;
+  margin: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  width: 500px;
+}
+
+.profile-wrapper p {
+  font-family: Inter, sans-serif;
+}
+
+.profile-primary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: left;
+  width: 500px;
+}
+
+.profile-text {
+  width: 220px;
+}
+
+.profile-secondary {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.profile-aboutme {
+  margin: 0;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.profile-image {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 200px;
+}
+
+.profile-text-break {
+  margin-right: 16px;
+  border: 5px solid var(--primary);
+}
+
+.profile-name {
+  margin-bottom: 2px;
+  font-size: 1.3em;
+}
+.profile-position {
+  margin-top: 0;
+  font-weight: bold;
+}
+.profile-linkedin-logo {
+  font-size: 1.8em;
+  margin: 0;
+  text-align: left;
+  color: blue;
+}
+
+.profile-linkedin-logo a {
+  text-decoration: none;
+}
+.profile-linkedin-logo a:visited {
+  color: blue;
+}

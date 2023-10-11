@@ -1,42 +1,41 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Inter");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Century");
+@import url("https://fonts.googleapis.com/css?family=Istok+Web");
+
+:root {
+    --primary: #00502f;
+    --secondary: #00301c;
+    --fontPrimary: #f2f2f2;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+p {
+    font-family: Poppins, sans-serif;
+    text-decoration: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+span.orange {
+    color: #f0b71a;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+span.red {
+    color: red;
 }
 
-.card {
-  padding: 2em;
+span.primary {
+    color: var(--primary);
 }
 
-.read-the-docs {
-  color: #888;
+.linebreak__style__1 {
+    margin: 0 10px 0 10px;
+}
+
+.page-wrapper {
+    padding-top: 70px;
+    padding-bottom: 0;
+}
+
+a {
+    color: var(--primary);
 }

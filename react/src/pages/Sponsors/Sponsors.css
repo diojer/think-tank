@@ -1,0 +1,18 @@
+.sponsors-WIP-message {
+  text-align: left;
+  color: grey;
+}
+
+.sponsors-WIP-message-title {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+.sponsors-WIP-message-text {
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+.sponsors-wrapper {
+  padding: 16px;
+  display: flex;
+}
