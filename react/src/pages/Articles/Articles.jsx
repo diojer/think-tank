@@ -46,12 +46,7 @@ function Articles() {
                     })
                 ) : (
                     <div className="articles-WIP-message">
-                        <p className="articles-WIP-message-title">
-                            Sorry, no articles have been published yet.
-                        </p>
-                        <p className="articles-WIP-message-text">
-                            Please check again later!
-                        </p>
+                        <p className="articles-WIP-message-title">Loading...</p>
                     </div>
                 )}
             </div>

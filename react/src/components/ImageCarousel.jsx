@@ -1,6 +1,5 @@
 import React from "react";
 import "./ImageCarousel.css";
-import "../App.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "./splide-default.min.css";
 import { Button } from "./Button";

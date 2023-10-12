@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { UseStateContext } from "../contexts/ContextProvider";
 
 function Navbar() {
     //   const [permissions, setPermissions] = useState();
     //   useEffect(() => {
-    //     axios.get(`${VPS}/users/permissions`).then((response) => {
+    //     axios.get(`${API}/users/permissions`).then((response) => {
     //       setPermissions(response.data.admin);
     //       console.log(response.data);
     //     });
     //   }, []);
+    const { admin } = UseStateContext();
     return (
         <>
             <nav>
@@ -71,15 +72,13 @@ function Navbar() {
                                 <FontAwesomeIcon icon="fa-magnifying-glass" />
                             </Link>
                         </li>
-                        {/* {permissions ? (
+                        {admin && (
                             <li>
-                                <Link to="/upload">
+                                <Link to="/portal">
                                     <FontAwesomeIcon icon="fa-solid fa-pencil" />
                                 </Link>
                             </li>
-                        ) : (
-                            ""
-                        )} */}
+                        )}
                     </ul>
                     <label htmlFor="menu-btn" className="btn menu-btn">
                         <FontAwesomeIcon icon="fa-bars" />
