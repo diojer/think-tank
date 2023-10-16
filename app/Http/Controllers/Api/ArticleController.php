@@ -39,10 +39,10 @@ class ArticleController extends Controller
         $bannerImage = $request->file("bannerImage");
 
         $cardFilename = time()."_".$cardImage->getClientOriginalName();
-        Storage::disk("local")->put("/cardimages/{$cardFilename}", file_get_contents($data["cardImage"]));
+        Storage::disk("local")->put("/images/article/{$cardFilename}", file_get_contents($cardImage));
 
         $bannerFilename = time()."_".$bannerImage->getClientOriginalName();
-        Storage::disk("local")->put("/cardimages/{$bannerFilename}", file_get_contents($data["bannerImage"]));
+        Storage::disk("local")->put("/images/article/{$bannerFilename}", file_get_contents($bannerImage));
 
         $user = Article::create([
             "title"=>$data["title"],
@@ -50,8 +50,8 @@ class ArticleController extends Controller
             "subject"=>$data["subject"],
             "tags"=>$data["tags"],
             "content"=>$data["content"],
-            "cardPath"=>"/cardimages/{$cardFilename}",
-            "bannerPath"=>"/cardimages/{$bannerFilename}",
+            "cardPath"=>"/images/article/{$cardFilename}",
+            "bannerPath"=>"/images/article/{$bannerFilename}",
         ]);
 
         return response([

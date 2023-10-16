@@ -78,7 +78,7 @@ const onUpload = (data) => {
     formData.append("payload", payload)
 
     axiosClient
-        .post("/articleupload", formData, {
+        .post("/article", formData, {
             headers: {"Content-Type": "multipart/form-data"}
         })
         .then()
