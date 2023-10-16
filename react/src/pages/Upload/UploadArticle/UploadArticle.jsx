@@ -26,19 +26,28 @@ const initialValues = {
 };
 
 const onUpload = (data) => {
-  console.log({
-    fileName: data.cardImage.name,
-    type: data.cardImage.type,
-    size: `${data.cardImage.size} bytes`,
+  let formData = new FormData();
+
+  formData.append("bannerImage", data.bannerImage);
+  formData.append("cardImage", data.cardImage);
+
+  let payload = JSON.stringify({
+    title: data.title,
+    author: data.author,
+    subject: data.subject,
+    tags: data.tags,
+    content: data.content,
   });
+
+  formData.append("payload", payload);
+
   axiosClient
-    .post("/article", data, {
+    .post("/article", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then()
     .catch((err) => {
       const response = err.response;
-      console.log(response.data.errors);
       //response.status===422 //422 is a validation error
       if (response && response.status === 422) {
         console.log(response.data.errors);

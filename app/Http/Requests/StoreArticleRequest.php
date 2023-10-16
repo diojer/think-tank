@@ -15,6 +15,18 @@ class StoreArticleRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     *             
+     * @throws \JsonException
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge(json_decode($this->payload, true, 512, JSON_THROW_ON_ERROR));
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>

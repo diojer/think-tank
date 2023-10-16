@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Http\Requests\DeleteArticleRequest;
 use App\Http\Resources\ArticleResource;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -33,13 +35,16 @@ class ArticleController extends Controller
     {
         $data = $request->validated();
 
-        $cardFilename = time()."_".$data["cardimage"]->getClientOriginalName();
-        Storage::disk("local")->put("/cardimages/{$cardFilename}", file_get_contents($data["cardimage"]));
+        $cardImage = $request->file("cardImage");
+        $bannerImage = $request->file("bannerImage");
 
-        $bannerFilename = time()."_".$data["bannerimage"]->getClientOriginalName();
-        Storage::disk("local")->put("/cardimages/{$bannerFilename}", file_get_contents($data["bannerimage"]));
+        $cardFilename = time()."_".$cardImage->getClientOriginalName();
+        Storage::disk("local")->put("/cardimages/{$cardFilename}", file_get_contents($data["cardImage"]));
 
-        $article = Article::create([
+        $bannerFilename = time()."_".$bannerImage->getClientOriginalName();
+        Storage::disk("local")->put("/cardimages/{$bannerFilename}", file_get_contents($data["bannerImage"]));
+
+        $user = Article::create([
             "title"=>$data["title"],
             "author"=>$data["author"],
             "subject"=>$data["subject"],
@@ -48,7 +53,11 @@ class ArticleController extends Controller
             "cardImage"=>"/images/articles/{$cardFilename}",
             "bannerImage"=>"/images/articles/{$bannerFilename}",
         ]);
-        return response([new ArticleResource($article)], 201);
+
+        return response([
+            "message"=>"Article Uploaded Successfully!",
+            "status"=>true,
+        ]);
     }
 
     /**
