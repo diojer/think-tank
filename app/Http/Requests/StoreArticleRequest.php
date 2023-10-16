@@ -18,7 +18,7 @@ class StoreArticleRequest extends FormRequest
      * Prepare the data for validation.
      *
      * @return void
-     *             
+     *
      * @throws \JsonException
      */
     protected function prepareForValidation(): void
@@ -38,6 +38,7 @@ class StoreArticleRequest extends FormRequest
             "author"=>"required|string|max:55",
             "subject"=>"required|string|max:55",
             "tags"=>"nullable|string",
+            "byline"=>"nullable|string",
             "content"=>"required|string",
             "cardImage"=>"required|image",
             "bannerImage"=>"required|image",

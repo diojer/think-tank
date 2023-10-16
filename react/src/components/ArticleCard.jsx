@@ -18,7 +18,7 @@ export const ArticleCard = ({
         <div
           className="article-thumbnail"
           style={{
-            backgroundImage: `url(${thumbnail})`,
+            backgroundImage: `url("${thumbnail}")`,
           }}
         ></div>
         {path ? (

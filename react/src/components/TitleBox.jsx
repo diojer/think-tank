@@ -10,7 +10,7 @@ export const TitleBox = ({ children, image, color, font, type }) => {
         <div
           className="title-box"
           style={{
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url("${image}")`,
             backgroundColor: `${color}`,
             backgroundPosition: `${checkType}`,
           }}

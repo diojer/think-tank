@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
+use App\Models\MailingList;
+use App\Http\Requests\StoreEmailRequest;
 
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -21,17 +23,33 @@ use Spatie\Permission\Models\Role;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    $user = $request->user();
-    $admin = $user->hasRole("admin");
-    return response(["user"=>$user, "admin"=>$admin]);
+Route::middleware("auth:sanctum")->group(function(){
+    Route::get("user", function(Request $request) {
+        $user = $request->user();
+        $admin = $user->hasRole("admin");
+        return response(["user"=>$user, "admin"=>$admin]);
+    });
 });
 
+//User routes
 Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
 Route::post("/logout", [AuthController::class, "logout"]);
 
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
+Route::get("/article", [ArticleController::class, "show"]);
 
-Route::middleware("auth:sanctum")->post("/article", [ArticleController::class, "store"]);
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/article", [ArticleController::class, "store"]);
+    Route::apiResource("/articles", ArticleController::class);
+});
+
+//Mailing list routes
+Route::post("mailinglist", function(StoreEmailRequest $request){
+    $data = $request->validated();
+    MailingList::create([
+        "email"=>$data["email"],
+    ]);
+    return response(["", 201]);
+});

@@ -37,6 +37,17 @@ function ViewArticles() {
     });
   }
 
+  function articleDelete(article) {
+    if (!window.confirm("Are you sure you want to delete this article?")) {
+      return;
+    } else {
+      axiosClient.delete(`/articles/${article.id}`).then((response) => {
+        alert("Article Deleted!");
+        getArticles();
+      });
+    }
+  }
+
   return (
     <>
       <div className="article-view-wrapper upload-subwrapper">
@@ -50,7 +61,13 @@ function ViewArticles() {
             <th>Author</th>
             <th>Subject</th>
             <th>Created on</th>
-            <th>Actions</th>
+            <th
+              onClick={(e) => {
+                alert("Editing functionality coming soon!");
+              }}
+            >
+              <a className="tooltip">Actions</a>
+            </th>
           </tr>
           {loading && (
             <tr className="article-row-loading">
@@ -60,7 +77,7 @@ function ViewArticles() {
           {articles.map((a, key) => {
             return (
               <>
-                <tr className={`article-table-rows ${a.id}`}>
+                <tr className={`article-table-rows ${a.id}`} key={key}>
                   <td className="article-row-id">{a.id}</td>
                   <td className="article-row-title">
                     <Link to={`/articles/${a.id}`}>{a.title}</Link>
@@ -70,14 +87,17 @@ function ViewArticles() {
                   <td className="article-row-date">{a.created_at}</td>
                   <td>
                     <div className="article-row-buttons">
+                      {/* <Button path={`/portal/edit/article/${a.id}`}>
+                        Edit
+                      </Button> */}
                       <Button
-                        onClick={() => {
-                          alert("hi");
+                        buttonStyle="btn--red"
+                        onClick={(e) => {
+                          articleDelete(a);
                         }}
                       >
-                        Edit
+                        Delete
                       </Button>
-                      <Button buttonStyle="btn--red">Delete</Button>
                     </div>
                   </td>
                 </tr>

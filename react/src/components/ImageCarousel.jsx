@@ -11,7 +11,12 @@ export const ImageCarousel = ({ articles, options }) => {
         {articles.map((value, key) => {
           return (
             <SplideSlide key={key}>
-              <img src={value.bannerImage} alt="" />
+              <img
+                src={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                  value.bannerImage
+                }`}
+                alt=""
+              />
               <div className="text-wrapper">
                 <p className="carousel-article-title">{value.title}</p>
                 <p className="carousel-article-author">{`By ${value.author}`}</p>

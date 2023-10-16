@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 import { NewTabLink } from "./NewTabLink";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axiosClient from "../utility/axios-client";
 
 //FA Imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const addToMailingList = (data, helpers) => {
-  helpers.resetForm(initialValues);
-  axios.post("https://leeds-think-tank-server.onrender.com/mailinglist", data);
+  axiosClient
+    .post("/mailinglist", data)
+    .then(({ data }) => {
+      helpers.resetForm(initialValues);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const initialValues = {

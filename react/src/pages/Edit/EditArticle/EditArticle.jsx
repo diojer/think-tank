@@ -1,71 +1,84 @@
 import React from "react";
-import "./UploadArticle.css";
+import "./EditArticle.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button } from "../../../components/Button";
 import { Editor } from "@tinymce/tinymce-react";
 import { useEffect, useState } from "react";
 import axiosClient from "../../../utility/axios-client";
+import { useNavigate, useParams } from "react-router-dom";
 
-const validationSchema = Yup.object().shape({
-  title: Yup.string().required(),
-  author: Yup.string().required(),
-  subject: Yup.string().required(),
-  tags: Yup.string(),
-  byline: Yup.string(),
-  content: Yup.string().required(),
-  cardImage: Yup.mixed().required(),
-  bannerImage: Yup.mixed().required(),
-});
+function EditArticle() {
+  const [selectedArticle, setSelectedArticle] = useState({});
+  const { article } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
+    getArticle(article);
+  }, []);
 
-const initialValues = {
-  title: "",
-  author: "",
-  subject: "",
-  tags: "",
-  byline: "",
-  content: "",
-};
+  const getArticle = (key) => {
+    axiosClient.get(`/articles/${key}`).then(({ data }) => {
+      setSelectedArticle(data.data);
+      console.log(selectedArticle);
+    });
+  };
 
-const onUpload = (data) => {
-  let formData = new FormData();
-
-  formData.append("bannerImage", data.bannerImage);
-  formData.append("cardImage", data.cardImage);
-
-  let payload = JSON.stringify({
-    title: data.title,
-    author: data.author,
-    subject: data.subject,
-    tags: data.tags,
-    byline: data.byline,
-    content: data.content,
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required(),
+    author: Yup.string().required(),
+    subject: Yup.string().required(),
+    tags: Yup.string(),
+    content: Yup.string().required(),
+    cardImage: Yup.mixed().required(),
+    bannerImage: Yup.mixed().required(),
   });
 
-  formData.append("payload", payload);
+  const initialValues = {
+    title: selectedArticle.title,
+    author: selectedArticle.author,
+    subject: selectedArticle.subject,
+    tags: selectedArticle.tags,
+    content: selectedArticle.content,
+  };
 
-  axiosClient
-    .post("/article", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-    .then(({ data }) => {
-      alert("File uploaded successfully!");
-    })
-    .catch((err) => {
-      console.log(err);
-      //   const response = err.response;
-      //   response.status===422 //422 is a validation error
-      //   if (response && response.status === 422) {
-      //     alert(response.data.errors);
-      //   }
+  const onUpload = (data) => {
+    let formData = new FormData();
+
+    formData.append("bannerImage", data.bannerImage);
+    formData.append("cardImage", data.cardImage);
+
+    let payload = JSON.stringify({
+      title: data.title,
+      author: data.author,
+      subject: data.subject,
+      tags: data.tags,
+      content: data.content,
     });
-};
 
-function UploadArticle() {
+    formData.append("payload", payload);
+
+    axiosClient
+      .put(`/articles/${selectedArticle.id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then(({ data }) => {
+        alert("Article edited successfully!");
+        navigate(`/articles/${selectedArticle.id}`);
+      })
+      .catch((err) => {
+        const response = err.response;
+        //response.status===422 //422 is a validation error
+        if (response && response.status === 422) {
+          alert(response.data.errors);
+        }
+      });
+  };
+
   return (
     <div className="upload-article-form-wrapper upload-subwrapper">
       <p className="article-table-heading upload-subheader">Upload Article</p>
       <Formik
+        enableReinitialize
         validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={onUpload}
@@ -83,19 +96,7 @@ function UploadArticle() {
             Tags (seperated by comma) <span className="red">(Optional)</span>:
           </label>
           <Field name="tags" />
-          <label>
-            Banner Image
-            <a
-              onClick={(e) => {
-                alert(
-                  "Landscape images are best suited for this. This will be displayed when your article is at the top of the homescreen."
-                );
-              }}
-              className="tooltip"
-            >
-              (?)
-            </a>
-          </label>
+          <label>Banner Image (landscape images are best suited)</label>
           <Field name="bannerImage">
             {({ form }) => {
               const { setFieldValue } = form;
@@ -109,19 +110,7 @@ function UploadArticle() {
               );
             }}
           </Field>
-          <label>
-            Card Image
-            <a
-              onClick={(e) => {
-                alert(
-                  "Square images are best suited for this. This will be displayed on the article page and at the bottom of the homescreen."
-                );
-              }}
-              className="tooltip"
-            >
-              (?)
-            </a>
-          </label>
+          <label>Card Image (square images are best suited)</label>
           <Field name="cardImage">
             {({ form }) => {
               const { setFieldValue } = form;
@@ -136,22 +125,8 @@ function UploadArticle() {
             }}
           </Field>
           <label>
-            Byline/Subheading <span className="red">(Optional)</span>:
-          </label>
-          <Field name="byline" />
-          <label>
-            Article Content
-            <a
-              className="tooltip"
-              onClick={(e) => {
-                alert(
-                  "If you see a normal input field, turn off your adblock."
-                );
-              }}
-            >
-              (?)
-            </a>
-            :
+            Article Content (If you can't see the rich-text editor you should
+            disable extensions/adblocker):
           </label>
           <Field name="content">
             {({ form }) => {
@@ -192,4 +167,4 @@ function UploadArticle() {
   );
 }
 
-export default UploadArticle;
+export default EditArticle;

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("title");
             $table->string("author");
             $table->string("subject");
+            $table->text("byline")->nullable();
             $table->mediumText("content");
             $table->string("bannerImage");
             $table->string("cardImage");

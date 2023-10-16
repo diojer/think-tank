@@ -3,7 +3,6 @@ import "./Articles.css";
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosClient from "../../utility/axios-client";
-import parse from "html-react-parser";
 
 //component imports
 import { ArticleCard } from "../../components/ArticleCard";
@@ -30,24 +29,7 @@ function Articles() {
         setLoading(false);
       });
   };
-  //   const selectedArticlePage = (
-  //     <>
-  //       <TitleBox
-  //         image={`${selectedArticle.bannerImage}`}
-  //         color="#2e2d2b"
-  //         font="white"
-  //         type="bottom"
-  //       >
-  //         {selectedArticle.title}
-  //       </TitleBox>
-  //       <div className="selected-article-wrapper">
-  //         <p className="selected-article-author">{selectedArticle.author}</p>
-  //         <div className="selected-article-content">
-  //           {selectedArticle && parse(selectedArticle.content)}
-  //         </div>
-  //       </div>
-  //     </>
-  //   );
+
   return (
     <>
       {article ? (
@@ -64,7 +46,9 @@ function Articles() {
                   <ArticleCard
                     key={key}
                     subject={value.subject}
-                    thumbnail={value.cardImage}
+                    thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                      value.cardImage
+                    }`}
                     title={value.title}
                     type="Article"
                     author={value.author}

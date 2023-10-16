@@ -11,7 +11,7 @@ import { EmailForm } from "./components/EmailForm";
 function HomeSection() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const numOfArticles = 3;
+  const numOfArticles = 4;
   useEffect(() => {
     getArticles();
   }, []);
@@ -61,7 +61,10 @@ function HomeSection() {
       <div className="image-buttons-first-row">
         <ImageButtons
           text={["Reports", "Articles"]}
-          images={["/images/img-6.jpg", "/images/img-22.jpeg"]}
+          images={[
+            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-6.jpg`,
+            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-22.jpeg`,
+          ]}
           shape="imgb--rect"
           color="#4d5c4e"
           paths={["/reports", "/articles"]}
@@ -72,9 +75,9 @@ function HomeSection() {
         <ImageButtons
           text={["Latest Events", "Join Us", "Contact Us"]}
           images={[
-            "/images/img-6.jpg",
-            "/images/img-21.jpeg",
-            "/images/img-5.jpg",
+            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-6.jpg`,
+            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-21.jpeg`,
+            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-5.jpg`,
           ]}
           shape="imgb--thin"
           color="#706731"
@@ -89,7 +92,9 @@ function HomeSection() {
       <div
         className="fixed-scroll-image"
         style={{
-          backgroundImage: "url(/images/mailbox-field.jpg)",
+          backgroundImage: `url(${
+            import.meta.env.VITE_API_PUBLIC_URL
+          }/images/mailbox-field.jpg)`,
           backgroundColor: `rgb(121, 103, 52)`,
         }}
       >
@@ -104,7 +109,7 @@ function HomeSection() {
             <ArticleCard
               key={key}
               subject={value.subject}
-              thumbnail={value.cardImage}
+              thumbnail={`http://localhost:8000/storage${value.cardImage}`}
               title={value.title}
               type="Article"
               author={value.author}
