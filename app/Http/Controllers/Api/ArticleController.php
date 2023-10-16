@@ -45,8 +45,8 @@ class ArticleController extends Controller
             "subject"=>$data["subject"],
             "tags"=>$data["tags"],
             "content"=>$data["content"],
-            "cardPath"=>"/cardimages/{$cardFilename}",
-            "bannerPath"=>"/cardimages/{$bannerFilename}",
+            "cardImage"=>"/images/articles/{$cardFilename}",
+            "bannerImage"=>"/images/articles/{$bannerFilename}",
         ]);
         return response([new ArticleResource($article)], 201);
     }

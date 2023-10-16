@@ -24,8 +24,11 @@ class StoreArticleRequest extends FormRequest
         return [
             "title"=>"required|string|max:55",
             "author"=>"required|string|max:55",
+            "subject"=>"required|string|max:55",
+            "tags"=>"nullable|string",
             "content"=>"required|string",
-            "tags"=>"string",
+            "cardImage"=>"required|image",
+            "bannerImage"=>"required|image",
         ];
     }
 }
