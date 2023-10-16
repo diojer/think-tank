@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./Button.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const STYLES = ["btn--primary", "btn--secondary", "btn--third"];
+const STYLES = ["btn--primary", "btn--secondary", "btn--third", "btn--red"];
 const SIZES = ["btn--medium", "btn--large"];
 
 export const Button = ({ children, type, path, buttonStyle, buttonSize }) => {

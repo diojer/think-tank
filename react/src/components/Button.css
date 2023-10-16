@@ -15,10 +15,11 @@
   padding: 10px 20px 10px 20px;
   background: var(--primary);
   border: none;
-  color: var(--fontPrimary);
+  color: white;
 }
 
 .btn--primary:hover {
+  transition: 0.25s;
   background-color: var(--secondary);
   color: white;
 }
@@ -42,6 +43,19 @@
   font-size: 0.9em;
   border-radius: 10px;
   color: var(--fontPrimary);
+}
+
+.btn--red {
+  font-size: 0.9em;
+  padding: 10px 20px 10px 20px;
+  background: red;
+  border: none;
+  color: white;
+}
+
+.btn--red:hover {
+  background: darkred;
+  transition: 0.25s;
 }
 
 .btn--third:hover {

@@ -1,0 +1,20 @@
+.article-table-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.article-table-wrapper td button {
+  margin: 1px;
+}
+
+table,
+th,
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 4px;
+}
