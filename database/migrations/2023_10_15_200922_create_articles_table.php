@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('subject');
             $table->string('tags')->nullable();
-            $table->string('content');
+            $table->mediumText('content');
             $table->string('cardPath');
             $table->string('bannerPath');
         });

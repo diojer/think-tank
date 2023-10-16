@@ -62,13 +62,25 @@ const onUpload = (data) => {
 */
 
 const onUpload = (data) => {
-    console.log({ 
-        fileName: data.cardImage.name, 
-        type: data.cardImage.type,
-        size: `${data.cardImage.size} bytes`
+    let formData = new FormData();
+
+    formData.append("bannerImage", data.bannerImage);
+    formData.append("cardImage", data.cardImage);
+
+    let payload = JSON.stringify({
+        title: data.title,
+        author: data.author,
+        subject: data.subject,
+        tags: data.tags,
+        content: data.content
     })
+
+    formData.append("payload", payload)
+
     axiosClient
-        .post("/articleupload", data)
+        .post("/articleupload", formData, {
+            headers: {"Content-Type": "multipart/form-data"}
+        })
         .then()
         .catch((err) => {
             const response = err.response;
