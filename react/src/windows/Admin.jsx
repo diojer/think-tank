@@ -2,16 +2,24 @@
 
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { UseStateContext } from "../contexts/ContextProvider";
+import ScrollToTop from "../utility/ScrollToTop";
 
 function Admin() {
-  const { user, admin } = UseStateContext();
+  const { admin } = UseStateContext();
   if (!admin) {
     return <Navigate to="/login" />;
   }
   return (
     <div>
-      <Outlet />
+      <Navbar />
+      <ScrollToTop />
+      <div className="page-wrapper">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 }

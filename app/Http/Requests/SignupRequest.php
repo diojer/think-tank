@@ -22,7 +22,7 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username"=>"required|string|max:55|unique:users,name",
+            "name"=>"required|string|max:55",
             "email"=>"required|email|unique:users,email",
             "password"=>"required",
             "confirmPassword"=>"required"

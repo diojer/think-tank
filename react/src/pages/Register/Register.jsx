@@ -5,18 +5,18 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import axiosClient from "../../utility/axios-client";
 import { Button } from "../../components/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { UseStateContext } from "../../contexts/ContextProvider";
 
 const initialValues = {
-  username: "",
+  name: "",
   password: "",
   confirmPassword: "",
   email: "",
 };
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required("*A username is required"),
+  name: Yup.string().required("*Your name is required"),
   password: Yup.string().required("*A password is required"),
   confirmPassword: Yup.string().oneOf(
     [Yup.ref("password"), null],
@@ -28,31 +28,34 @@ const validationSchema = Yup.object().shape({
 });
 
 function Register() {
-  const [uploadMessage, setUploadMessage] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState(null);
-
-  const { setUser, setToken } = UseStateContext();
+  const [regMessage, setRegMessage] = useState("");
+  const [errors, setErrors] = useState({});
+  const [regStatus, setRegStatus] = useState(false);
 
   const registration = (data, helpers) => {
+    setErrors({});
     axiosClient
       .post("/signup", data)
       .then(({ data }) => {
-        console.log(data);
-        setUser(data.user);
-        setToken(data.token);
-        setUploadMessage(data.message);
-        setUploadStatus(data.status);
-        // setAdmin(data.admin);
+        setRegMessage({ message: data.message });
+        setRegStatus(true);
         helpers.resetForm(initialValues);
       })
-      .catch((err) => {
-        const response = err.response;
+      .catch(({ response }) => {
         //response.status===422 //422 is a validation error
         if (response && response.status === 422) {
-          console.log(response.data.errors);
+          setErrors(response.data.errors);
+          setRegStatus(false);
         }
       });
   };
+
+  //Can't register a new account if still logged in
+  const { token } = UseStateContext();
+  if (token) {
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div className="background-image">
       <div className="register-form-box">
@@ -64,11 +67,20 @@ function Register() {
             validationSchema={validationSchema}
           >
             <Form className="register-form">
-              <label className="username-label register-label">Username:</label>
+              <label className="username-label register-label">Name:</label>
               <Field
                 className="username-input register-input"
-                name="username"
-                placeholder="Type your Username"
+                name="name"
+                placeholder="Type your name"
+              />
+              <label className="email-label register-label">Email:</label>
+              <Field
+                className="email-input register-input"
+                name="email"
+                placeholder="Type your Email"
+                onKeyUp={(e) => {
+                  setErrors({});
+                }}
               />
               <label className="password-label register-label">Password:</label>
               <Field
@@ -86,17 +98,14 @@ function Register() {
                 type="password"
                 placeholder="Confirm your Password"
               />
-              <label className="email-label register-label">Email:</label>
-              <Field
-                className="email-input register-input"
-                name="email"
-                placeholder="Type your Email"
-              />
               <div className="error-messages-wrapper">
-                <ErrorMessage name="username" component="p" />
+                <ErrorMessage name="name" component="p" />
                 <ErrorMessage name="password" component="p" />
                 <ErrorMessage name="confirmPassword" component="p" />
                 <ErrorMessage name="email" component="p" />
+                {Object.keys(errors).map((key) => (
+                  <p key={key}>{errors[key][0]}</p>
+                ))}
               </div>
               <Button
                 type="submit"
@@ -105,19 +114,15 @@ function Register() {
               >
                 Register
               </Button>
-              {uploadMessage ? (
-                <p className={`upload-message ${uploadStatus}`}>
-                  {uploadMessage}
-                </p>
-              ) : (
-                ""
-              )}
-              {uploadStatus ? (
-                <Link className="redirect-message" to="/login">
-                  Click here to go to the Login page
-                </Link>
-              ) : (
-                ""
+              {regStatus && (
+                <>
+                  <p className={`upload-message ${regStatus}`}>
+                    {regMessage.message}
+                  </p>
+                  <Link className="redirect-message" to="/login">
+                    Click here to go to the Login page
+                  </Link>
+                </>
               )}
             </Form>
           </Formik>

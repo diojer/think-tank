@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class StoreArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->hasRole("admin");
     }
 
     /**
@@ -22,8 +22,10 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "email"=>"required|email",
-            "password"=>"required"
+            "title"=>"required|string|max:55",
+            "author"=>"required|string|max:55",
+            "content"=>"required|string",
+            "tags"=>"string",
         ];
     }
 }

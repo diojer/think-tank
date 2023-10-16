@@ -1,5 +1,5 @@
 .background-image {
-  background-image: url("../../../../public/images/leeds-clocktower.jpg");
+  background-image: url("/images/leeds-clocktower.jpg");
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -50,7 +50,7 @@
   font-size: 20px;
 }
 
-.username-input,
+.email-input,
 .forgot-password {
   margin-bottom: 32px;
 }
