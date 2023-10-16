@@ -15,6 +15,7 @@ use Ramsey\Uuid\Uuid;
 
 class Article extends Model
 {
+    use HasFactory;
     /**
      * The attributes that are mass assignable.
      *

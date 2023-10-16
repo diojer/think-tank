@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+//Spatie Perms
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
 class AuthController extends Controller
 {
 
@@ -18,16 +22,13 @@ class AuthController extends Controller
         $data = $request->validated();
 
         $user = User::create([
-            "name"=>$data["username"],
+            "name"=>$data["name"],
             "email"=>$data["email"],
             "password"=>bcrypt($data["password"]),
         ]);
         $token = $user->createToken("main")->plainTextToken;
         return response([
-            "user"=>$user,
-            "token"=>$token,
-            "message"=>"Registered Successfully!",
-            "status"=>true,
+            "message"=>"Registered Successfully!"
         ]);
     }
     public function login(LoginRequest $request) {
@@ -35,18 +36,18 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials)) {
             return response([
                 "message"=>"Provided email address or password incorrect"
-            ]);
+            ], 422);
         }
 
         $user = Auth::user();
         $token = $user->createToken("main")->plainTextToken;
-        $admin = false;
+        $admin = $user->hasRole("admin");
         //function to decrypt token and set $admin equal to true if user is admin
 
         return response([
             "user"=>$user,
             "token"=>$token,
-            "admin"=>$admin
+            "admin"=>$admin,
         ]);
     }
 

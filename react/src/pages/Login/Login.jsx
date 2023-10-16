@@ -5,59 +5,59 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import axiosClient from "../../utility/axios-client";
 import { Link } from "react-router-dom";
+import { UseStateContext } from "../../contexts/ContextProvider";
 
 //component imports
 import { Button } from "../../components/Button";
 
 const initialValues = {
-  username: "",
+  email: "",
   password: "",
   remember: false,
 };
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required(),
-  password: Yup.string().required(),
+  email: Yup.string()
+    .email("*A valid email is required")
+    .required("*An email is required"),
+  password: Yup.string().required("*A password is required"),
   remember: Yup.boolean(),
 });
 
 function Login() {
-  const [uploadMessage, setUploadMessage] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState(null);
-  const [permissions, setPermissions] = useState();
-  //   useEffect(() => {
-  //     axios.get(`${VPS}/users/permissions`).then((response) => {
-  //       setPermissions(response.data.admin);
-  //     });
-  //   }, []);
+  const [errors, setErrors] = useState({});
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  const { token, setUser, setToken, setAdmin } = UseStateContext();
   const login = (data, helpers) => {
+    setErrors({});
     axiosClient
       .post("/login", data)
       .then(({ data }) => {
+        helpers.resetForm(initialValues);
         setUser(data.user);
         setToken(data.token);
         setAdmin(data.admin);
-        helpers.resetForm(initialValues);
+        setLoginStatus(true);
       })
-      .catch((err) => {
-        const response = err.response;
+      .catch(({ response }) => {
         //response.status===422 //422 is a validation error
         if (response && response.status === 422) {
-          console.log(response.data.errors);
+          if (response.data.errors) {
+            setErrors(response.data.errors);
+          } else {
+            setErrors({
+              email: [response.data.message],
+            });
+          }
+          setLoginStatus(false);
         }
       });
-    // axios.post(`${VPS}/users/login`, data).then((response) => {
-    //   setUploadMessage(response.data.message);
-    //   setUploadStatus(response.data.valid);
-    //   if (response.data.valid) {
-    //     console.log(response.data); //for debug purposes
-    //   }
-    // });
   };
   return (
     <div className="background-image">
       <div className="login-form-box">
-        {permissions ? (
+        {token ? (
           <>
             <p className="login-title">You are logged in!</p>
           </>
@@ -71,13 +71,11 @@ function Login() {
                 validationSchema={validationSchema}
               >
                 <Form className="login-form">
-                  <label className="username-label login-label">
-                    Username:
-                  </label>
+                  <label className="email-label login-label">Email:</label>
                   <Field
-                    className="username-input login-input"
-                    name="username"
-                    placeholder="Type your Username"
+                    className="email-input login-input"
+                    name="email"
+                    placeholder="Type your email..."
                   />
                   <label className="password-label login-label">
                     Password:
@@ -93,6 +91,13 @@ function Login() {
                     <Field type="checkbox" name="remember" /> Remember me (stay
                     logged in for 30 days)
                   </label>
+                  <div className="error-messages-wrapper">
+                    <ErrorMessage name="email" component="p" />
+                    <ErrorMessage name="password" component="p" />
+                    {Object.keys(errors).map((key) => (
+                      <p key={key}>{errors[key][0]}</p>
+                    ))}
+                  </div>
                   <Button
                     type="submit"
                     buttonStyle="btn--primary"
@@ -103,13 +108,6 @@ function Login() {
                   <Link className="register" to="/register">
                     If you don't have an account, click here to signup.
                   </Link>
-                  {uploadMessage ? (
-                    <p className={`upload-message ${uploadStatus}`}>
-                      {uploadMessage}
-                    </p>
-                  ) : (
-                    ""
-                  )}
                 </Form>
               </Formik>
             </div>

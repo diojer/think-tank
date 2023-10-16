@@ -1,6 +1,6 @@
 //This is what all users see when loading up the website
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 //Component Imports
@@ -10,9 +10,18 @@ import Footer from "../components/Footer";
 //Utility Imports
 import ScrollToTop from "../utility/ScrollToTop";
 import { UseStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../utility/axios-client";
 
 function Client() {
-  const { admin } = UseStateContext();
+  const { token, setUser, setAdmin } = UseStateContext();
+  useEffect(() => {
+    if (token) {
+      axiosClient.get("/user").then(({ data }) => {
+        setUser(data.user);
+        setAdmin(data.admin);
+      });
+    }
+  }, []);
   return (
     <div>
       <Navbar />

@@ -5,16 +5,28 @@ import { Button } from "../../components/Button";
 import { ImageButtons } from "../../components/ImageButtons";
 import { ArticleCard } from "../../components/ArticleCard";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosClient from "../../utility/axios-client";
 import { EmailForm } from "./components/EmailForm";
 
 function HomeSection() {
-  const [listOfArticles, setListOfArticles] = useState([]);
-  //   useEffect(() => {
-  //     axios.get(`${VPS}/articles`).then((response) => {
-  //       setListOfArticles(response.data.reverse()); //reversed so that newer entries show up first
-  //     });
-  //   }, []);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const numOfArticles = 3;
+  useEffect(() => {
+    getArticles();
+  }, []);
+  const getArticles = () => {
+    setLoading(true);
+    axiosClient
+      .get("articles")
+      .then(({ data }) => {
+        setArticles(data.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
   const carouselOptions = {
     //Options, for more information see https://splidejs.com/guides/options/
     speed: 1750,
@@ -31,9 +43,9 @@ function HomeSection() {
   };
   return (
     <>
-      {listOfArticles[1] && ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
+      {articles[1] && ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
         <ImageCarousel
-          articles={listOfArticles.slice(0, 3)}
+          articles={articles.slice(0, numOfArticles)}
           options={carouselOptions}
         />
       )}
@@ -87,7 +99,7 @@ function HomeSection() {
         </div>
       </div>
       <div className="article-cards-wrapper">
-        {listOfArticles.slice(0, 3).map((value, key) => {
+        {articles.slice(0, numOfArticles).map((value, key) => {
           return (
             <ArticleCard
               key={key}

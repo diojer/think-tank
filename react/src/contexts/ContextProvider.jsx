@@ -2,6 +2,7 @@
 //  attempting to access.
 
 import { createContext, useContext, useEffect, useState } from "react";
+import axiosClient from "../utility/axios-client";
 
 //if a localStorage ACCESS_TOKEN exists, move it into sessionStorage
 //  this way, we only ever have to look at sessionStorage to see user perms
@@ -14,19 +15,17 @@ if (
 
 const StateContext = createContext({
   user: null,
-  token: null,
   admin: false,
+  token: null,
   setUser: () => {},
   setToken: () => {},
-  setToken: () => {},
+  setAdmin: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [token, _setToken] = useState(sessionStorage.getItem("ACCESS_TOKEN"));
   const [admin, _setAdmin] = useState(false);
-  //instead of null, initialState for admin should be defined by a call to the database
-  //  and a read of the role in the user table
   const setToken = (token, rememberMe) => {
     _setToken(token);
     if (token) {
@@ -39,13 +38,14 @@ export const ContextProvider = ({ children }) => {
       sessionStorage.removeItem("ACCESS_TOKEN");
     }
   };
+
   const setAdmin = (admin, update) => {
     _setAdmin(admin);
     if (update) {
-      if (admin) {
-        //change database value here
+      if (!admin) {
+        //api to remove admin status
       } else {
-        //if the method is called with no argument, remove admin role in database
+        //api to grant admin status
       }
     }
   };
