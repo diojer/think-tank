@@ -32,10 +32,13 @@ const onUpload = (data) => {
     size: `${data.cardImage.size} bytes`,
   });
   axiosClient
-    .post("/article", data)
+    .post("/article", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
     .then()
     .catch((err) => {
       const response = err.response;
+      console.log(response.data.errors);
       //response.status===422 //422 is a validation error
       if (response && response.status === 422) {
         console.log(response.data.errors);
@@ -45,7 +48,8 @@ const onUpload = (data) => {
 
 function UploadArticle() {
   return (
-    <div className="upload-article-form-wrapper">
+    <div className="upload-article-form-wrapper upload-subwrapper">
+      <p className="article-table-heading upload-subheader">Upload Article</p>
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}

@@ -33,4 +33,5 @@ Route::post("/logout", [AuthController::class, "logout"]);
 
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
-Route::post("/article", [ArticleController::class, "store"]);
+
+Route::middleware("auth:sanctum")->post("/article", [ArticleController::class, "store"]);

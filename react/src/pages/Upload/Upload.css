@@ -1,0 +1,41 @@
+.upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.upload-subwrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 16px;
+}
+
+.upload-subheader {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.upload-header {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.upload-buttons,
+.view-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.upload-buttons {
+  margin-bottom: 8px;
+}
+
+.upload-wrapper button {
+  margin: 2px;
+}

@@ -39,7 +39,10 @@ function ViewArticles() {
 
   return (
     <>
-      <div className="article-table-wrapper">
+      <div className="article-view-wrapper upload-subwrapper">
+        <p className="article-view-heading upload-subheader">
+          View/Edit Articles
+        </p>
         <table className="article-table">
           <tr className="article-table-headings">
             <th>ID</th>
@@ -49,6 +52,11 @@ function ViewArticles() {
             <th>Created on</th>
             <th>Actions</th>
           </tr>
+          {loading && (
+            <tr className="article-row-loading">
+              <p>Loading...</p>
+            </tr>
+          )}
           {articles.map((a, key) => {
             return (
               <>
@@ -61,8 +69,16 @@ function ViewArticles() {
                   <td className="article-row-subject">{a.subject}</td>
                   <td className="article-row-date">{a.created_at}</td>
                   <td>
-                    <Button>Edit</Button>
-                    <Button buttonStyle="btn--red">Delete</Button>
+                    <div className="article-row-buttons">
+                      <Button
+                        onClick={() => {
+                          alert("hi");
+                        }}
+                      >
+                        Edit
+                      </Button>
+                      <Button buttonStyle="btn--red">Delete</Button>
+                    </div>
                   </td>
                 </tr>
               </>

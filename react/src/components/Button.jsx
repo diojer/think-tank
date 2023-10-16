@@ -5,7 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 const STYLES = ["btn--primary", "btn--secondary", "btn--third", "btn--red"];
 const SIZES = ["btn--medium", "btn--large"];
 
-export const Button = ({ children, type, path, buttonStyle, buttonSize }) => {
+export const Button = ({
+  children,
+  type,
+  path,
+  buttonStyle,
+  buttonSize,
+  onClick,
+}) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0];
@@ -18,6 +25,14 @@ export const Button = ({ children, type, path, buttonStyle, buttonSize }) => {
             {children}
           </button>
         </Link>
+      ) : onClick ? (
+        <button
+          type={type}
+          className={`btn ${checkButtonStyle} ${checkButtonSize} `}
+          onClick={onClick}
+        >
+          {children}
+        </button>
       ) : (
         <button
           type={type}
