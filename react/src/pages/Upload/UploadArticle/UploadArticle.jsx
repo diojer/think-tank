@@ -4,8 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button } from "../../../components/Button";
 import { Editor } from "@tinymce/tinymce-react";
-import axios from "axios";
 import { useEffect } from "react";
+import axiosClient from "../../../utility/axios-client";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required(),
@@ -25,7 +25,9 @@ const initialValues = {
     content: "",
 };
 
+/*
 const onUpload = (data) => {
+    console.log("Test");
     const images = new FormData();
     const filePath = "/images/articles/";
     images.append("bannerImage", data.bannerImage);
@@ -54,6 +56,25 @@ const onUpload = (data) => {
                 alert(
                     `${response.data.message}: Error Code ${response.data.err}. Are you sure you're logged in? `
                 );
+            }
+        });
+};
+*/
+
+const onUpload = (data) => {
+    console.log({ 
+        fileName: data.cardImage.name, 
+        type: data.cardImage.type,
+        size: `${data.cardImage.size} bytes`
+    })
+    axiosClient
+        .post("/articleupload", data)
+        .then()
+        .catch((err) => {
+            const response = err.response;
+            //response.status===422 //422 is a validation error
+            if (response && response.status === 422) {
+                console.log(response.data.errors);
             }
         });
 };

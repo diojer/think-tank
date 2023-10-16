@@ -31,8 +31,23 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        $data = $request.validated();
-        $article = Article::create($data);
+        $data = $request->validated();
+
+        $cardFilename = time()."_".$data["cardimage"]->getClientOriginalName();
+        Storage::disk("local")->put("/cardimages/{$cardFilename}", file_get_contents($data["cardimage"]));
+
+        $bannerFilename = time()."_".$data["bannerimage"]->getClientOriginalName();
+        Storage::disk("local")->put("/cardimages/{$bannerFilename}", file_get_contents($data["bannerimage"]));
+
+        $article = Article::create([
+            "title"=>$data["title"],
+            "author"=>$data["author"],
+            "subject"=>$data["subject"],
+            "tags"=>$data["tags"],
+            "content"=>$data["content"],
+            "cardPath"=>"/cardimages/{$cardFilename}",
+            "bannerPath"=>"/cardimages/{$bannerFilename}",
+        ]);
         return response([new ArticleResource($article)], 201);
     }
 
