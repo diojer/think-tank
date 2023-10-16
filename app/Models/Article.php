@@ -27,7 +27,7 @@ class Article extends Model
         'subject',
         'tags',
         'content',
-        'cardPath',
-        'bannerPath',
+        'cardImage',
+        'bannerImage',
     ];
 }
