@@ -109,7 +109,9 @@ function HomeSection() {
             <ArticleCard
               key={key}
               subject={value.subject}
-              thumbnail={`http://localhost:8000/storage${value.cardImage}`}
+              thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                value.cardImage
+              }`}
               title={value.title}
               type="Article"
               author={value.author}

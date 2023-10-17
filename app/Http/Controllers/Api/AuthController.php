@@ -26,7 +26,6 @@ class AuthController extends Controller
             "email"=>$data["email"],
             "password"=>bcrypt($data["password"]),
         ]);
-        $user->assignRole("admin");
         $token = $user->createToken("main")->plainTextToken;
         return response([
             "message"=>"Registered Successfully!"

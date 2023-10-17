@@ -39,10 +39,11 @@ Route::post("/logout", [AuthController::class, "logout"]);
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
 Route::get("/article", [ArticleController::class, "show"]);
+Route::apiResource("/articles", ArticleController::class)->only(["index", "show"]);
 
 Route::middleware("auth:sanctum")->group(function(){
     Route::post("/article", [ArticleController::class, "store"]);
-    Route::apiResource("/articles", ArticleController::class);
+    Route::apiResource("/articles", ArticleController::class)->only(["create","destroy","update"]);
 });
 
 //Mailing list routes

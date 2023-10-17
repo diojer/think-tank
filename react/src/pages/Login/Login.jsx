@@ -55,7 +55,14 @@ function Login() {
       });
   };
   return (
-    <div className="background-image">
+    <div
+      className="background-image"
+      style={{
+        backgroundImage: `url(${
+          import.meta.env.VITE_API_PUBLIC_URL
+        }/images/leeds-clocktower.jpg)`,
+      }}
+    >
       <div className="login-form-box">
         {token ? (
           <>
