@@ -2,11 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axiosClient from "../../../utility/axios-client";
 import { Button } from "../../../components/Button";
-import "./ViewArticles.css";
+import "./ViewUser.css";
 import "../View.css";
 import { Link } from "react-router-dom";
 
-function ViewArticles() {
+function ViewUser() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -89,8 +89,8 @@ function ViewArticles() {
                   <td>
                     <div className="default-row-buttons">
                       {/* <Button path={`/portal/edit/article/${a.id}`}>
-                        Edit
-                      </Button> */}
+                          Edit
+                        </Button> */}
                       <Button
                         buttonStyle="btn--red"
                         onClick={(e) => {
@@ -111,4 +111,4 @@ function ViewArticles() {
   );
 }
 
-export default ViewArticles;
+export default ViewUser;

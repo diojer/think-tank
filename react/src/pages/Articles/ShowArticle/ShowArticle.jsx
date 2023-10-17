@@ -6,6 +6,13 @@ import { TitleBox } from "../../../components/TitleBox";
 import parse from "html-react-parser";
 
 function ShowArticle() {
+  function newTabLinks() {
+    const links = document.getElementsByTagName("a");
+    for (let i = 0; i < links.length; i++) {
+      links[i].target = "_blank";
+    }
+  }
+
   const { article } = useParams();
   const [selectedArticle, setSelectedArticle] = useState(null);
   useEffect(() => {
@@ -36,6 +43,7 @@ function ShowArticle() {
               {selectedArticle && parse(selectedArticle.content)}
             </div>
           </div>
+          {selectedArticle.content && newTabLinks()}
         </>
       ) : (
         <p className="loading">Loading...</p>

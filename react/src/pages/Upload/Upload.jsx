@@ -26,6 +26,7 @@ function Upload() {
           <Button path="articles">Articles</Button>
           <Button>Mailing List</Button>
           <Button>Sponsors</Button>
+          <Button path="users">Registered Users</Button>
         </div>
       </div>
       <hr></hr>
