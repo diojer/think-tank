@@ -9,6 +9,12 @@
   align-content: center;
 }
 
+.logout-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .login-form-box {
   width: 500px;
   height: auto;

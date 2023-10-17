@@ -23,24 +23,28 @@ use Spatie\Permission\Models\Role;
 |
 */
 
+
+//For logged in users - concerning user requests
 Route::middleware("auth:sanctum")->group(function(){
     Route::get("user", function(Request $request) {
         $user = $request->user();
         $admin = $user->hasRole("admin");
         return response(["user"=>$user, "admin"=>$admin]);
     });
+    Route::post("/logout", [AuthController::class, "logout"]);
 });
 
 //User routes
 Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
-Route::post("/logout", [AuthController::class, "logout"]);
+
 
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
 Route::get("/article", [ArticleController::class, "show"]);
 Route::apiResource("/articles", ArticleController::class)->only(["index", "show"]);
 
+//For logged in users - concerning article requests
 Route::middleware("auth:sanctum")->group(function(){
     Route::post("/article", [ArticleController::class, "store"]);
     Route::apiResource("/articles", ArticleController::class)->only(["create","destroy","update"]);

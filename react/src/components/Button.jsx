@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import "./Button.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const STYLES = ["btn--primary", "btn--secondary", "btn--third", "btn--red"];
+const STYLES = [
+  "btn--primary",
+  "btn--secondary",
+  "btn--third",
+  "btn--red",
+  "btn--fourth",
+];
 const SIZES = ["btn--medium", "btn--large"];
 
 export const Button = ({
