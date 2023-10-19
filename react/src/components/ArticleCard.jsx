@@ -29,11 +29,11 @@ export const ArticleCard = ({
           <p className="article-card-title">{title}</p>
         )}
         <p className="article-author">{author}</p>
-        <p className="article-type">{type}</p>
+        {/* <p className="article-type">{type}</p> */}
       </div>
       <div className="suggested">
         {/* <p className="suggested-subject">More on {subject}...</p> */}
-        <hr />
+        {/* <hr /> */}
         {/* <div className="suggested-list">{suggestList}</div> */}
       </div>
     </div>
