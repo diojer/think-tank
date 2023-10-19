@@ -7,6 +7,7 @@ import { ArticleCard } from "../../components/ArticleCard";
 import { useEffect, useState } from "react";
 import axiosClient from "../../utility/axios-client";
 import { EmailForm } from "./components/EmailForm";
+import { Helmet } from "react-helmet";
 
 function HomeSection() {
   const [articles, setArticles] = useState([]);
@@ -43,6 +44,9 @@ function HomeSection() {
   };
   return (
     <>
+      <Helmet>
+        <title>Leeds Think Tank</title>
+      </Helmet>
       {articles[1] && ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
         <ImageCarousel
           articles={articles.slice(0, numOfArticles)}

@@ -15,6 +15,7 @@ function ShowArticle() {
   const getArticle = (key) => {
     axiosClient.get(`/articles/${key}`).then(({ data }) => {
       setSelectedArticle(data.data);
+      console.log(data.data.byline);
     });
   };
   function setSelectedArticle(article) {
@@ -26,7 +27,6 @@ function ShowArticle() {
     let today = new Date();
     //next, get time difference in seconds
     let timeDifference = Math.floor(Math.abs(articleDate - today) / 36e5);
-    console.log(articleDate, today);
     if (timeDifference < 24) {
       //less than 24 hours ago
       setTime(`${timeDifference} hours ago.`);
@@ -63,6 +63,7 @@ function ShowArticle() {
           />
           <div className="selected-article-wrapper">
             <p className="selected-article-title">{selectedArticle.title}</p>
+            <p className="selected-article-byline">{selectedArticle.byline}</p>
             <p className="selected-article-author">
               Published by <a>{selectedArticle.author}</a> {time}
             </p>
