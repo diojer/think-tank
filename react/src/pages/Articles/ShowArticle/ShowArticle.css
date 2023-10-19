@@ -1,5 +1,5 @@
 .selected-article-wrapper {
-  padding: 0 128px 0 128px;
+  padding: 0 20% 0 20%;
   line-height: 230%;
 }
 
@@ -16,12 +16,21 @@
 
 .selected-article-author {
   font-weight: 600;
-  font-size: 2em;
+  font-size: 1em;
+  font-family: Poppins;
+}
+
+.article-disclosure {
+  margin: 0 10% 0 10%;
+}
+
+.article-disclosure-text {
+  font-style: italic;
 }
 
 @media screen and (max-width: 800px) {
   .selected-article-wrapper {
-    padding: 0 32px 0 32px;
+    padding: 0 10% 0 10%;
     line-height: 230%;
   }
   .selected-article-content p,
