@@ -60,10 +60,9 @@ function ShowArticle() {
             font="white"
             type="center"
             textType="center"
-          >
-            {selectedArticle.title}
-          </TitleBox>
+          />
           <div className="selected-article-wrapper">
+            <p className="selected-article-title">{selectedArticle.title}</p>
             <p className="selected-article-author">
               Published by <a>{selectedArticle.author}</a> {time}
             </p>

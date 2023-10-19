@@ -3,9 +3,15 @@
   line-height: 230%;
 }
 
+.selected-article-title {
+  font-size: 3em;
+  margin-bottom: 0;
+}
+
 .selected-article-content p,
 .selected-article-content,
-.selected-article-author {
+.selected-article-author,
+.selected-article-title {
   font-family: Century;
 }
 
