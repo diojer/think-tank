@@ -95,7 +95,28 @@ function ShowArticle() {
           </div>
         </>
       ) : (
-        <p className="loading">Loading...</p>
+        <>
+          <TitleBox image="/images/articles/greybox.png" textType="center">
+            <div class="lds-facebook">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </TitleBox>
+          <div className="selected-article-wrapper">
+            <p className="selected-article-title"> </p>
+            <p className="selected-article-byline"> </p>
+            <p className="selected-article-author"> </p>
+            <p className="center">
+              <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </p>
+          </div>
+        </>
       )}
     </>
   );

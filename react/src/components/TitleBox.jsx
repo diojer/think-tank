@@ -1,11 +1,20 @@
 import React from "react";
 import "./TitleBox.css";
 
-export const TitleBox = ({ children, image, color, font, type, textType }) => {
+export const TitleBox = ({
+  children,
+  image,
+  color,
+  font,
+  type,
+  textType,
+  height,
+}) => {
   const TYPES = ["top", "center", "bottom"];
   const TEXT_TYPES = ["left", "center", "right"];
   const checkType = TYPES.includes(type) ? type : TYPES[0];
   const checkText = TEXT_TYPES.includes(textType) ? textType : TEXT_TYPES[0];
+  const checkHeight = height ? height : "300px";
   return (
     <>
       <div className="title-box-wrapper">
@@ -15,6 +24,7 @@ export const TitleBox = ({ children, image, color, font, type, textType }) => {
             backgroundImage: `url("${image}")`,
             backgroundColor: `${color}`,
             backgroundPosition: `${checkType}`,
+            height: `${checkHeight}`,
           }}
         >
           <p

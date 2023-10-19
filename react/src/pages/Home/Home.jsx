@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import axiosClient from "../../utility/axios-client";
 import { EmailForm } from "./components/EmailForm";
 import { Helmet } from "react-helmet";
+import { TitleBox } from "../../components/TitleBox";
 
 function HomeSection() {
   const [articles, setArticles] = useState([]);
@@ -47,11 +48,21 @@ function HomeSection() {
       <Helmet>
         <title>Leeds Think Tank</title>
       </Helmet>
-      {articles[1] && ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
+      {articles[1] ? ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
         <ImageCarousel
           articles={articles.slice(0, numOfArticles)}
           options={carouselOptions}
         />
+      ) : (
+        <TitleBox image="images/articles/lightgreybox.png" height="400px">
+          <div className="center">
+            <div class="lds-facebook">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </TitleBox>
       )}
 
       <div className="tagline-wrapper">
@@ -107,23 +118,35 @@ function HomeSection() {
           <EmailForm />
         </div>
       </div>
-      <div className="article-cards-wrapper">
-        {articles.slice(0, numOfArticles).map((value, key) => {
-          return (
-            <ArticleCard
-              key={key}
-              subject={value.subject}
-              thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
-                value.cardImage
-              }`}
-              title={value.title}
-              type="Article"
-              author={value.author}
-              path={`articles/${value.id}`}
-            />
-          );
-        })}
-      </div>
+      {articles[1] ? (
+        <div className="article-cards-wrapper">
+          {articles.slice(0, numOfArticles).map((value, key) => {
+            return (
+              <ArticleCard
+                key={key}
+                subject={value.subject}
+                thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                  value.cardImage
+                }`}
+                title={value.title}
+                type="Article"
+                author={value.author}
+                path={`articles/${value.id}`}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <TitleBox image="images/articles/lightgreybox.png" height="400px">
+          <div className="center">
+            <div class="lds-facebook">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </TitleBox>
+      )}
     </>
   );
 }

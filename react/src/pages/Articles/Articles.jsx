@@ -58,7 +58,12 @@ function Articles() {
               })
             ) : (
               <div className="articles-WIP-message">
-                <p className="articles-WIP-message-title">Loading...</p>
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
             )}
           </div>
