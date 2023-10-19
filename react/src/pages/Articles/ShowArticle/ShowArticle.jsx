@@ -3,16 +3,9 @@ import "./ShowArticle.css";
 import { useParams } from "react-router-dom";
 import axiosClient from "../../../utility/axios-client";
 import { TitleBox } from "../../../components/TitleBox";
-import parse from "html-react-parser";
+import parse, { attributesToProps } from "html-react-parser";
 
 function ShowArticle() {
-  function newTabLinks() {
-    const links = document.getElementsByTagName("a");
-    for (let i = 0; i < links.length; i++) {
-      links[i].target = "_blank";
-    }
-  }
-
   const { article } = useParams();
   const [selectedArticle, setSelectedArticle] = useState(null);
   useEffect(() => {
@@ -40,10 +33,23 @@ function ShowArticle() {
           <div className="selected-article-wrapper">
             <p className="selected-article-author">{selectedArticle.author}</p>
             <div className="selected-article-content">
-              {selectedArticle && parse(selectedArticle.content)}
+              {selectedArticle &&
+                parse(selectedArticle.content, {
+                  transform: (element, DOM, index) => {
+                    if (DOM.attribs && DOM.attribs.href) {
+                      DOM.attribs.target = "_blank";
+                      const props = attributesToProps(DOM.attribs);
+                      return (
+                        <a {...props}>
+                          {element.props.children.props.children}
+                        </a> //what the fuck is this syntax man
+                      );
+                    }
+                    return <>{element}</>;
+                  },
+                })}
             </div>
           </div>
-          {selectedArticle.content && newTabLinks()}
         </>
       ) : (
         <p className="loading">Loading...</p>
