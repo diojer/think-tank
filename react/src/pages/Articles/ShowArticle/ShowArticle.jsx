@@ -65,7 +65,7 @@ function ShowArticle() {
           </TitleBox>
           <div className="selected-article-wrapper">
             <p className="selected-article-author">
-              Published by {selectedArticle.author} {time}
+              Published by <a>{selectedArticle.author}</a> {time}
             </p>
             <div className="selected-article-content">
               {selectedArticle &&
