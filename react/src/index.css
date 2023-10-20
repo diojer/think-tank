@@ -69,6 +69,10 @@ code {
     monospace;
 }
 
+.splide__spinner {
+  display: none !important;
+}
+
 /*Loader 1*/
 .loader1 {
   width: 48px;

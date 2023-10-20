@@ -9,6 +9,7 @@ import axiosClient from "../../utility/axios-client";
 import { EmailForm } from "./components/EmailForm";
 import { Helmet } from "react-helmet";
 import { TitleBox } from "../../components/TitleBox";
+import LazyBackgroundImage from "../../utility/LazyBackgroundImage";
 
 function HomeSection() {
   const [articles, setArticles] = useState([]);
@@ -33,15 +34,19 @@ function HomeSection() {
     //Options, for more information see https://splidejs.com/guides/options/
     speed: 1750,
     autoplay: true,
+    rewind: true,
     pause: false,
     interval: 4000,
-    rewind: true,
+    type: "fade",
     pauseOnHover: false,
-    pauseOnFocus: false,
+    pauseOnFocus: true,
+    slideFocus: true,
     rewindByDrag: true,
-    cover: true,
+    // cover: true,
     height: "450px",
     resetProgress: true,
+    dragMinThreshold: 10,
+    lazyLoad: "nearby",
   };
   return (
     <>
@@ -54,7 +59,7 @@ function HomeSection() {
           options={carouselOptions}
         />
       ) : (
-        <TitleBox image="images/articles/lightgreybox.png" height="400px">
+        <TitleBox image="images/articles/greenbox.png" height="425px">
           <div className="center">
             <div class="lds-facebook">
               <div></div>
@@ -76,10 +81,7 @@ function HomeSection() {
       <div className="image-buttons-first-row">
         <ImageButtons
           text={["Reports", "Articles"]}
-          images={[
-            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-6.jpg`,
-            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-22.jpeg`,
-          ]}
+          images={[`/images/img-6.jpg`, `/images/img-22.jpeg`]}
           shape="imgb--rect"
           color="#4d5c4e"
           paths={["/reports", "/articles"]}
@@ -90,9 +92,9 @@ function HomeSection() {
         <ImageButtons
           text={["Latest Events", "Join Us", "Contact Us"]}
           images={[
-            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-6.jpg`,
-            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-21.jpeg`,
-            `${import.meta.env.VITE_API_PUBLIC_URL}/images/img-5.jpg`,
+            `/images/img-6.jpg`,
+            `/images/img-21.jpeg`,
+            `/images/img-5.jpg`,
           ]}
           shape="imgb--thin"
           color="#706731"
@@ -104,21 +106,16 @@ function HomeSection() {
           newTabs={[true, true, false]}
         />
       </div>
-      <div
+      <LazyBackgroundImage
+        img="/images/mailbox-field.jpg"
         className="fixed-scroll-image"
-        style={{
-          backgroundImage: `url(${
-            import.meta.env.VITE_API_PUBLIC_URL
-          }/images/mailbox-field.jpg)`,
-          backgroundColor: `rgb(121, 103, 52)`,
-        }}
       >
         <div className="email-signup">
           <p className="email-input-label">Join our mailing list:</p>
           <EmailForm />
         </div>
-      </div>
-      {articles[1] ? (
+      </LazyBackgroundImage>
+      {articles[1] && (
         <div className="article-cards-wrapper">
           {articles.slice(0, numOfArticles).map((value, key) => {
             return (
@@ -136,16 +133,6 @@ function HomeSection() {
             );
           })}
         </div>
-      ) : (
-        <TitleBox image="images/articles/lightgreybox.png" height="400px">
-          <div className="center">
-            <div class="lds-facebook">
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-        </TitleBox>
       )}
     </>
   );

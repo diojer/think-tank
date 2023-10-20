@@ -96,7 +96,7 @@ function Footer() {
             <NewTabLink link="https://drive.google.com/drive/folders/13lCtwAZpgExnrKjCQ3cud9sFVPsQeKf_">
               Member Resources
             </NewTabLink>
-            <NewTabLink link="https://drive.google.com/file/d/1XJ42i5hBaUFUNo7_X7OEeAbTgqOtD457/view?usp=sharing">
+            <NewTabLink link="https://drive.google.com/file/d/1-M4MmTL7Zr0DKsgteukhD6k6zH5chhlO/view?usp=share_link">
               Style Guide
             </NewTabLink>
             <Link to="/">Meetings</Link>
