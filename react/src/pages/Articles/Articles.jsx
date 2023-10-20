@@ -37,7 +37,7 @@ function Articles() {
       ) : (
         <>
           <TitleBox image="/images/img-28.jpg" color="#2e2d2b" font="white">
-            Articles<span className="orange">.</span>
+            Articles<span className="hilite">.</span>
           </TitleBox>
           <div className="articles-wrapper">
             {articles[0] ? ( //starts rendering articles when the API responds

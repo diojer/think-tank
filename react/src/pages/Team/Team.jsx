@@ -22,12 +22,12 @@ function Team() {
   return (
     <>
       <TitleBox
-        image="/images/img-4.jpg"
+        image="/images/teambanner.jpg"
         color="#2e2d2b"
         font="white"
         type="center"
       >
-        LTT Committee 2023/24<span className="orange">:</span>
+        LTT Committee 2023/24<span className="hilite">:</span>
       </TitleBox>
       <div className="profiles-wrapper">
         <div className="profiles-row profiles-row-1">

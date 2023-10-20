@@ -33,6 +33,10 @@ span.red {
   color: red;
 }
 
+span.hilite {
+  color: #84ba4f;
+}
+
 span.primary {
   color: var(--primary);
 }

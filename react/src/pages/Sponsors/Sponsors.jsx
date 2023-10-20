@@ -11,7 +11,7 @@ function Sponsors() {
         font="white"
         type="bottom"
       >
-        Sponsors<span className="orange">.</span>
+        Sponsors<span className="hilite">.</span>
       </TitleBox>
       <div className="sponsors-wrapper">
         <div className="sponsors-WIP-message">

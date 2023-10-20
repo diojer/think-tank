@@ -60,6 +60,7 @@ function ShowArticle() {
             font="white"
             type="center"
             textType="center"
+            height="300px"
           />
           <div className="selected-article-wrapper">
             <p className="selected-article-title">{selectedArticle.title}</p>
@@ -96,7 +97,11 @@ function ShowArticle() {
         </>
       ) : (
         <>
-          <TitleBox image="/images/articles/greybox.png" textType="center">
+          <TitleBox
+            image="/images/articles/greybox.png"
+            textType="center"
+            height="300px"
+          >
             <div class="lds-facebook">
               <div></div>
               <div></div>
