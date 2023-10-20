@@ -35,15 +35,15 @@ export const ImageButton = ({
       ) : (
         //If it's not opening a new page, I use <Link>.
         <Link to={path} className={`image-button-link ${checkShape}`}>
-          <div
+          <LazyBackgroundImage
             className={`image-button ${checkShape}`}
+            img={image}
             style={{
-              backgroundImage: `url(${image})`,
               backgroundColor: `${color}`,
             }}
           >
             <p className="image-button-text">{children}</p>
-          </div>
+          </LazyBackgroundImage>
         </Link>
       )}
     </>
