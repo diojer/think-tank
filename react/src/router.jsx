@@ -15,6 +15,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Sponsors from "./pages/Sponsors/Sponsors";
 import PageNotFound from "./pages/Errors/404/PageNotFound";
+import ShowProfile from "./pages/Profile/ShowProfile";
 
 //Uploads
 import Upload from "./pages/Upload/Upload";
@@ -65,6 +66,10 @@ const router = createHashRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/profile",
+        element: <ShowProfile />,
       },
     ],
   },
