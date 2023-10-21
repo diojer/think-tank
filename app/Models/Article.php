@@ -26,6 +26,7 @@ class Article extends Model
         'author',
         'subject',
         'tags',
+        'byline',
         'content',
         'cardImage',
         'bannerImage',

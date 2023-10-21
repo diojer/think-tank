@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axiosClient from "../../../utility/axios-client";
 import { Button } from "../../../components/Button";
 import "./ViewArticles.css";
+import "../View.css";
 import { Link } from "react-router-dom";
 
 function ViewArticles() {
@@ -37,47 +38,67 @@ function ViewArticles() {
     });
   }
 
+  function articleDelete(article) {
+    if (!window.confirm("Are you sure you want to delete this article?")) {
+      return;
+    } else {
+      axiosClient.delete(`/articles/${article.id}`).then((response) => {
+        alert("Article Deleted!");
+        getArticles();
+      });
+    }
+  }
+
   return (
     <>
       <div className="article-view-wrapper upload-subwrapper">
         <p className="article-view-heading upload-subheader">
           View/Edit Articles
         </p>
-        <table className="article-table">
-          <tr className="article-table-headings">
+        <table className="default-table">
+          <tr className="default-table-headings">
             <th>ID</th>
             <th>Title</th>
             <th>Author</th>
             <th>Subject</th>
             <th>Created on</th>
-            <th>Actions</th>
+            <th
+              onClick={(e) => {
+                alert("Editing functionality coming soon!");
+              }}
+            >
+              <a className="tooltip">Actions</a>
+            </th>
           </tr>
           {loading && (
-            <tr className="article-row-loading">
+            <tr className="default-row-loading">
               <p>Loading...</p>
             </tr>
           )}
           {articles.map((a, key) => {
             return (
               <>
-                <tr className={`article-table-rows ${a.id}`}>
-                  <td className="article-row-id">{a.id}</td>
-                  <td className="article-row-title">
+                <tr className={`default-table-rows ${a.id}`} key={key}>
+                  <td className="default-row-id">{a.id}</td>
+                  <td className="default-row-title">
                     <Link to={`/articles/${a.id}`}>{a.title}</Link>
                   </td>
-                  <td className="article-row-author">{a.author}</td>
-                  <td className="article-row-subject">{a.subject}</td>
-                  <td className="article-row-date">{a.created_at}</td>
+                  <td className="default-row-author">{a.author}</td>
+                  <td className="default-row-subject">{a.subject}</td>
+                  <td className="default-row-date">{a.created_at}</td>
                   <td>
-                    <div className="article-row-buttons">
+                    <div className="default-row-buttons">
+                      {/* <Button path={`/portal/edit/article/${a.id}`}>
+                        Edit
+                      </Button> */}
                       <Button
-                        onClick={() => {
-                          alert("hi");
+                        buttonStyle="btn--red"
+                        onClick={(e) => {
+                          articleDelete(a);
                         }}
                       >
-                        Edit
+                        Delete
                       </Button>
-                      <Button buttonStyle="btn--red">Delete</Button>
                     </div>
                   </td>
                 </tr>

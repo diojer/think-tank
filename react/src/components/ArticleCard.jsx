@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ArticleCard.css";
+import LazyBackgroundImage from "../utility/LazyBackgroundImage";
 
 export const ArticleCard = ({
   subject,
@@ -15,12 +16,10 @@ export const ArticleCard = ({
     <div className="article-card-whole">
       <div className="article-card">
         <p className="article-subject">{subject}</p>
-        <div
+        <LazyBackgroundImage
           className="article-thumbnail"
-          style={{
-            backgroundImage: `url(${thumbnail})`,
-          }}
-        ></div>
+          img={`${thumbnail}`}
+        ></LazyBackgroundImage>
         {path ? (
           <Link to={path} className="article-card-title">
             <p className="article-card-headlines">{title}</p>
@@ -29,11 +28,11 @@ export const ArticleCard = ({
           <p className="article-card-title">{title}</p>
         )}
         <p className="article-author">{author}</p>
-        <p className="article-type">{type}</p>
+        {/* <p className="article-type">{type}</p> */}
       </div>
       <div className="suggested">
         {/* <p className="suggested-subject">More on {subject}...</p> */}
-        <hr />
+        {/* <hr /> */}
         {/* <div className="suggested-list">{suggestList}</div> */}
       </div>
     </div>

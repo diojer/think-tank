@@ -57,7 +57,14 @@ function Register() {
   }
 
   return (
-    <div className="background-image">
+    <div
+      className="background-image"
+      style={{
+        backgroundImage: `url(${
+          import.meta.env.VITE_API_PUBLIC_URL
+        }/images/leeds-clocktower.jpg)`,
+      }}
+    >
       <div className="register-form-box">
         <p className="register-title">Register a new Account</p>
         <div className="register-form-wrapper">

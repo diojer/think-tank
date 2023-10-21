@@ -7,11 +7,14 @@ import { ArticleCard } from "../../components/ArticleCard";
 import { useEffect, useState } from "react";
 import axiosClient from "../../utility/axios-client";
 import { EmailForm } from "./components/EmailForm";
+import { Helmet } from "react-helmet";
+import { TitleBox } from "../../components/TitleBox";
+import LazyBackgroundImage from "../../utility/LazyBackgroundImage";
 
 function HomeSection() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const numOfArticles = 3;
+  const numOfArticles = 4;
   useEffect(() => {
     getArticles();
   }, []);
@@ -31,23 +34,40 @@ function HomeSection() {
     //Options, for more information see https://splidejs.com/guides/options/
     speed: 1750,
     autoplay: true,
+    rewind: true,
     pause: false,
     interval: 4000,
-    rewind: true,
+    type: "fade",
     pauseOnHover: false,
-    pauseOnFocus: false,
+    pauseOnFocus: true,
+    slideFocus: true,
     rewindByDrag: true,
-    cover: true,
+    // cover: true,
     height: "450px",
     resetProgress: true,
+    dragMinThreshold: 10,
+    lazyLoad: "nearby",
   };
   return (
     <>
-      {articles[1] && ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
+      <Helmet>
+        <title>Leeds Think Tank</title>
+      </Helmet>
+      {articles[1] ? ( //If the Splide carousel renders before the API has responded, autoplay doesn't work
         <ImageCarousel
           articles={articles.slice(0, numOfArticles)}
           options={carouselOptions}
         />
+      ) : (
+        <TitleBox image="images/articles/greenbox.png" height="425px">
+          <div className="center">
+            <div class="lds-facebook">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </TitleBox>
       )}
 
       <div className="tagline-wrapper">
@@ -61,7 +81,7 @@ function HomeSection() {
       <div className="image-buttons-first-row">
         <ImageButtons
           text={["Reports", "Articles"]}
-          images={["/images/img-6.jpg", "/images/img-22.jpeg"]}
+          images={[`/images/img-6.jpg`, `/images/img-22.jpeg`]}
           shape="imgb--rect"
           color="#4d5c4e"
           paths={["/reports", "/articles"]}
@@ -72,9 +92,9 @@ function HomeSection() {
         <ImageButtons
           text={["Latest Events", "Join Us", "Contact Us"]}
           images={[
-            "/images/img-6.jpg",
-            "/images/img-21.jpeg",
-            "/images/img-5.jpg",
+            `/images/img-6.jpg`,
+            `/images/img-21.jpeg`,
+            `/images/img-5.jpg`,
           ]}
           shape="imgb--thin"
           color="#706731"
@@ -86,33 +106,34 @@ function HomeSection() {
           newTabs={[true, true, false]}
         />
       </div>
-      <div
+      <LazyBackgroundImage
+        img="/images/mailbox-field.jpg"
         className="fixed-scroll-image"
-        style={{
-          backgroundImage: "url(/images/mailbox-field.jpg)",
-          backgroundColor: `rgb(121, 103, 52)`,
-        }}
       >
         <div className="email-signup">
           <p className="email-input-label">Join our mailing list:</p>
           <EmailForm />
         </div>
-      </div>
-      <div className="article-cards-wrapper">
-        {articles.slice(0, numOfArticles).map((value, key) => {
-          return (
-            <ArticleCard
-              key={key}
-              subject={value.subject}
-              thumbnail={value.cardImage}
-              title={value.title}
-              type="Article"
-              author={value.author}
-              path={`articles/${value.id}`}
-            />
-          );
-        })}
-      </div>
+      </LazyBackgroundImage>
+      {articles[1] && (
+        <div className="article-cards-wrapper">
+          {articles.slice(0, numOfArticles).map((value, key) => {
+            return (
+              <ArticleCard
+                key={key}
+                subject={value.subject}
+                thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                  value.cardImage
+                }`}
+                title={value.title}
+                type="Article"
+                author={value.author}
+                path={`articles/${value.id}`}
+              />
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }

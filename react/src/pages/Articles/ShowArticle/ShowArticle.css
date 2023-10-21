@@ -1,0 +1,58 @@
+.selected-article-wrapper {
+  padding: 0 20% 0 20%;
+  line-height: 230%;
+}
+
+.selected-article-title {
+  font-size: 3em;
+  margin-bottom: 0;
+  line-height: 110%;
+}
+
+.selected-article-byline {
+  font-size: 1.3em;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.selected-article-content p,
+.selected-article-content,
+.selected-article-author,
+.selected-article-title {
+  font-family: Century;
+}
+
+.selected-article-content p,
+.selected-article-content h4 {
+  font-size: 1.4em;
+}
+
+.selected-article-author {
+  font-weight: 600;
+  font-size: 1em;
+  font-family: Poppins;
+}
+
+.article-disclosure {
+  margin: 0 10% 0 10%;
+}
+
+.article-disclosure-text {
+  font-style: italic;
+}
+
+@media screen and (max-width: 800px) {
+  .selected-article-wrapper {
+    padding: 0 10% 0 10%;
+    line-height: 230%;
+  }
+  .selected-article-content p,
+  .selected-article-content h4 {
+    font-size: 1.1em;
+  }
+
+  .selected-article-author {
+    font-weight: 600;
+    font-size: 1em;
+  }
+}

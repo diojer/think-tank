@@ -54,12 +54,42 @@ function Login() {
         }
       });
   };
+
+  const logout = () => {
+    axiosClient
+      .post("/logout")
+      .then(({ data }) => {
+        setToken();
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div className="background-image">
+    <div
+      className="background-image"
+      style={{
+        backgroundImage: `url(${
+          import.meta.env.VITE_API_PUBLIC_URL
+        }/images/leeds-clocktower.jpg)`,
+      }}
+    >
       <div className="login-form-box">
         {token ? (
           <>
             <p className="login-title">You are logged in!</p>
+            <div className="logout-wrapper">
+              <Button
+                onClick={(e) => {
+                  logout();
+                }}
+                buttonStyle="btn--fourth"
+              >
+                Logout
+              </Button>
+            </div>
           </>
         ) : (
           <>

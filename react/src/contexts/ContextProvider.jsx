@@ -27,8 +27,8 @@ export const ContextProvider = ({ children }) => {
   const [token, _setToken] = useState(sessionStorage.getItem("ACCESS_TOKEN"));
   const [admin, _setAdmin] = useState(false);
   const setToken = (token, rememberMe) => {
-    _setToken(token);
     if (token) {
+      _setToken(token);
       if (rememberMe) {
         localStorage.setItem("ACCESS_TOKEN", token);
       }

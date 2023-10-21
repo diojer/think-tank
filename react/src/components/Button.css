@@ -61,3 +61,16 @@
 .btn--third:hover {
   border: 3px solid rgb(160, 160, 160);
 }
+
+.btn--fourth {
+  background: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px;
+}
+
+.btn--fourth:hover {
+  background-color: var(--secondary);
+  color: white;
+}

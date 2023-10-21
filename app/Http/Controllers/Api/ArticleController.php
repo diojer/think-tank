@@ -39,16 +39,16 @@ class ArticleController extends Controller
         $bannerImage = $request->file("bannerImage");
 
         $cardFilename = time()."_".$cardImage->getClientOriginalName();
-        Storage::disk("local")->put("/cardimages/{$cardFilename}", file_get_contents($data["cardImage"]));
+        Storage::disk("public")->put("/images/articles/{$cardFilename}", file_get_contents($data["cardImage"]));
 
         $bannerFilename = time()."_".$bannerImage->getClientOriginalName();
-        Storage::disk("local")->put("/cardimages/{$bannerFilename}", file_get_contents($data["bannerImage"]));
-
+        Storage::disk("public")->put("/images/articles/{$bannerFilename}", file_get_contents($data["bannerImage"]));
         $user = Article::create([
             "title"=>$data["title"],
             "author"=>$data["author"],
             "subject"=>$data["subject"],
             "tags"=>$data["tags"],
+            "byline"=>$data["byline"],
             "content"=>$data["content"],
             "cardImage"=>"/images/articles/{$cardFilename}",
             "bannerImage"=>"/images/articles/{$bannerFilename}",
@@ -81,9 +81,9 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        $data = $request.validated();
+        $data = $request->validated();
         $article->update($data);
-        return response([new ArticleResource($article), 201]);
+        return response(["", 201]);
     }
 
     /**
@@ -92,6 +92,6 @@ class ArticleController extends Controller
     public function destroy(DeleteArticleRequest $request, Article $article)
     {
         $article->delete();
-        return respond("", 201);
+        return response("", 201);
     }
 }

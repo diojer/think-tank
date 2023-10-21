@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button } from "../../../components/Button";
 import { Editor } from "@tinymce/tinymce-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axiosClient from "../../../utility/axios-client";
 
 const validationSchema = Yup.object().shape({
@@ -12,6 +12,7 @@ const validationSchema = Yup.object().shape({
   author: Yup.string().required(),
   subject: Yup.string().required(),
   tags: Yup.string(),
+  byline: Yup.string(),
   content: Yup.string().required(),
   cardImage: Yup.mixed().required(),
   bannerImage: Yup.mixed().required(),
@@ -22,6 +23,7 @@ const initialValues = {
   author: "",
   subject: "",
   tags: "",
+  byline: "",
   content: "",
 };
 
@@ -36,6 +38,7 @@ const onUpload = (data) => {
     author: data.author,
     subject: data.subject,
     tags: data.tags,
+    byline: data.byline,
     content: data.content,
   });
 
@@ -45,13 +48,16 @@ const onUpload = (data) => {
     .post("/article", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
-    .then()
+    .then(({ data }) => {
+      alert("File uploaded successfully!");
+    })
     .catch((err) => {
-      const response = err.response;
-      //response.status===422 //422 is a validation error
-      if (response && response.status === 422) {
-        console.log(response.data.errors);
-      }
+      console.log(err);
+      //   const response = err.response;
+      //   response.status===422 //422 is a validation error
+      //   if (response && response.status === 422) {
+      //     alert(response.data.errors);
+      //   }
     });
 };
 
@@ -77,7 +83,19 @@ function UploadArticle() {
             Tags (seperated by comma) <span className="red">(Optional)</span>:
           </label>
           <Field name="tags" />
-          <label>Banner Image (landscape images are best suited)</label>
+          <label>
+            Banner Image
+            <a
+              onClick={(e) => {
+                alert(
+                  "Landscape images are best suited for this. This will be displayed when your article is at the top of the homescreen."
+                );
+              }}
+              className="tooltip"
+            >
+              (?)
+            </a>
+          </label>
           <Field name="bannerImage">
             {({ form }) => {
               const { setFieldValue } = form;
@@ -91,7 +109,19 @@ function UploadArticle() {
               );
             }}
           </Field>
-          <label>Card Image (square images are best suited)</label>
+          <label>
+            Card Image
+            <a
+              onClick={(e) => {
+                alert(
+                  "Square images are best suited for this. This will be displayed on the article page and at the bottom of the homescreen."
+                );
+              }}
+              className="tooltip"
+            >
+              (?)
+            </a>
+          </label>
           <Field name="cardImage">
             {({ form }) => {
               const { setFieldValue } = form;
@@ -106,8 +136,22 @@ function UploadArticle() {
             }}
           </Field>
           <label>
-            Article Content (If you can't see the rich-text editor you should
-            disable extensions/adblocker):
+            Byline/Subheading <span className="red">(Optional)</span>:
+          </label>
+          <Field name="byline" />
+          <label>
+            Article Content
+            <a
+              className="tooltip"
+              onClick={(e) => {
+                alert(
+                  "If you see a normal input field, turn off your adblock."
+                );
+              }}
+            >
+              (?)
+            </a>
+            :
           </label>
           <Field name="content">
             {({ form }) => {

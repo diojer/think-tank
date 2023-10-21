@@ -5,14 +5,20 @@ import { Link } from "react-router-dom";
 import { NewTabLink } from "./NewTabLink";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import axiosClient from "../utility/axios-client";
 
 //FA Imports
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const addToMailingList = (data, helpers) => {
-  helpers.resetForm(initialValues);
-  axios.post("https://leeds-think-tank-server.onrender.com/mailinglist", data);
+  axiosClient
+    .post("/mailinglist", data)
+    .then(({ data }) => {
+      helpers.resetForm(initialValues);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const initialValues = {
@@ -90,7 +96,7 @@ function Footer() {
             <NewTabLink link="https://drive.google.com/drive/folders/13lCtwAZpgExnrKjCQ3cud9sFVPsQeKf_">
               Member Resources
             </NewTabLink>
-            <NewTabLink link="https://docs.google.com/document/d/152Wy2iNyi6iMN4u5y8YTXbLMBgBL5WvsyxGbgSKiV-4/edit?usp=sharing">
+            <NewTabLink link="https://drive.google.com/file/d/1-M4MmTL7Zr0DKsgteukhD6k6zH5chhlO/view?usp=share_link">
               Style Guide
             </NewTabLink>
             <Link to="/">Meetings</Link>
@@ -119,11 +125,11 @@ function Footer() {
         <div className="social-media-wrap">
           {/* <div className="footer-logo">
             <Link to="/" className="social-logo">
-              TRVL
+              LTT
               <i className="fab fa-typo3" />
             </Link>
           </div>
-          <small className="website-rights">TRVL © 2020</small> */}
+          <small className="website-rights">LTT © 2020</small> */}
           <div className="social-icons">
             <NewTabLink
               className="social-icon-link instagram"
