@@ -1,6 +1,7 @@
 import React from "react";
 import "./ImageButton.css";
 import { Link } from "react-router-dom";
+import LazyBackgroundImage from "../utility/LazyBackgroundImage";
 
 const SHAPES = ["imgb--rect", "imgb--square", "imgb--thin"]; //Array of possible shapes
 
@@ -21,27 +22,28 @@ export const ImageButton = ({
           target="_blank"
           className={`image-button-link ${checkShape}`}
         >
-          <div
+          <LazyBackgroundImage
+            img={`${image}`}
             className={`image-button ${checkShape}`}
             style={{
-              backgroundImage: `url(${image})`, //Styling is done in JSX form rather than CSS inline styling because the latter can fuck up sometimes (according to Stack Overflow)
               backgroundColor: `${color}`,
             }}
           >
             <p className="image-button-text">{children}</p>
-          </div>
+          </LazyBackgroundImage>
         </a>
-      ) : ( //If it's not opening a new page, I use <Link>.
+      ) : (
+        //If it's not opening a new page, I use <Link>.
         <Link to={path} className={`image-button-link ${checkShape}`}>
-          <div
+          <LazyBackgroundImage
             className={`image-button ${checkShape}`}
+            img={image}
             style={{
-              backgroundImage: `url(${image})`,
               backgroundColor: `${color}`,
             }}
           >
             <p className="image-button-text">{children}</p>
-          </div>
+          </LazyBackgroundImage>
         </Link>
       )}
     </>

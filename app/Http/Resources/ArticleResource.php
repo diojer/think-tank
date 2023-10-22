@@ -21,6 +21,7 @@ class ArticleResource extends JsonResource
             "author"=>$this->author,
             "content"=>$this->content,
             "tags"=>$this->tags,
+            "byline"=>$this->byline,
             "cardImage"=>$this->cardImage,
             "bannerImage"=>$this->bannerImage,
             "created_at"=>$this->created_at->format("Y-m-d H:i:s"),

@@ -76,9 +76,6 @@ function Footer() {
             <NewTabLink link="https://www.luu.org.uk/">
               Leeds University Union
             </NewTabLink>
-            <NewTabLink link="https://www.leeds.gov.uk/">
-              Leeds City Council
-            </NewTabLink>
           </div>
           <div className="footer-link-items">
             <h2>Contact Us</h2>
@@ -96,7 +93,7 @@ function Footer() {
             <NewTabLink link="https://drive.google.com/drive/folders/13lCtwAZpgExnrKjCQ3cud9sFVPsQeKf_">
               Member Resources
             </NewTabLink>
-            <NewTabLink link="https://docs.google.com/document/d/152Wy2iNyi6iMN4u5y8YTXbLMBgBL5WvsyxGbgSKiV-4/edit?usp=sharing">
+            <NewTabLink link="https://drive.google.com/file/d/1-M4MmTL7Zr0DKsgteukhD6k6zH5chhlO/view?usp=share_link">
               Style Guide
             </NewTabLink>
             <Link to="/">Meetings</Link>
@@ -125,11 +122,11 @@ function Footer() {
         <div className="social-media-wrap">
           {/* <div className="footer-logo">
             <Link to="/" className="social-logo">
-              TRVL
+              LTT
               <i className="fab fa-typo3" />
             </Link>
           </div>
-          <small className="website-rights">TRVL © 2020</small> */}
+          <small className="website-rights">LTT © 2020</small> */}
           <div className="social-icons">
             <NewTabLink
               className="social-icon-link instagram"

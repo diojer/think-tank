@@ -6,7 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
+
 use App\Http\Controllers\Api\ProfileController;
+
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\MailinglistController;
+
 use App\Models\MailingList;
 use App\Http\Requests\StoreEmailRequest;
 
@@ -27,12 +32,13 @@ use Spatie\Permission\Models\Role;
 
 //For logged in users - concerning user requests
 Route::middleware("auth:sanctum")->group(function(){
-    Route::get("user", function(Request $request) {
+    Route::get("/me", function(Request $request) {
         $user = $request->user();
         $admin = $user->hasRole("admin");
         return response(["user"=>$user, "admin"=>$admin]);
     });
     Route::post("/logout", [AuthController::class, "logout"]);
+    Route::apiResource("/users", UserController::class);
 });
 
 //User routes
@@ -65,4 +71,9 @@ Route::post("mailinglist", function(StoreEmailRequest $request){
         "email"=>$data["email"],
     ]);
     return response(["", 201]);
+});
+
+//For logged in users - concerning mailing list requests
+Route::middleware("auth:sanctum")->group(function(){
+    Route::apiResource("/mailinglist", MailinglistController::class);
 });

@@ -7,9 +7,8 @@
   background-attachment: fixed;
   background-size: cover;
   background-blend-mode: overlay;
-  height: 220px;
   margin: 0;
-  padding: 25px 0 0 40px;
+  padding: 12.5px 40px 12.5px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,8 +16,8 @@
 
 .title-box-title {
   color: attr(font);
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
   font-family: Inter, sans-serif;
-  margin: 0;
+  margin: 2px;
 }
