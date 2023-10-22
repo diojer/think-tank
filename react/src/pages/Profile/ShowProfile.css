@@ -22,15 +22,14 @@
     font-size: 1.3em;
 }
 
-.show-profile-position {
-margin-top: 0;
-font-weight: bold;
+.show-profile-role {
+    margin-top: 0;
+    font-weight: bold;
 }
 
 .show-profile-aboutme {
 margin: 0;
 line-height: 1.5;
-font-weight: bold;
 }
 
 .show-profile-text {
@@ -47,10 +46,17 @@ font-weight: bold;
 .show-profile-text-break {
     margin-right: 16px;
     border: 5px solid var(--primary);
-  }
+}
 .show-profile-wrapper p {
     font-family: Inter, sans-serif;
-  }
+}
+
+.articles-wrapper {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .show-profile-linkedin-logo {
     font-size: 1.8em;

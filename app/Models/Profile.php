@@ -17,12 +17,14 @@ class Profile extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'userId',
+        'profileId',
         'name',
         'year',
         'course',
         'role',
         'bio',
         'profileImage',
+        'linkedIn',
+        'policyArea',
     ];
 }

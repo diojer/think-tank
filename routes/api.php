@@ -40,7 +40,7 @@ Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 //Author routes
-Route::apiResource("/profile", [ProfileController::class])->only(["show"]);
+Route::apiResource("/profile", ProfileController::class)->only(["show"]);
 
 // For logged in users - concerning profile requests
 Route::middleware("auth:sanctum")->group(function(){
@@ -51,6 +51,7 @@ Route::middleware("auth:sanctum")->group(function(){
 Route::get("/articles", [ArticleController::class, "index"]);
 Route::get("/article", [ArticleController::class, "show"]);
 Route::apiResource("/articles", ArticleController::class)->only(["index", "show"]);
+Route::apiResource("/articles/author", ArticleController::class)->only(["indexAuthor"]);
 
 //For logged in users - concerning article requests
 Route::middleware("auth:sanctum")->group(function(){
