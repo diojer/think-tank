@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->integer("userId");
+            $table->integer("profileId");
             $table->string("name");
-            $table->integer("year");
+            $table->string("year");
             $table->string("course");
             $table->string("role");
             $table->mediumText("bio");
             $table->string("profileImage")->nullable();
+            $table->string("linkedIn");
+            $table->string("policyArea");
         });
     }
 

@@ -8,6 +8,8 @@ use App\Http\Requests\StoreProfileRequest;
 use App\Http\Resources\ProfileResource;
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Log;
+
 class ProfileController extends Controller
 {
 
@@ -23,13 +25,15 @@ class ProfileController extends Controller
         $profileFilename = time()."_".$profileImage->getClientOriginalName();
         Storage::disk("public")->put("/images/profiles/{$profileFilename}", file_get_contents($data["profileImage"]));
         $user = Profile::create([
-            "userId"=>$data["userId"],
+            "profileId"=>$data["profileId"],
             "name"=>$data["name"],
             "year"=>$data["year"],
             "course"=>$data["course"],
             "role"=>$data["role"],
             "bio"=>$data["bio"],
             "profileImage"=>$data["profileImage"],
+            "linkedIn"=>$data["linkedIn"],
+            "policyArea"=>$data["policyArea"]
         ]);
 
         return response([
@@ -43,6 +47,7 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
+        Log::info($profile);
         return new ProfileResource($profile);
     }
 }
