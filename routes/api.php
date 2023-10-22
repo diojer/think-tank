@@ -6,8 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
+
+use App\Http\Controllers\Api\ProfileController;
+
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MailinglistController;
+
 use App\Models\MailingList;
 use App\Http\Requests\StoreEmailRequest;
 
@@ -41,6 +45,13 @@ Route::middleware("auth:sanctum")->group(function(){
 Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
 
+//Author routes
+Route::apiResource("/profile", [ProfileController::class])->only(["show"]);
+
+// For logged in users - concerning profile requests
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/profile", [ProfileController::class, "store"]);
+});
 
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
