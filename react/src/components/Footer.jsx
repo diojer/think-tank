@@ -76,6 +76,9 @@ function Footer() {
             <NewTabLink link="https://www.luu.org.uk/">
               Leeds University Union
             </NewTabLink>
+            <NewTabLink link="https://www.leeds.gov.uk/">
+              Leeds City Council
+            </NewTabLink>
           </div>
           <div className="footer-link-items">
             <h2>Contact Us</h2>
