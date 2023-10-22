@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Http\Requests\ShowAllUsersRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\DeleteUserRequest;
 use App\Http\Resources\UserResource;
@@ -15,9 +16,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return UserResource::collection(User::query()->orderBy("id", "desc")->get());
+        if ($request->user()->hasRole("admin")) {
+            return UserResource::collection(User::query()->orderBy("id", "desc")->get());
+        } else {
+            return response("", 403);
+        }
+
     }
 
     /**
@@ -43,9 +49,15 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         //For making users admins
-        $data = $request.validated();
-        $role = $data["role"];
-        $user.assignRole($role);
+        $data = $request->validated();
+        $role = $request["role"];
+        if ($user->hasRole($role)) {
+            $user->removeRole($role);
+            return response("Role removed", 202);
+        } else {
+            $user->assignRole($role);
+            return response("Role assigned", 202);
+        }
     }
 
     /**

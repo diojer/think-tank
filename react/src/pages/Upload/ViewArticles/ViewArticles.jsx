@@ -5,6 +5,7 @@ import { Button } from "../../../components/Button";
 import "./ViewArticles.css";
 import "../View.css";
 import { Link } from "react-router-dom";
+import { NewTabLink } from "../../../components/NewTabLink";
 
 function ViewArticles() {
   const [articles, setArticles] = useState([]);
@@ -61,6 +62,8 @@ function ViewArticles() {
             <th>Title</th>
             <th>Author</th>
             <th>Subject</th>
+            <th>Banner Image</th>
+            <th>Card Image</th>
             <th>Created on</th>
             <th
               onClick={(e) => {
@@ -85,9 +88,29 @@ function ViewArticles() {
                   </td>
                   <td className="default-row-author">{a.author}</td>
                   <td className="default-row-subject">{a.subject}</td>
+                  <td className="article-row-bImg">
+                    <a
+                      href={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                        a.bannerImage
+                      }`}
+                      target="_blank"
+                    >
+                      Link
+                    </a>
+                  </td>
+                  <td className="article-row-cImg">
+                    <a
+                      href={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                        a.cardImage
+                      }`}
+                      target="_blank"
+                    >
+                      Link
+                    </a>
+                  </td>
                   <td className="default-row-date">{a.created_at}</td>
                   <td>
-                    <div className="default-row-buttons">
+                    <div className="default-buttons-container">
                       {/* <Button path={`/portal/edit/article/${a.id}`}>
                         Edit
                       </Button> */}

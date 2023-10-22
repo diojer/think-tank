@@ -16,7 +16,7 @@ function Client() {
   const { token, setUser, setAdmin } = UseStateContext();
   useEffect(() => {
     if (token) {
-      axiosClient.get("/user").then(({ data }) => {
+      axiosClient.get("/me").then(({ data }) => {
         setUser(data.user);
         setAdmin(data.admin);
       });
