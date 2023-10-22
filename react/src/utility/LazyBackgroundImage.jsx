@@ -15,7 +15,13 @@ function LazyBackgroundImage({ img, children, className, style }) {
       }}
       className={className}
     >
-      <img src={img} alt="" onLoad={handleLoad} style={{ display: "none" }} />
+      <img
+        src={img}
+        alt=""
+        onLoad={handleLoad}
+        style={{ display: "none" }}
+        loading="lazy"
+      />
       {loaded && children}
     </div>
   );

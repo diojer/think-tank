@@ -5,21 +5,22 @@ import { Button } from "../../../components/Button";
 import "./ViewUser.css";
 import "../View.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function ViewUser() {
-  const [articles, setArticles] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getArticles();
+    getUsers();
   }, []);
 
-  const getArticles = () => {
+  const getUsers = () => {
     setLoading(true);
     axiosClient
-      .get("articles")
+      .get("/users")
       .then(({ data }) => {
-        setArticles(data.data);
+        setUsers(data.data);
         setLoading(false);
       })
       .catch(() => {
@@ -38,63 +39,92 @@ function ViewUser() {
     });
   }
 
-  function articleDelete(article) {
-    if (!window.confirm("Are you sure you want to delete this article?")) {
+  function userDelete(user) {
+    if (!window.confirm("Are you sure you want to delete this user?")) {
       return;
     } else {
-      axiosClient.delete(`/articles/${article.id}`).then((response) => {
-        alert("Article Deleted!");
-        getArticles();
+      axiosClient.delete(`/users/${user.id}`).then((response) => {
+        alert("User Deleted!");
+        getUsers();
       });
+    }
+  }
+
+  function userAdmin(user, admin) {
+    if (
+      admin
+        ? !window.confirm(`Are you sure you want to make this user an admin?`)
+        : !window.confirm(
+            `Are you sure you want to revoke this user's admin privileges?`
+          )
+    ) {
+      return;
+    } else {
+      axiosClient
+        .put(`/users/${user.id}`, { role: "admin" })
+        .then((response) => {
+          alert(`Privileges ${admin ? `granted` : `revoked`}!`);
+          getUsers();
+        });
     }
   }
 
   return (
     <>
-      <div className="article-view-wrapper upload-subwrapper">
-        <p className="article-view-heading upload-subheader">
-          View/Edit Articles
-        </p>
+      <div className="user-view-wrapper upload-subwrapper">
+        <p className="user-view-heading upload-subheader">View/Edit Users</p>
         <table className="default-table">
           <tr className="default-table-headings">
             <th>ID</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Subject</th>
+            <th>Name</th>
+            <th>Email</th>
             <th>Created on</th>
-            <th
-              onClick={(e) => {
-                alert("Editing functionality coming soon!");
-              }}
-            >
-              <a className="tooltip">Actions</a>
-            </th>
+            <th>Admin</th>
+            <th>Actions</th>
           </tr>
           {loading && (
             <tr className="default-row-loading">
               <p>Loading...</p>
             </tr>
           )}
-          {articles.map((a, key) => {
+          {users.map((u, key) => {
             return (
               <>
-                <tr className={`default-table-rows ${a.id}`} key={key}>
-                  <td className="default-row-id">{a.id}</td>
-                  <td className="default-row-title">
-                    <Link to={`/articles/${a.id}`}>{a.title}</Link>
+                <tr className={`default-table-rows ${u.id}`} key={key}>
+                  <td className="default-row-id">{u.id}</td>
+                  <td className="default-row-name">
+                    <Link to={`/profiles/${u.id}`}>{u.name}</Link>
                   </td>
-                  <td className="default-row-author">{a.author}</td>
-                  <td className="default-row-subject">{a.subject}</td>
-                  <td className="default-row-date">{a.created_at}</td>
-                  <td>
-                    <div className="default-row-buttons">
-                      {/* <Button path={`/portal/edit/article/${a.id}`}>
-                          Edit
-                        </Button> */}
+                  <td className="default-row-email">{u.email}</td>
+                  <td className="default-row-date">{u.created_at}</td>
+                  <td className={`user-row-admin ${u.admin.toString()}`}>
+                    {u.admin.toString().toUpperCase()}
+                  </td>
+                  <td className="user-row-buttons default-row-buttons">
+                    <div className="default-buttons-container">
+                      {u.admin ? (
+                        <Button
+                          onClick={(e) => {
+                            userAdmin(u, false);
+                          }}
+                          buttonStyle="btn--red"
+                        >
+                          Revoke Admin
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={(e) => {
+                            userAdmin(u, true);
+                          }}
+                        >
+                          Make Admin
+                        </Button>
+                      )}
+
                       <Button
                         buttonStyle="btn--red"
                         onClick={(e) => {
-                          articleDelete(a);
+                          userDelete(u);
                         }}
                       >
                         Delete

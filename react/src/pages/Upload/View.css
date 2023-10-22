@@ -10,17 +10,19 @@ td.default-row-title {
   text-align: left;
 }
 
-.default-row-buttons {
+.default-buttons-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  max-width: 250px;
 }
 
 .default-table-wrapper td button {
   margin: 1px;
 }
 
-.default-row-loading {
+.user-row-buttons {
+  width: 250px;
 }
 
 td {
