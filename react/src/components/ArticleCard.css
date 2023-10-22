@@ -3,6 +3,8 @@
   width: 30%;
   display: flex;
   flex-direction: column;
+  border-bottom: solid darkgrey 1px;
+  margin: 2px 2px 2px 2px;
 }
 
 .article-subject {

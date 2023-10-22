@@ -28,6 +28,7 @@ class Article extends Model
         'authorId',
         'subject',
         'tags',
+        'byline',
         'content',
         'cardImage',
         'bannerImage',

@@ -37,10 +37,10 @@ function Articles() {
       ) : (
         <>
           <TitleBox image="/images/img-28.jpg" color="#2e2d2b" font="white">
-            Articles<span className="orange">.</span>
+            Articles<span className="hilite">.</span>
           </TitleBox>
           <div className="articles-wrapper">
-            {articles[1] ? ( //starts rendering articles when the API responds
+            {articles[0] ? ( //starts rendering articles when the API responds
               articles.map((value, key) => {
                 return (
                   <ArticleCard
@@ -58,7 +58,12 @@ function Articles() {
               })
             ) : (
               <div className="articles-WIP-message">
-                <p className="articles-WIP-message-title">Loading...</p>
+                <div class="lds-ellipsis">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
             )}
           </div>

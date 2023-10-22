@@ -1,0 +1,30 @@
+table,
+th,
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+td.default-row-title {
+  text-align: left;
+}
+
+.default-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-width: 250px;
+}
+
+.default-table-wrapper td button {
+  margin: 1px;
+}
+
+.user-row-buttons {
+  width: 250px;
+}
+
+td {
+  padding: 4px;
+}
