@@ -3,10 +3,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  width: 90%;
 }
-/* 
+/*
 @media screen and (max-width: 720px) {
     .profiles-row {
-        
+
       }
 } */

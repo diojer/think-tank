@@ -274,6 +274,12 @@ nav .wrapper {
   }
 }
 
+@media screen and (max-width: 300px) {
+  .logo-text {
+    font-size: 18px;
+  }
+}
+
 nav input {
   display: none;
 }

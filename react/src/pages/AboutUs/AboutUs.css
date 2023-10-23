@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   margin-top: 16px;
+  /* width: 100%; */
 }
 
 .aboutus-text,
@@ -36,7 +37,11 @@
 ul.aboutus-text {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
+}
+
+ul.aboutus-text li {
+  /* max-width: fit-content; */
 }
 
 .aboutus-text-wrapper {

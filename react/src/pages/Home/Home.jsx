@@ -69,42 +69,45 @@ function HomeSection() {
           </div>
         </TitleBox>
       )}
-
-      <div className="tagline-wrapper">
-        <p className="tagline-primary">
-          Research for <span className="underline">Everyone</span>
-        </p>
-        <p className="tagline-secondary">
-          Committed to high quality, open-source analysis.
-        </p>
-      </div>
-      <div className="image-buttons-first-row">
-        <ImageButtons
-          text={["Reports", "Articles"]}
-          images={[`/images/img-6.jpg`, `/images/img-22.jpeg`]}
-          shape="imgb--rect"
-          color="#4d5c4e"
-          paths={["/reports", "/articles"]}
-          newTabs={[false, false]}
-        />
-      </div>
-      <div className="image-buttons-second-row">
-        <ImageButtons
-          text={["Latest Events", "Join Us", "Contact Us"]}
-          images={[
-            `/images/img-6.jpg`,
-            `/images/img-21.jpeg`,
-            `/images/img-5.jpg`,
-          ]}
-          shape="imgb--thin"
-          color="#706731"
-          paths={[
-            "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/events",
-            "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/memberships",
-            "/aboutus",
-          ]}
-          newTabs={[true, true, false]}
-        />
+      <div className="home-column-wrapper">
+        <div className="home-column">
+          <div className="tagline-wrapper">
+            <p className="tagline-primary">
+              Research for <span className="underline">Everyone</span>
+            </p>
+            <p className="tagline-secondary">
+              Committed to high quality, open-source analysis.
+            </p>
+          </div>
+          <div className="image-buttons-first-row">
+            <ImageButtons
+              text={["Reports", "Articles"]}
+              images={[`/images/img-6.jpg`, `/images/img-22.jpeg`]}
+              shape="imgb--rect"
+              color="#4d5c4e"
+              paths={["/reports", "/articles"]}
+              newTabs={[false, false]}
+            />
+          </div>
+          <div className="image-buttons-second-row">
+            <ImageButtons
+              text={["Latest Events", "Join Us", "Contact Us"]}
+              images={[
+                `/images/img-6.jpg`,
+                `/images/img-21.jpeg`,
+                `/images/img-5.jpg`,
+              ]}
+              shape="imgb--thin"
+              color="#706731"
+              paths={[
+                "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/events",
+                "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/memberships",
+                "/aboutus",
+              ]}
+              newTabs={[true, true, false]}
+            />
+          </div>
+        </div>
       </div>
       <LazyBackgroundImage
         img="/images/mailbox-field.jpg"
@@ -115,25 +118,29 @@ function HomeSection() {
           <EmailForm />
         </div>
       </LazyBackgroundImage>
-      {articles[1] && (
-        <div className="article-cards-wrapper">
-          {articles.slice(0, numOfArticles).map((value, key) => {
-            return (
-              <ArticleCard
-                key={key}
-                subject={value.subject}
-                thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
-                  value.cardImage
-                }`}
-                title={value.title}
-                type="Article"
-                author={value.author}
-                path={`articles/${value.id}`}
-              />
-            );
-          })}
+      <div className="home-column-wrapper">
+        <div className="home-column">
+          {articles[1] && (
+            <div className="article-cards-wrapper">
+              {articles.slice(0, numOfArticles).map((value, key) => {
+                return (
+                  <ArticleCard
+                    key={key}
+                    subject={value.subject}
+                    thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                      value.cardImage
+                    }`}
+                    title={value.title}
+                    type="Article"
+                    author={value.author}
+                    path={`articles/${value.id}`}
+                  />
+                );
+              })}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }

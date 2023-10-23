@@ -15,7 +15,6 @@ function ShowArticle() {
   const getArticle = (key) => {
     axiosClient.get(`/articles/${key}`).then(({ data }) => {
       setSelectedArticle(data.data);
-      console.log(data.data.byline);
     });
   };
   function setSelectedArticle(article) {
@@ -63,28 +62,32 @@ function ShowArticle() {
             height="300px"
           />
           <div className="selected-article-wrapper">
-            <p className="selected-article-title">{selectedArticle.title}</p>
-            <p className="selected-article-byline">{selectedArticle.byline}</p>
-            <p className="selected-article-author">
-              Published by <a>{selectedArticle.author}</a> {time}
-            </p>
-            <div className="selected-article-content">
-              {selectedArticle &&
-                parse(selectedArticle.content, {
-                  //parsing to html and adding target="_blank" to all <a> tags
-                  transform: (element, DOM, index) => {
-                    if (DOM.attribs && DOM.attribs.href) {
-                      DOM.attribs.target = "_blank";
-                      const props = attributesToProps(DOM.attribs);
-                      return (
-                        <a {...props}>
-                          {element.props.children.props.children}
-                        </a> //what the fuck is this syntax man
-                      );
-                    }
-                    return <>{element}</>;
-                  },
-                })}
+            <div className="selected-article-column">
+              <p className="selected-article-title">{selectedArticle.title}</p>
+              <p className="selected-article-byline">
+                {selectedArticle.byline}
+              </p>
+              <p className="selected-article-author">
+                Published by <a>{selectedArticle.author}</a> {time}
+              </p>
+              <div className="selected-article-content">
+                {selectedArticle &&
+                  parse(selectedArticle.content, {
+                    //parsing to html and adding target="_blank" to all <a> tags
+                    transform: (element, DOM, index) => {
+                      if (DOM.attribs && DOM.attribs.href) {
+                        DOM.attribs.target = "_blank";
+                        const props = attributesToProps(DOM.attribs);
+                        return (
+                          <a {...props}>
+                            {element.props.children.props.children}
+                          </a> //what the fuck is this syntax man
+                        );
+                      }
+                      return <>{element}</>;
+                    },
+                  })}
+              </div>
             </div>
           </div>
           <div className="article-disclosure">

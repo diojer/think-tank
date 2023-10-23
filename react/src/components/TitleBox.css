@@ -21,3 +21,9 @@
   font-family: Inter, sans-serif;
   margin: 2px;
 }
+
+@media screen and (max-width: 300px) {
+  .title-box-title {
+    font-size: 2em;
+  }
+}
