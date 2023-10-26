@@ -8,6 +8,7 @@ const STYLES = [
   "btn--third",
   "btn--red",
   "btn--fourth",
+  "btn--blue",
 ];
 const SIZES = ["btn--medium", "btn--large"];
 

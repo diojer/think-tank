@@ -14,10 +14,12 @@ class MailinglistController extends Controller
     public function index()
     {
         $list = MailingList::query()->orderBy("id", "desc")->get();
-        for ($i = 0; $i<2;$i++) {
-            $list[$i]["created_at"] = $list[$i]["created_at"]->format("Y-m-d H:i:s");
+        for ($i = 0; $i<$list->count();$i++) {
+            $nlist[$i]["id"]=$list[$i]["id"];
+            $nlist[$i]["email"]=$list[$i]["email"];
+            $nlist[$i]["created_at"] = $list[$i]["created_at"]->format("Y-m-d H:i:s");
         }
-        return response ($list, 200);
+        return response ($nlist, 200);
     }
 
     /**
@@ -33,7 +35,7 @@ class MailinglistController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Mailinglist::findOrFail($id);
     }
 
     /**
@@ -47,8 +49,13 @@ class MailinglistController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        //
+        if ($request->user()->hasRole("admin")) {
+            Mailinglist::findOrFail($id)->delete();
+            return response("", 200);
+        } else {
+            return response("", 403);
+        }
     }
 }

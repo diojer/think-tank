@@ -1,6 +1,6 @@
 .article-card-whole {
   padding: 10px;
-  width: 30%;
+  width: 270px;
   display: flex;
   flex-direction: column;
   border-bottom: solid darkgrey 1px;
@@ -17,6 +17,7 @@
   height: 250px;
   width: 100%;
   background-size: cover;
+  background-position: center;
 }
 
 a.article-card-title,

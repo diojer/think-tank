@@ -74,3 +74,16 @@
   background-color: var(--secondary);
   color: white;
 }
+
+.btn--blue {
+  font-size: 0.9em;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  background-color: rgb(83, 83, 255);
+  color: white;
+}
+
+.btn--blue:hover {
+  background-color: rgb(49, 49, 255);
+  color: white;
+}

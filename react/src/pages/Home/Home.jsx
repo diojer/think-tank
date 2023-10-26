@@ -14,7 +14,7 @@ import LazyBackgroundImage from "../../utility/LazyBackgroundImage";
 function HomeSection() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const numOfArticles = 4;
+  const numOfArticles = 6;
   useEffect(() => {
     getArticles();
   }, []);

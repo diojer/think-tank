@@ -5,7 +5,6 @@ import { Button } from "../../../components/Button";
 import "./ViewUser.css";
 import "../View.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 function ViewUser() {
   const [users, setUsers] = useState([]);

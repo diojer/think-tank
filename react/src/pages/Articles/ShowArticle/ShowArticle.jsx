@@ -28,13 +28,13 @@ function ShowArticle() {
     let timeDifference = Math.floor(Math.abs(articleDate - today) / 36e5);
     if (timeDifference < 24) {
       //less than 24 hours ago
-      setTime(`${timeDifference} hours ago.`);
+      setTime(`${timeDifference} hour(s) ago.`);
       return;
     }
     //days ago
     timeDifference = Math.round(timeDifference / 24);
     if (timeDifference < 30) {
-      setTime(`${timeDifference} days ago.`);
+      setTime(`${timeDifference} day(s) ago.`);
       return;
     }
     //months ago

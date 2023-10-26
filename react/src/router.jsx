@@ -23,6 +23,7 @@ import ViewArticles from "./pages/Upload/ViewArticles/ViewArticles";
 import Edit from "./pages/Edit/Edit";
 import EditArticle from "./pages/Edit/EditArticle/EditArticle";
 import ViewUser from "./pages/Upload/ViewUsers/ViewUser";
+import ViewEmails from "./pages/Upload/ViewEmails/ViewEmails";
 
 const router = createHashRouter([
   {
@@ -88,6 +89,10 @@ const router = createHashRouter([
           {
             path: "/portal/upload/users",
             element: <ViewUser />,
+          },
+          {
+            path: "/portal/upload/emails",
+            element: <ViewEmails />,
           },
         ],
       },

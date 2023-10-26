@@ -54,7 +54,7 @@ Route::middleware("auth:sanctum")->group(function(){
 });
 
 //Mailing list routes
-Route::post("mailinglist", function(StoreEmailRequest $request){
+Route::post("/mailinglist", function(StoreEmailRequest $request){
     $data = $request->validated();
     MailingList::create([
         "email"=>$data["email"],
@@ -64,5 +64,5 @@ Route::post("mailinglist", function(StoreEmailRequest $request){
 
 //For logged in users - concerning mailing list requests
 Route::middleware("auth:sanctum")->group(function(){
-    Route::apiResource("/mailinglist", MailinglistController::class);
+    Route::apiResource("/mailinglist", MailinglistController::class)->only(["destroy", "index", "show"]);
 });
