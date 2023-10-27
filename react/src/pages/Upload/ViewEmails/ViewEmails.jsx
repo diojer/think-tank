@@ -108,7 +108,9 @@ function ViewEmails() {
               <>
                 <tr className={`default-table-rows ${email.id}`} key={key}>
                   <td className="default-row-id">{email.id}</td>
-                  <td className="default-row-email">{email.email}</td>
+                  <td className="default-row-email">
+                    <a href={`mailto:${email.email}`}>{email.email}</a>
+                  </td>
                   <td className="default-row-date">{email.created_at}</td>
                   <td className="email-row-buttons default-row-buttons">
                     <div className="default-buttons-container">

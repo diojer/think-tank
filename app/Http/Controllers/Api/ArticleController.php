@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Http\Requests\DeleteArticleRequest;
@@ -82,8 +83,28 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $data = $request->validated();
-        $article->update($data);
-        return response(["", 201]);
+        $article["title"] = $data["title"];
+        $article["author"] = $data["author"];
+        $article["subject"] = $data["subject"];
+        $article["content"] = $data["content"];
+        $article["subject"] = $data["subject"];
+        $article["byline"] = $data["byline"];
+        if ($request->file("cardImage")) {
+            $cardImage = $request->file("cardImage");
+            $cardFilename = time()."_".$cardImage->getClientOriginalName();
+            Storage::disk("public")->put("/images/articles/{$cardFilename}", file_get_contents($data["cardImage"]));
+            $article->cardImage = "/images/articles/{$cardFilename}";
+        }
+        if ($request->file("bannerImage")) {
+            $bannerImage = $request->file("bannerImage");
+            $bannerFilename = time()."_".$bannerImage->getClientOriginalName();
+            Storage::disk("public")->put("/images/articles/{$bannerFilename}", file_get_contents($data["bannerImage"]));
+            $article->bannerImage = "/images/articles/{$bannerFilename}";
+        }
+        $article->save();
+        return response("saved", 200);
+        // $article->update($data);
+        // return response(["", 201]);
     }
 
     /**

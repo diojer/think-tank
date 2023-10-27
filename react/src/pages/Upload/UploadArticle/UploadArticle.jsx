@@ -49,7 +49,8 @@ const onUpload = (data) => {
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then(({ data }) => {
-      alert("File uploaded successfully!");
+      alert("Article uploaded successfully!");
+      navigate(`/articles/${selectedArticle.id}`);
     })
     .catch((err) => {
       console.log(err);

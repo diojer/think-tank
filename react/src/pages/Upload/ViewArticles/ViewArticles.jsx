@@ -65,13 +65,7 @@ function ViewArticles() {
             <th>Banner Image</th>
             <th>Card Image</th>
             <th>Created on</th>
-            <th
-              onClick={(e) => {
-                alert("Editing functionality coming soon!");
-              }}
-            >
-              <a className="tooltip">Actions</a>
-            </th>
+            <th>Actions</th>
           </tr>
           {loading && (
             <tr className="default-row-loading">
@@ -111,9 +105,9 @@ function ViewArticles() {
                   <td className="default-row-date">{a.created_at}</td>
                   <td>
                     <div className="default-buttons-container">
-                      {/* <Button path={`/portal/edit/article/${a.id}`}>
+                      <Button path={`/portal/edit/article/${a.id}`}>
                         Edit
-                      </Button> */}
+                      </Button>
                       <Button
                         buttonStyle="btn--red"
                         onClick={(e) => {

@@ -82,7 +82,7 @@ function Footer() {
             <NewTabLink link="https://goo.gl/maps/TZcVXb4Z6xgFDsNK6">
               Lifton Place, Leeds, LS2 9JZ
             </NewTabLink>
-            <Link to="/">thinktank@luu.group</Link>
+            <a href="mailto:thinktank@luu.group">thinktank@luu.group</a>
             <Link to="/sponsors">Support</Link>
             <Link to="/sponsors">Sponsorships</Link>
           </div>

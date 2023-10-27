@@ -1,6 +1,6 @@
 .article-card-whole {
   padding: 10px;
-  width: 270px;
+  width: 30%;
   display: flex;
   flex-direction: column;
   border-bottom: solid darkgrey 1px;

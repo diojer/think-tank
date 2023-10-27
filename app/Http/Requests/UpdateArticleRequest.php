@@ -35,10 +35,11 @@ class UpdateArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title"=>"required|string|max:55",
-            "author"=>"required|string|max:55",
-            "subject"=>"required|string|max:55",
+            "title"=>"required|string|max:255",
+            "author"=>"required|string|max:255",
+            "subject"=>"required|string|max:255",
             "tags"=>"nullable|string",
+            "byline"=>"nullable|string",
             "content"=>"required|string",
             "cardImage"=>"nullable|image",
             "bannerImage"=>"nullable|image",
