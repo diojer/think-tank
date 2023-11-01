@@ -27,7 +27,7 @@ function Navbar() {
                     </li>
                     <li className="dropdown">
                         <Link to="/aboutus" className="dropbtn">
-                            About Us ↓
+                            About Us ⋁
                         </Link>
                         <div className="dropdown-content">
                             <Link to="/team">Team</Link>

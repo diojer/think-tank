@@ -15,6 +15,9 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Sponsors from "./pages/Sponsors/Sponsors";
 import PageNotFound from "./pages/Errors/404/PageNotFound";
+import OurPlatform from "./pages/OurPlatform/OurPlatform";
+import MediaAppearances from "./pages/MediaAppearances/MediaAppearances";
+import PressRelease from "./pages/PressRelease/PressRelease";
 
 //Uploads
 import Upload from "./pages/Upload/Upload";
@@ -41,6 +44,18 @@ const router = createHashRouter([
       {
         path: "/team",
         element: <Team />,
+      },
+			{
+        path: "/ourplatform",
+        element: <OurPlatform />,
+      },
+			{
+        path: "/mediaapperances",
+        element: <MediaAppearances />,
+      },
+			{
+        path: "/pressrelease",
+        element: <PressRelease />,
       },
       {
         path: "/articles",
