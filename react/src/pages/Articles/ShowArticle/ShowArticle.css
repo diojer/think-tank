@@ -93,7 +93,7 @@
     color: #ffffff;
 		background-color: var(--secondary);
 }
-button {
+.share-btns{
     background-color: transparent;
     border: none;
     scale: 200%;

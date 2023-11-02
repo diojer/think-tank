@@ -82,7 +82,7 @@ function ShowArticle() {
                                 {time}
                             </p>
                             <div className="sharebtn">
-                                <button className="hover-shake">
+                                <button className="hover-shake share-btns">
                                     <FontAwesomeIcon icon="fa-solid fa-share" />
                                 </button>
                                 <div className="share-options">
@@ -91,6 +91,7 @@ function ShowArticle() {
                                             url={shareUrl}
                                             quote={selectedArticle.title}
                                             hashtag="#muo"
+                                            share-btns
                                         >
                                             <FontAwesomeIcon
                                                 icon="fa-brands fa-whatsapp"
@@ -103,6 +104,7 @@ function ShowArticle() {
                                             url={shareUrl}
                                             quote={selectedArticle.title}
                                             hashtag="#muo"
+                                            share-btns
                                         >
                                             <FontAwesomeIcon
                                                 icon="fa-solid fa-at"
