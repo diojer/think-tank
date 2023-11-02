@@ -45,8 +45,13 @@ ul.aboutus-text li {
 }
 
 .aboutus-text-wrapper {
-  padding: 64px;
-  padding-top: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.aboutus-column {
+  max-width: 1000px;
 }
 
 @media screen and (max-width: 890px) {
