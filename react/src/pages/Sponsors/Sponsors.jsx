@@ -6,7 +6,7 @@ function Sponsors() {
   return (
     <div>
       <TitleBox
-        image="/images/sponsors.jpg"
+        image="/images/titleboxes/sponsors.jpg"
         color="#2e2d2b"
         font="white"
         type="bottom"

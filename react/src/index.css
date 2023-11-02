@@ -77,6 +77,26 @@ code {
   display: none !important;
 }
 
+/* WIP messages */
+.WIP-message {
+  text-align: left;
+  color: grey;
+}
+
+.WIP-message-title {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+.WIP-message-text {
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+.WIP-wrapper {
+  padding: 16px;
+  display: flex;
+}
+
 /*Loader 1*/
 .loader1 {
   width: 48px;

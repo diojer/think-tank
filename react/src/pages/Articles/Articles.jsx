@@ -32,8 +32,30 @@ function Articles() {
 
     return (
         <>
-            {article ? (
-                <Outlet />
+          <TitleBox
+            image="/images/titleboxes/articles.jpg"
+            color="#2e2d2b"
+            font="white"
+          >
+            Articles<span className="hilite">.</span>
+          </TitleBox>
+          <div className="articles-wrapper">
+            {articles[0] ? ( //starts rendering articles when the API responds
+              articles.map((value, key) => {
+                return (
+                  <ArticleCard
+                    key={key}
+                    subject={value.subject}
+                    thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                      value.cardImage
+                    }`}
+                    title={value.title}
+                    type="Article"
+                    author={value.author}
+                    path={`${value.id}`}
+                  />
+                );
+              })
             ) : (
                 <>
                     <TitleBox
