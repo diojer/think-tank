@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { UseStateContext } from "../contexts/ContextProvider";
@@ -12,7 +13,11 @@ function Navbar() {
             <div className="wrapper">
                 <div className="logo">
                     <Link to="/" className="logo-wrapper">
-                        <img className="navbar-logo" src="/images/img-20.png" alt="Logo" />
+                        <img
+                            className="navbar-logo"
+                            src="/images/img-20.png"
+                            alt="Logo"
+                        />
                         <p className="logo-text">Leeds Think Tank</p>
                     </Link>
                 </div>
@@ -20,20 +25,20 @@ function Navbar() {
                 <input type="radio" name="slider" id="close-btn" />
                 <ul className="nav-links">
                     <label htmlFor="close-btn" className="btn close-btn">
-                        <span>&times;</span>
+                        <FontAwesomeIcon icon={faBars} />
                     </label>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
                     <li className="dropdown">
-                        <Link to="/aboutus" className="dropbtn">
+                        <Link to="#" className="dropbtn">
                             About Us ⋁
                         </Link>
                         <div className="dropdown-content">
                             <Link to="/team">Team</Link>
-														<Link to="/ourplatform">Our Platform</Link>
-														<Link to="/mediaapperances">Media Appearances</Link>
-														<Link to="/pressrelease">Press Release</Link>
+                            <Link to="/aboutus">Our Platform</Link>
+                            <Link to="/mediaapperances">Media Appearances</Link>
+                            <Link to="/pressrelease">Press Release</Link>
                         </div>
                     </li>
                     <li>
@@ -68,7 +73,7 @@ function Navbar() {
                     </li>
                 </ul>
                 <label htmlFor="menu-btn" className="btn menu-btn">
-                    <i className="fa fa-bars"></i>
+                    <FontAwesomeIcon icon={faBars} />
                 </label>
             </div>
         </nav>

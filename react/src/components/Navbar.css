@@ -141,16 +141,52 @@ nav .wrapper {
     cursor: pointer;
     display: none;
 }
-.wrapper .btn.close-btn {
-    position: absolute;
-    right: 30px;
-    top: 10px;
-}
 
-@media screen and (max-width: 1203px) {
-    .wrapper .btn {
-        display: block;
+
+@media screen and (max-width: 1100px) {
+    nav input[name="slider"] {
+        display: none;
     }
+		.menu-btn {
+			padding: 15px 15px;
+			margin-right: -2rem;
+		}
+    .btn.menu-btn,
+    .btn.close-btn {
+        display: block;
+        padding: 0px 30px;
+        font-size: 20px;
+        cursor: pointer;
+				color: white;
+    }
+    .dropdown-content {
+        position: relative;
+        margin-top: 10.3rem;
+    }
+    .wrapper .btn.menu-btn {
+        font-size: 20px;
+        cursor: pointer;
+        display: none;
+    }
+    .wrapper .btn.close-btn {
+        color: var(--fontPrimary);
+        font-size: 20px;
+        cursor: pointer;
+        display: block;
+        background-color: var(--secondary);
+        padding: 10px 15px;
+        border: 1px solid var(--close-button-border-color);
+        color: white;
+        width: 91%;
+        margin-top: -1rem;
+    }
+
+		.wrapper .btn.menu-btn {
+			font-size: 20px;
+			cursor: pointer;
+			display: block; /* Display the menu button by default */
+	}
+
     .wrapper .nav-links {
         position: fixed;
         height: 100vh;
@@ -182,9 +218,13 @@ nav .wrapper {
     #menu-btn:checked ~ .btn.menu-btn {
         display: none;
     }
+		#menu-btn:checked ~ .wrapper .btn.menu-btn {
+			display: block;
+	}
     #close-btn:checked ~ .btn.menu-btn {
         display: block;
     }
+
     .nav-links li {
         margin: 15px 10px;
     }
@@ -297,14 +337,10 @@ nav input {
     font-weight: 600;
 }
 
-/* ARAZ STARTS */
-
-/* Navbar container */
-
 .dropdown .dropbtn {
-	background-color: inherit;
-	font-family: inherit; /* Important for vertical align on mobile phones */
-	margin: 0; /* Important for vertical align on mobile phones */
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
 }
 
 .navbar a:hover,
@@ -313,27 +349,27 @@ nav input {
     transition: all 0.3s ease;
 }
 .dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: var(--primary);
-	top: 70px;
-	z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: var(--primary);
+    top: 70px;
+    z-index: 1;
 }
 .dropdown-content a {
     float: none;
-		color: black;
+    color: black;
     text-decoration: none;
     display: block;
     text-align: left;
-		border-radius: 0;
-		line-height: 35px;
+    border-radius: 0;
+    line-height: 35px;
 }
 .dropdown-content a:hover {
-	background-color: var(--secondary);
-	transition: all 0.3s ease;
-	color: white;
+    background-color: var(--secondary);
+    transition: all 0.3s ease;
+    color: white;
 }
 
 .dropdown:hover .dropdown-content {
-	display: block;
+    display: block;
 }
