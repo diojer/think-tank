@@ -7,7 +7,11 @@ import { TitleBox } from "../../components/TitleBox";
 function Reports() {
   return (
     <>
-      <TitleBox image="/images/img-29.jpg" color="#2e2d2b" font="white">
+      <TitleBox
+        image="/images/titleboxes/reports.jpg"
+        color="#2e2d2b"
+        font="white"
+      >
         Reports<span className="hilite">.</span>
       </TitleBox>
       <div className="reports-wrapper">

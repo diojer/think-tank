@@ -38,24 +38,30 @@ const router = createHashRouter([
         element: <Home />,
       },
       {
-        path: "/aboutus",
-        element: <AboutUs />,
+        path: "/about-us",
+        children: [
+          {
+            path: "/about-us/platform",
+            element: <AboutUs />,
+          },
+          {
+            path: "/about-us/team",
+            element: <Team />,
+          },
+        ],
       },
       {
-        path: "/team",
-        element: <Team />,
-      },
-			{
-        path: "/ourplatform",
-        element: <OurPlatform />,
-      },
-			{
-        path: "/mediaapperances",
-        element: <MediaAppearances />,
-      },
-			{
-        path: "/pressrelease",
-        element: <PressRelease />,
+        path: "/media",
+        children: [
+          {
+            path: "/media/appearances",
+            element: <MediaAppearances />,
+          },
+          {
+            path: "/media/press-releases",
+            element: <PressRelease />,
+          },
+        ],
       },
       {
         path: "/articles",

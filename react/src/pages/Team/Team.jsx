@@ -22,7 +22,7 @@ function Team() {
   return (
     <>
       <TitleBox
-        image="/images/teambanner.jpg"
+        image="/images/titleboxes/team.jpg"
         color="#2e2d2b"
         font="white"
         type="center"

@@ -36,7 +36,11 @@ function Articles() {
         <Outlet />
       ) : (
         <>
-          <TitleBox image="/images/img-28.jpg" color="#2e2d2b" font="white">
+          <TitleBox
+            image="/images/titleboxes/articles.jpg"
+            color="#2e2d2b"
+            font="white"
+          >
             Articles<span className="hilite">.</span>
           </TitleBox>
           <div className="articles-wrapper">

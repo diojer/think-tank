@@ -12,12 +12,12 @@ function Aboutus() {
   return (
     <>
       <TitleBox
-        image="/images/img-30.jpg"
+        image="/images/titleboxes/aboutus.jpg"
         color="#2e2d2b"
         font="white"
         type="center"
       >
-        About Us
+        Our Platform
         <span className="hilite">.</span>
       </TitleBox>
       <div className="aboutus-text-wrapper">
