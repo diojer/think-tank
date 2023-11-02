@@ -142,26 +142,28 @@ nav .wrapper {
     display: none;
 }
 
+.dropdown-content {
+	display: none;
+}
 
 @media screen and (max-width: 1100px) {
     nav input[name="slider"] {
         display: none;
     }
-		.menu-btn {
-			padding: 15px 15px;
-			margin-right: -2rem;
-		}
+    .dropdown:hover .dropdown-content {
+			margin-top: 2px;
+    }
+    .menu-btn {
+        padding: 15px 15px;
+        margin-right: -2rem;
+    }
     .btn.menu-btn,
     .btn.close-btn {
         display: block;
         padding: 0px 30px;
         font-size: 20px;
         cursor: pointer;
-				color: white;
-    }
-    .dropdown-content {
-        position: relative;
-        margin-top: 10.3rem;
+        color: white;
     }
     .wrapper .btn.menu-btn {
         font-size: 20px;
@@ -181,11 +183,11 @@ nav .wrapper {
         margin-top: -1rem;
     }
 
-		.wrapper .btn.menu-btn {
-			font-size: 20px;
-			cursor: pointer;
-			display: block; /* Display the menu button by default */
-	}
+    .wrapper .btn.menu-btn {
+        font-size: 20px;
+        cursor: pointer;
+        display: block; /* Display the menu button by default */
+    }
 
     .wrapper .nav-links {
         position: fixed;
@@ -218,9 +220,9 @@ nav .wrapper {
     #menu-btn:checked ~ .btn.menu-btn {
         display: none;
     }
-		#menu-btn:checked ~ .wrapper .btn.menu-btn {
-			display: block;
-	}
+    #menu-btn:checked ~ .wrapper .btn.menu-btn {
+        display: block;
+    }
     #close-btn:checked ~ .btn.menu-btn {
         display: block;
     }
@@ -348,12 +350,15 @@ nav input {
     background: var(--secondary);
     transition: all 0.3s ease;
 }
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--primary);
-    top: 70px;
-    z-index: 1;
+
+@media screen and (min-width: 1101px) {
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--primary);
+        top: 70px;
+        z-index: 1;
+    }
 }
 .dropdown-content a {
     float: none;
