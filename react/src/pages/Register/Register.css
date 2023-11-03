@@ -1,77 +1,93 @@
 .background-image {
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
 }
 
 .register-form-box {
-  width: 500px;
-  height: auto;
-  padding: 16px;
-  margin: 64px;
-  border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  background: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 500px;
+    height: auto;
+    padding: 16px;
+    margin: 64px;
+    /* border-radius: 25px; */
+    display: flex;
+    flex-direction: column;
+    background: white;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .register-title {
-  text-align: center;
-  font-size: 2em;
-  font-weight: 600;
-}
-
-.register-form-wrapper {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 400;
+		margin-bottom: 0;
 }
 
 .register-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+		padding: 40px;
 }
 
 .register-label {
-  font-weight: bold;
-  font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-family: Inter, sans-serif;
 }
 
 .register-input {
-  border: none;
-  box-shadow: 0 2px 0 0 var(--primary);
-  padding: 8px;
-  font-size: 20px;
-  margin-bottom: 32px;
+    border: none;
+    /* box-shadow: 0 2px 0 0 var(--primary); */
+    padding: 15px;
+    font-size: 20px;
+    margin-bottom: 32px;
+    margin-top: 0.7rem;
 }
 
 .register-input:focus {
-  outline: none;
+    outline: none;
 }
 
 .register {
-  text-align: left;
-  color: grey;
+    text-align: left;
+    color: grey;
 }
 
 .error-messages-wrapper p {
-  margin: 0;
-  color: red;
+    margin: 0;
+    color: red;
 }
 
 .upload-message {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .false {
-  color: red;
+    color: red;
 }
 
 .true {
-  color: green;
+    color: green;
+}
+
+input[type="text"],
+textarea {
+    background-color: #f2f2f2;
+}
+
+input,
+input::placeholder {
+    font: 1rem/0.5 sans-serif;
+}
+
+.login-redirect {
+	margin-top: 1.5rem;
+	display: flex;
+	justify-content: center;
 }
