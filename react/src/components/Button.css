@@ -11,8 +11,9 @@
 }
 
 .btn--primary {
-  font-size: 0.9em;
-  padding: 10px 20px 10px 20px;
+  font-size: 1em;
+  /* padding: 10px 20px 10px 20px; Change back if you want, just making the login page look more uniform*/
+	padding: 15px 15px;
   background: var(--primary);
   border: none;
   color: white;
