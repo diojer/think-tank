@@ -143,15 +143,19 @@ nav .wrapper {
 }
 
 .dropdown-content {
-	display: none;
+    display: none;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
     nav input[name="slider"] {
         display: none;
     }
+
+    .nav-links li {
+        margin: 10px 0px;
+    }
     .dropdown:hover .dropdown-content {
-			margin-top: 2px;
+        margin-top: 2px;
     }
     .menu-btn {
         padding: 15px 15px;
@@ -226,14 +230,11 @@ nav .wrapper {
     #close-btn:checked ~ .btn.menu-btn {
         display: block;
     }
-
-    .nav-links li {
-        margin: 15px 10px;
-    }
     .nav-links li a {
         padding: 0 20px;
         display: block;
         font-size: 20px;
+				line-height: 47px;
     }
     .nav-links .drop-menu {
         position: static;
@@ -351,7 +352,7 @@ nav input {
     transition: all 0.3s ease;
 }
 
-@media screen and (min-width: 1101px) {
+@media screen and (min-width: 1201px) {
     .dropdown-content {
         display: none;
         position: absolute;
