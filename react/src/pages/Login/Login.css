@@ -1,129 +1,130 @@
 .background-image {
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
 }
 
 .logout-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-		margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .login-form-box {
-    width: 500px;
-    height: auto;
-    padding: 16px;
-    margin: 64px;
-    /* border-radius: 25px; */
-    display: flex;
-    flex-direction: column;
-    background: white;
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  width: 500px;
+  height: auto;
+  padding: 16px;
+  margin: 64px;
+  /* border-radius: 25px; */
+  display: flex;
+  flex-direction: column;
+  background: white;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .login-title {
-    text-align: center;
-    font-size: 2em;
-    /* font-weight: 600; */
-    margin: 0px;
-    margin-top: 1rem;
+  text-align: center;
+  font-size: 2em;
+  /* font-weight: 600; */
+  margin: 0px;
+  margin-top: 1rem;
 }
 
 .login-form-wrapper {
-    padding: 35px;
+  padding: 35px;
 }
 
 .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px;
 }
 
 .login-label {
-    font-weight:500;
-    font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-family: Inter, sans-serif;
 }
 
 .login-input {
-    /* box-shadow: 0 2px 0 0 var(--primary); */
-		border: none;
-    padding: 15px;
-    font-size: 20px;
-    margin-top: 0.7rem;
+  /* box-shadow: 0 2px 0 0 var(--primary); */
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+  margin-top: 0.7rem;
 }
 
 input[type="text"],
+input[type="password"],
 textarea {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .email-input,
 .forgot-password {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .forgot-password {
-    text-align: right;
-    color: grey;
-    margin: 1rem;
+  text-align: right;
+  color: grey;
+  margin: 1rem;
 }
 
 .remember-me {
-    margin: 8px;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-bottom: 1.5rem;
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 1.5rem;
 }
 
 .login-input:focus {
-    outline: none;
+  outline: none;
 }
 
 .register {
-    text-align: left;
-    color: grey;
+  text-align: left;
+  color: grey;
 }
 
 .register-line {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3rem;
-		margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
 }
 
 .error-messages-wrapper {
-	margin-top: -0.7rem;
-	gap: 2rem;
-	margin-bottom: 1rem;
+  margin-top: -0.7rem;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
 input,
 input::placeholder {
-    font: 1rem/0.5 sans-serif;
+  font: 1rem/0.5 sans-serif;
 }
 
 .remember-me {
-	gap: 5px;
+  gap: 5px;
 }
 
 #stay {
-	display: none;
-	position: relative;
-	margin-top: 0px;
+  display: none;
+  position: relative;
+  margin-top: 0px;
 }
 
 .remember-me:hover + #stay {
-	display: block;
+  display: block;
 }
