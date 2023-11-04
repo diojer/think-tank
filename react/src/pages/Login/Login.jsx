@@ -105,6 +105,7 @@ function Login() {
                   <Field
                     className="email-input login-input"
                     name="email"
+                    type="text"
                     placeholder="Type your email..."
                   />
                   <label className="password-label login-label">
@@ -114,13 +115,13 @@ function Login() {
                     className="password-input login-input"
                     name="password"
                     type="password"
-                    placeholder="Type your Password"
+                    placeholder="Type your password"
                   />
                   <Link className="forgot-password">Forgot your password?</Link>
                   <label className="remember-me">
-                    <Field type="checkbox" name="remember" /> Remember me (stay
-                    logged in for 30 days)
+                    <Field type="checkbox" name="remember" /> Remember me
                   </label>
+                  <p id="stay">(Stay logged in for 30 days)</p>
                   <div className="error-messages-wrapper">
                     <ErrorMessage name="email" component="p" />
                     <ErrorMessage name="password" component="p" />
@@ -135,9 +136,12 @@ function Login() {
                   >
                     Login
                   </Button>
-                  <Link className="register" to="/register">
-                    If you don't have an account, click here to signup.
-                  </Link>
+                  <div className="register-line">
+                    <p>Not registered?</p>
+                    <Link className="register" to="/register">
+                      Create an account
+                    </Link>
+                  </div>
                 </Form>
               </Formik>
             </div>

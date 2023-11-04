@@ -4,6 +4,27 @@ import { useParams } from "react-router-dom";
 import axiosClient from "../../../utility/axios-client";
 import { TitleBox } from "../../../components/TitleBox";
 import parse, { attributesToProps } from "html-react-parser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  WhatsappShareButton,
+  EmailShareButton,
+  FacebookShareButton,
+  FacebookMessengerShareButton,
+  TwitterShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  LinkedinShareButton,
+} from "react-share";
+import {
+  WhatsappIcon,
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  TwitterIcon,
+  RedditIcon,
+  TelegramIcon,
+  LinkedinIcon,
+} from "react-share";
 
 function ShowArticle() {
   const { article } = useParams();
@@ -44,9 +65,14 @@ function ShowArticle() {
       return;
     }
     //years ago
-    timeDifference = math.round(timeDifference / 12);
+    timeDifference = Math.round(timeDifference / 12);
     setTime(`${timeDifference} years ago.`);
   };
+  let shareUrl = window.location.href;
+  //   let shareUrl = "https://leedsthinktank.org.uk/#/articles/15";
+  // localhost URL not supported for most social media sites when sharing, switch to above
+  // link to test out sharing.
+
   return (
     <>
       {selectedArticle ? (
@@ -70,6 +96,82 @@ function ShowArticle() {
               <p className="selected-article-author">
                 Published by <a>{selectedArticle.author}</a> {time}
               </p>
+              <div className="sharebtn">
+                <button className="hover-shake share-btns">
+                  <FontAwesomeIcon icon="fa-solid fa-share" />
+                </button>
+                <div className="share-options">
+                  <FacebookShareButton
+                    url={shareUrl}
+                    title={selectedArticle.title}
+                    appId="1015935046327073"
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <FacebookIcon round={true} />
+                  </FacebookShareButton>
+                  <FacebookMessengerShareButton
+                    url={shareUrl}
+                    quote={selectedArticle.title}
+                    appId="1015935046327073"
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <FacebookMessengerIcon round={true} />
+                  </FacebookMessengerShareButton>
+                  <TwitterShareButton
+                    url={shareUrl}
+                    title={`${selectedArticle.title} by ${selectedArticle.author}`}
+                    via="leedsthinktank"
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <TwitterIcon round={true} />
+                  </TwitterShareButton>
+                  <LinkedinShareButton
+                    url={shareUrl}
+                    source="Leeds Think Tank"
+                    title={selectedArticle.title}
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <LinkedinIcon round={true} />
+                  </LinkedinShareButton>
+                  <RedditShareButton
+                    url={shareUrl}
+                    title={`${selectedArticle.title} by ${selectedArticle.author}`}
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <RedditIcon round={true} />
+                  </RedditShareButton>
+                  <WhatsappShareButton
+                    url={shareUrl}
+                    title={`${selectedArticle.title} by ${selectedArticle.author}`}
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <WhatsappIcon round={true} />
+                  </WhatsappShareButton>
+                  <TelegramShareButton
+                    url={shareUrl}
+                    title={selectedArticle.title}
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <TelegramIcon round={true} />
+                  </TelegramShareButton>
+                  <EmailShareButton
+                    url={shareUrl}
+                    subject={`${selectedArticle.title} by ${selectedArticle.author}`}
+                    body="Here's an article by the Leeds Think Tank: "
+                    share-btns
+                    resetButtonStyle={false}
+                  >
+                    <EmailIcon round={true} />
+                  </EmailShareButton>
+                </div>
+              </div>
               <div className="selected-article-content">
                 {selectedArticle &&
                   parse(selectedArticle.content, {
@@ -105,7 +207,7 @@ function ShowArticle() {
             textType="center"
             height="300px"
           >
-            <div class="lds-facebook">
+            <div className="lds-facebook">
               <div></div>
               <div></div>
               <div></div>
@@ -116,7 +218,7 @@ function ShowArticle() {
             <p className="selected-article-byline"> </p>
             <p className="selected-article-author"> </p>
             <p className="center">
-              <div class="lds-ellipsis">
+              <div className="lds-ellipsis">
                 <div></div>
                 <div></div>
                 <div></div>

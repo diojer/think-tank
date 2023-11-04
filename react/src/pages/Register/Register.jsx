@@ -66,8 +66,8 @@ function Register() {
       }}
     >
       <div className="register-form-box">
-        <p className="register-title">Register a new Account</p>
         <div className="register-form-wrapper">
+          <p className="register-title">Register a new Account</p>
           <Formik
             initialValues={initialValues}
             onSubmit={registration}
@@ -79,12 +79,14 @@ function Register() {
                 className="username-input register-input"
                 name="name"
                 placeholder="Type your name"
+                type="text"
               />
               <label className="email-label register-label">Email:</label>
               <Field
                 className="email-input register-input"
                 name="email"
-                placeholder="Type your Email"
+                placeholder="Type your email"
+                type="text"
                 onKeyUp={(e) => {
                   setErrors({});
                 }}
@@ -94,7 +96,7 @@ function Register() {
                 className="password-input register-input"
                 name="password"
                 type="password"
-                placeholder="Type your Password"
+                placeholder="Type your password"
               />
               <label className="password-label register-label">
                 Confirm Password:
@@ -103,7 +105,7 @@ function Register() {
                 className="confirm-password-input register-input"
                 name="confirmPassword"
                 type="password"
-                placeholder="Confirm your Password"
+                placeholder="Confirm your password"
               />
               <div className="error-messages-wrapper">
                 <ErrorMessage name="name" component="p" />
@@ -121,6 +123,9 @@ function Register() {
               >
                 Register
               </Button>
+              <Link className="login-redirect" to="/login">
+                Already have an account?
+              </Link>
               {regStatus && (
                 <>
                   <p className={`upload-message ${regStatus}`}>

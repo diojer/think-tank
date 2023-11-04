@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Articles.css";
-import { Link, Outlet, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import axiosClient from "../../utility/axios-client";
-
-//component imports
 import { ArticleCard } from "../../components/ArticleCard";
 import { TitleBox } from "../../components/TitleBox";
 
@@ -44,25 +41,23 @@ function Articles() {
             Articles<span className="hilite">.</span>
           </TitleBox>
           <div className="articles-wrapper">
-            {articles[0] ? ( //starts rendering articles when the API responds
-              articles.map((value, key) => {
-                return (
-                  <ArticleCard
-                    key={key}
-                    subject={value.subject}
-                    thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
-                      value.cardImage
-                    }`}
-                    title={value.title}
-                    type="Article"
-                    author={value.author}
-                    path={`${value.id}`}
-                  />
-                );
-              })
+            {articles[0] ? (
+              articles.map((value, key) => (
+                <ArticleCard
+                  key={key}
+                  subject={value.subject}
+                  thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL}${
+                    value.cardImage
+                  }`}
+                  title={value.title}
+                  type="Article"
+                  author={value.author}
+                  path={`${value.id}`}
+                />
+              ))
             ) : (
               <div className="articles-WIP-message">
-                <div class="lds-ellipsis">
+                <div className="lds-ellipsis">
                   <div></div>
                   <div></div>
                   <div></div>
