@@ -75,6 +75,7 @@ function Navbar() {
               <FontAwesomeIcon icon="fa-magnifying-glass" />
             </Link>
           </li>
+          {/* Admin */}
           {admin && (
             <li>
               <Link to="/portal/upload">

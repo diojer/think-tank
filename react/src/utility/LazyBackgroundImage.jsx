@@ -9,19 +9,13 @@ function LazyBackgroundImage({ img, children, className, style }) {
     <div
       style={{
         backgroundImage: `url("${img}")`,
-        filter: loaded ? "none" : "blur(20px)",
+        filter: "none",
         transition: "filter 0.5s",
         ...style,
       }}
       className={className}
     >
-      <img
-        src={img}
-        alt=""
-        onLoad={handleLoad}
-        style={{ display: "none" }}
-        loading="lazy"
-      />
+      <img src={img} alt="" onLoad={handleLoad} style={{ display: "none" }} />
       {loaded && children}
     </div>
   );
