@@ -8,6 +8,7 @@ import axios from "axios";
 import { UseStateContext } from "../contexts/ContextProvider";
 
 function Navbar() {
+  const { admin } = UseStateContext();
   return (
     <nav>
       <div className="wrapper">
@@ -74,6 +75,13 @@ function Navbar() {
               <FontAwesomeIcon icon="fa-magnifying-glass" />
             </Link>
           </li>
+          {admin && (
+            <li>
+              <Link to="/portal/upload">
+                <FontAwesomeIcon icon="fa-pencil" />
+              </Link>
+            </li>
+          )}
         </ul>
         <label htmlFor="menu-btn" className="btn menu-btn">
           <FontAwesomeIcon icon={faBars} />

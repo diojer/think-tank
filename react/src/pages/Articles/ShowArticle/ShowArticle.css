@@ -1,123 +1,125 @@
 .selected-article-wrapper {
-    /* padding: 0 20% 0 20%; */
-    line-height: 230%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* padding: 0 20% 0 20%; */
+  line-height: 230%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .selected-article-column {
-    max-width: 800px;
+  max-width: 800px;
 }
 
 .selected-article-title {
-    font-size: 3em;
-    margin-bottom: 0;
-    line-height: 110%;
+  font-size: 3em;
+  margin-bottom: 0;
+  line-height: 110%;
 }
 
 .selected-article-byline {
-    font-size: 1.3em;
-    font-weight: 300;
-    font-style: italic;
+  font-size: 1.3em;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .selected-article-content p,
 .selected-article-content,
 .selected-article-author,
 .selected-article-title {
-    font-family: Century;
+  font-family: Century;
 }
 
 .selected-article-content p,
 .selected-article-content h4 {
-    font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 .selected-article-author {
-    font-weight: 600;
-    font-size: 1em;
-    font-family: Poppins;
+  font-weight: 600;
+  font-size: 1em;
+  font-family: Poppins;
 }
 
 .article-disclosure {
-    margin: 0 10% 0 10%;
+  margin: 0 10% 0 10%;
 }
 
 .article-disclosure-text {
-    font-style: italic;
+  font-style: italic;
 }
 
 @media screen and (max-width: 800px) {
-    .selected-article-wrapper {
-        padding: 0 10% 0 10%;
-        line-height: 230%;
-    }
-    .selected-article-content p,
-    .selected-article-content h4 {
-        font-size: 1.1em;
-    }
+  .selected-article-wrapper {
+    padding: 0 10% 0 10%;
+    line-height: 230%;
+  }
+  .selected-article-content p,
+  .selected-article-content h4 {
+    font-size: 1.1em;
+  }
 
-    .selected-article-author {
-        font-weight: 600;
-        font-size: 1em;
-    }
+  .selected-article-author {
+    font-weight: 600;
+    font-size: 1em;
+  }
 }
 
 .sharebtn {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 .share-options {
-    display: none;
-    position: absolute;
-    margin-left: 2rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: -2rem;
+  position: absolute;
+  margin-left: 2rem;
 }
-.sharebtn:hover .share-options {
-    display: flex;
-    flex-direction: row;
-    margin-top: -2.4rem;
+.share-options button {
+  display: flex;
+  /* color: #000000; */
+  padding: 5px;
+  text-decoration: none;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 60px;
+  font-size: 20px;
 }
-.share-options a {
-    display: flex;
-    color: #000000;
-    padding: 5px;
-    text-decoration: none;
-    width: 60px;
-    height: 60px;
-    justify-content: center;
-    align-items: center;
-    margin-top: -1rem;
+.share-options button:hover {
+  color: #ffffff;
+  background-color: var(--secondary);
 }
-.share-options a:hover {
-    color: #ffffff;
-		background-color: var(--secondary);
-}
-.share-btns{
-    background-color: transparent;
-    border: none;
-    scale: 200%;
+.share-btns {
+  background-color: transparent;
+  border: none;
+  scale: 200%;
 }
 
 @keyframes tilt-shaking {
-    0% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(5deg);
-    }
-    50% {
-        transform: rotate(0eg);
-    }
-    75% {
-        transform: rotate(-5deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 button.hover-shake:hover {
-    animation: tilt-shaking 0.25s infinite;
-    cursor: pointer;
+  animation: tilt-shaking 0.25s infinite;
+  cursor: pointer;
 }
