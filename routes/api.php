@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\MailinglistController;
 use App\Models\MailingList;
@@ -50,6 +51,7 @@ Route::apiResource("/articles", ArticleController::class)->only(["index", "show"
 //For logged in users - concerning article requests
 Route::middleware("auth:sanctum")->group(function(){
     Route::post("/article", [ArticleController::class, "store"]);
+    Route::post("/article/image", [ImageController::class, "storeArticleImage"]);
     Route::apiResource("/articles", ArticleController::class)->only(["create","destroy","update"]);
 });
 
