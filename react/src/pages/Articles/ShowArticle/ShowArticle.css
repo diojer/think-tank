@@ -75,6 +75,27 @@
   position: absolute;
   margin-left: 2rem;
 }
+
+@media screen and (max-width: 650px) {
+  .share-options {
+    display: none;
+    flex-direction: row;
+    margin-top: -2rem;
+    /* position: absolute; */
+    position: static;
+    margin-left: 2rem;
+  }
+  .sharebtn:hover .share-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 250px;
+  }
+  .share-options button {
+    margin-bottom: 16px;
+  }
+}
 .share-options button {
   display: flex;
   /* color: #000000; */
@@ -94,6 +115,7 @@
 .share-options button:hover {
   color: #ffffff;
   background-color: var(--secondary);
+  cursor: pointer;
 }
 .share-btns {
   background-color: transparent;
