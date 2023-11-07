@@ -1,0 +1,19 @@
+.create-member-form {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: center;
+}
+
+.create-member-form label {
+  font-weight: bold;
+  font-family: Inter, sans-serif;
+}
+
+.create-member-form input {
+  border: solid black;
+  box-shadow: 0 2px 0 0 var(--primary);
+  padding: 8px;
+  font-size: 20px;
+  margin-bottom: 8px;
+}

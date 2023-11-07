@@ -23,9 +23,9 @@ class ArticleController extends Controller
     /**
      * Display a listing of the author's resource.
      */
-    public function indexAuthor($author)
+    public function indexAuthor($id)
     {
-        return ArticleResource::collection(Article::author($author)->orderBy("id", "desc")->get());
+        return ArticleResource::collection(Article::author($id)->orderBy("id", "desc")->get());
     }
 
     /**

@@ -15,7 +15,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Sponsors from "./pages/Sponsors/Sponsors";
 import PageNotFound from "./pages/Errors/404/PageNotFound";
-import ShowProfile from "./pages/Profile/ShowProfile";
+import ShowProfile from "./pages/Author/ShowAuthor";
 
 //Uploads
 import Upload from "./pages/Upload/Upload";
@@ -24,6 +24,8 @@ import ViewArticles from "./pages/Upload/ViewArticles/ViewArticles";
 import Edit from "./pages/Edit/Edit";
 import EditArticle from "./pages/Edit/EditArticle/EditArticle";
 import ViewUser from "./pages/Upload/ViewUsers/ViewUser";
+import ViewAuthors from "./pages/Upload/ViewAuthors/ViewAuthors";
+import CreateMember from "./pages/Upload/CreateMember/CreateMember";
 
 const router = createHashRouter([
   {
@@ -69,7 +71,7 @@ const router = createHashRouter([
         element: <Register />,
       },
       {
-        path: "/profile",
+        path: "/profiles/:profile",
         element: <ShowProfile />,
       },
     ],
@@ -93,6 +95,14 @@ const router = createHashRouter([
           {
             path: "/portal/upload/users",
             element: <ViewUser />,
+          },
+          {
+            path: "/portal/upload/author",
+            element: <CreateMember />,
+          },
+          {
+            path: "/portal/upload/authors",
+            element: <ViewAuthors />,
           },
         ],
       },

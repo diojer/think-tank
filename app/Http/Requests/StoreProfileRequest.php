@@ -34,15 +34,11 @@ class StoreProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "profileId"=>"required|integer",
-            "name"=>"required|string|max:55",
-            "year"=>"required|string|max:3",
-            "course"=>"required|string|max:55",
-            "role"=>"required|string",
-            "bio"=>"required|string",
-            "profileImage"=>"nullable|image",
-            "linkedIn"=>"required|string",
-            "policyArea"=>"required|string"
+            "year"=>"nullable|string|max:3",
+            "course"=>"nullable|string",
+            "bio"=>"nullable|string",
+            "profilePic"=>"nullable|image",
+            "linkedIn"=>"nullable|string",
         ];
     }
 }

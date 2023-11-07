@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->id();
-            $table->string("year")->nullable();
-            $table->string("course")->nullable();
-            $table->mediumText("bio")->nullable();
-            $table->string("profilePic")->nullable();
-            $table->string("linkedIn")->nullable();
+            $table->integer("profileId");
+            $table->string("name");
+            $table->string("role");
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('authors');
     }
 };

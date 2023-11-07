@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Http\Requests\StoreProfileRequest;
+use App\Http\Requests\DeleteProfileRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Resources\ProfileResource;
 use Illuminate\Support\Facades\Storage;
-
-use Illuminate\Support\Facades\Log;
 
 class ProfileController extends Controller
 {
@@ -20,23 +20,23 @@ class ProfileController extends Controller
     {
         $data = $request->validated();
 
-        $profileImage = $request->file("profileImage");
+        if ($data['profilePic'] != null) {
+            $profileImage = $request->file("profilePic");
 
-        $profileFilename = time()."_".$profileImage->getClientOriginalName();
-        Storage::disk("public")->put("/images/profiles/{$profileFilename}", file_get_contents($data["profileImage"]));
+            $profileFilename = time()."_".$profileImage->getClientOriginalName();
+            Storage::disk("public")->put("/images/profiles/{$profileFilename}", file_get_contents($data["profilePic"]));
+        }
+
         $user = Profile::create([
-            "profileId"=>$data["profileId"],
-            "name"=>$data["name"],
             "year"=>$data["year"],
             "course"=>$data["course"],
-            "role"=>$data["role"],
             "bio"=>$data["bio"],
-            "profileImage"=>$data["profileImage"],
+            "profilePic"=>$data["profilePic"],
             "linkedIn"=>$data["linkedIn"],
-            "policyArea"=>$data["policyArea"]
         ]);
 
-        return response([
+        return response()->json([
+            "data"=>$user,
             "message"=>"Profile Created Successfully!",
             "status"=>true,
         ]);
@@ -47,7 +47,26 @@ class ProfileController extends Controller
      */
     public function show(Profile $profile)
     {
-        Log::info($profile);
         return new ProfileResource($profile);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateProfileRequest $request, Profile $profile)
+    {
+        $data = $request->validated();
+        $profile->update($data);
+        return response(["", 201]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(DeleteProfileRequest $request, Profile $profile)
+    {
+        // For deleting profiles
+        $profile->delete();
+        return response("", 201);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
 
+use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\ProfileController;
 
 use App\Http\Controllers\Api\UserController;
@@ -46,18 +47,21 @@ Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 //Author routes
-Route::apiResource("/profile", ProfileController::class)->only(["show"]);
+Route::middleware("auth:sanctum")->group(function(){
+    Route::apiResource("/authors", AuthorController::class);
+});
 
 // For logged in users - concerning profile requests
 Route::middleware("auth:sanctum")->group(function(){
-    Route::post("/profile", [ProfileController::class, "store"]);
+    Route::post("/profiles", [ProfileController::class, "store"]);
+    Route::delete("/profiles/{profile}", [ProfileController::class, "destroy"]);
 });
 
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
 Route::get("/article", [ArticleController::class, "show"]);
-Route::apiResource("/articles", ArticleController::class)->only(["index", "show"]);
-Route::apiResource("/articles/author", ArticleController::class)->only(["indexAuthor"]);
+// This might break it
+//Route::apiResource("/articles", [ArticleController::class, "indexAuthor"]);
 
 //For logged in users - concerning article requests
 Route::middleware("auth:sanctum")->group(function(){
