@@ -145,3 +145,7 @@ button.hover-shake:hover {
   animation: tilt-shaking 0.25s infinite;
   cursor: pointer;
 }
+
+img {
+	max-width: 100%;
+}
