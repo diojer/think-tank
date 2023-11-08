@@ -146,6 +146,8 @@ button.hover-shake:hover {
   cursor: pointer;
 }
 
-img {
+p img {
+  display: block;
+  margin: 0 auto;
 	max-width: 100%;
 }
