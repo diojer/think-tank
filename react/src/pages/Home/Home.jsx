@@ -61,7 +61,7 @@ function HomeSection() {
       ) : (
         <TitleBox image="images/articles/greenbox.png" height="425px">
           <div className="center">
-            <div class="lds-facebook">
+            <div className="lds-facebook">
               <div></div>
               <div></div>
               <div></div>

@@ -166,9 +166,9 @@ function UploadArticle() {
                       height: 750,
                       menubar: true,
                       plugins:
-                        "anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount",
+                        "anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount image",
                       toolbar:
-                        "undo redo | blocks fontfamily fontsize | forecolor backcolor bold italic underline | link table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+                        "undo redo | blocks fontfamily fontsize | forecolor backcolor bold italic underline | link image table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat ",
                     }}
                     onEditorChange={(content) => {
                       setFieldValue("content", content);
