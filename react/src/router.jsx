@@ -129,10 +129,6 @@ const router = createHashRouter([
       },
     ],
   },
-	{
-		path: "/macro-policy",
-    element: <MacroPolicy />,
-	},
   {
     path: "*",
     element: <PageNotFound />,
