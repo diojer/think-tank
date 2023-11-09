@@ -17,7 +17,6 @@ import Sponsors from "./pages/Sponsors/Sponsors";
 import PageNotFound from "./pages/Errors/404/PageNotFound";
 import MediaAppearances from "./pages/MediaAppearances/MediaAppearances";
 import PressRelease from "./pages/PressRelease/PressRelease";
-import MacroPolicy from "./pages/MacroPolicy/MacroPolicy";
 
 //Uploads
 import Upload from "./pages/Upload/Upload";

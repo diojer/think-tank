@@ -62,21 +62,6 @@ const onUpload = (data) => {
     });
 };
 
-const uploadImageToServer = async (imageBlob, success, failure) => {
-  const formData = new FormData();
-  formData.append("image", imageBlob);
-
-  try {
-    const response = await axiosClient.post("/article/image", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-
-    success(response.data.location);
-  } catch (error) {
-    failure("Image upload failed");
-  }
-};
-
 function UploadArticle() {
   return (
     <div className="upload-article-form-wrapper upload-subwrapper">
