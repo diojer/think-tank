@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Articles.css";
+import React, { useState, useEffect } from "react";
+import "./MacroPolicy.css";
 import { Outlet, useParams } from "react-router-dom";
 import axiosClient from "../../utility/axios-client";
 import { ArticleCard } from "../../components/ArticleCard";
 import { TitleBox } from "../../components/TitleBox";
 
-function Articles() {
+function MacroPolicy() {
     const { article } = useParams();
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ function Articles() {
                         color="#2e2d2b"
                         font="white"
                     >
-                        Articles<span className="hilite">.</span>
+                        Macro Policy<span className="hilite">.</span>
                     </TitleBox>
                     <div className="articles-wrapper">
                         {articles[0] ? (
@@ -72,4 +72,4 @@ function Articles() {
     );
 }
 
-export default Articles;
+export default MacroPolicy;

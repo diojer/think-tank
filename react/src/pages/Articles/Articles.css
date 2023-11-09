@@ -31,6 +31,9 @@
   }
 }
 
+.animate {
+	animation: fadeAndRise 0.5s ease-in-out;
+}
 .article-card-whole {
   animation: fadeAndRise 0.5s ease-in-out;
 }

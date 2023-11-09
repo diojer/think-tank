@@ -1,5 +1,6 @@
 import React from "react";
 import "./AboutUs.css";
+import { Link } from "react-router-dom";
 
 //component imports
 import { TitleBox } from "../../components/TitleBox";
@@ -42,7 +43,7 @@ function Aboutus() {
             </p>
             <div className="aboutus-list-wrapper">
               <ul className="aboutus-text first-row">
-                <li>Macro Policy</li>
+								<Link to="/macro-policy"><li>Macro Policy</li></Link>
                 <li>Energy and Environment</li>
                 <li>Urban Planning and Transport</li>
               </ul>

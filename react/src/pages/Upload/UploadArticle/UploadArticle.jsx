@@ -62,20 +62,19 @@ const onUpload = (data) => {
         });
 };
 
-const uploadImageToServer = (imageBlob, success, failure) => {
-    const formData = new FormData();
-    formData.append("image", imageBlob);
+const uploadImageToServer = async (imageBlob, success, failure) => {
+  const formData = new FormData();
+  formData.append("image", imageBlob);
 
-    axiosClient
-        .post("/article/image", formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-        })
-        .then((response) => {
-            success(response.data.location);
-        })
-        .catch((error) => {
-            failure("Image upload failed");
-        });
+  try {
+    const response = await axiosClient.post("/article/image", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    success(response.data.location);
+  } catch (error) {
+    failure("Image upload failed");
+  }
 };
 
 function UploadArticle() {
@@ -193,9 +192,9 @@ function UploadArticle() {
                                             height: 750,
                                             menubar: true,
                                             plugins:
-                                                "anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount",
+                                                "anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount image",
                                             toolbar:
-                                                "undo redo | blocks fontfamily fontsize | forecolor backcolor bold italic underline | link table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+                                                "undo redo | blocks fontfamily fontsize | forecolor backcolor bold italic underline | link table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat | image",
                                             images_upload_url: `${
                                                 import.meta.env
                                                     .VITE_API_BASE_URL
