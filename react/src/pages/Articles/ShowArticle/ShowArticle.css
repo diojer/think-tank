@@ -14,14 +14,14 @@
   font-size: 3em;
   margin-bottom: 0;
   line-height: 110%;
-	animation: fadeAndRise 0.3s ease-in-out;
+  animation: fadeAndRise 0.3s ease-in-out;
 }
 
 .selected-article-byline {
   font-size: 1.3em;
   font-weight: 300;
   font-style: italic;
-	animation: fadeAndRise 0.3s ease-in-out;
+  animation: fadeAndRise 0.3s ease-in-out;
 }
 
 .selected-article-content p,
@@ -29,20 +29,19 @@
 .selected-article-author,
 .selected-article-title {
   font-family: Century;
-
 }
 
 .selected-article-content p,
 .selected-article-content h4 {
   font-size: 1.4em;
-	animation: fadeAndRise 0.5s ease-in-out;
+  animation: fadeAndRise 0.5s ease-in-out;
 }
 
 .selected-article-author {
   font-weight: 600;
   font-size: 1em;
   font-family: Poppins;
-	animation: fadeAndRise 0.35s ease-in-out;
+  animation: fadeAndRise 0.35s ease-in-out;
 }
 
 .article-disclosure {
@@ -72,7 +71,7 @@
 .sharebtn {
   display: inline-block;
   position: relative;
-	animation: fadeAndRise 0.4s ease-in-out;
+  animation: fadeAndRise 0.4s ease-in-out;
 }
 .share-options {
   display: flex;
@@ -155,5 +154,5 @@ button.hover-shake:hover {
 p img {
   display: block;
   margin: 0 auto;
-	max-width: 100%;
+  max-width: 100%;
 }

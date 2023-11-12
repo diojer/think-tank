@@ -37,6 +37,9 @@
 
 @media screen and (max-width: 800px) {
   .text-wrapper {
-    margin-right: 60px;
+    margin: 0;
+  }
+  .carousel-background-image {
+    padding: 50px;
   }
 }

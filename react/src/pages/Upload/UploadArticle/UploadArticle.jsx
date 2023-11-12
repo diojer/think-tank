@@ -62,6 +62,26 @@ const onUpload = (data) => {
     });
 };
 
+const UploadImage = (blobInfo, resolve, reject) => {
+  const blob = blobInfo.blob();
+  const image = new FormData();
+  image.append("image", blob);
+  axiosClient
+    .post("/article/image", image, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then((response) => {
+      resolve(
+        `${import.meta.env.VITE_API_PUBLIC_URL}${response.data.location}`
+      );
+    })
+    .catch((error) => {
+      reject("failed!");
+    });
+};
+
 function UploadArticle() {
   return (
     <div className="upload-article-form-wrapper upload-subwrapper">
@@ -166,9 +186,17 @@ function UploadArticle() {
                       height: 750,
                       menubar: true,
                       plugins:
-                        "anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount image",
+                        "anchor autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount image imagetools",
                       toolbar:
                         "undo redo | blocks fontfamily fontsize | forecolor backcolor bold italic underline | link image table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat ",
+                      imagetools_toolbar:
+                        "rotateleft rotateright | flipv fliph | editimage imageoptions",
+                      images_upload_handler: (blobInfo) =>
+                        new Promise((resolve, reject) => {
+                          UploadImage(blobInfo, resolve, reject);
+                        }),
+                      images_upload_base_path: import.meta.env
+                        .VITE_API_PUBLIC_URL,
                     }}
                     onEditorChange={(content) => {
                       setFieldValue("content", content);

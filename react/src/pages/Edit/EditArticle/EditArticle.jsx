@@ -81,6 +81,25 @@ function EditArticle() {
         console.log(err);
       });
   };
+  const UploadImage = (blobInfo, resolve, reject) => {
+    const blob = blobInfo.blob();
+    const image = new FormData();
+    image.append("image", blob);
+    axiosClient
+      .post("/article/image", image, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        resolve(
+          `${import.meta.env.VITE_API_PUBLIC_URL}${response.data.location}`
+        );
+      })
+      .catch((error) => {
+        reject("failed!");
+      });
+  };
 
   return (
     <div className="upload-article-form-wrapper upload-subwrapper">
@@ -203,6 +222,11 @@ function EditArticle() {
                             "anchor image autolink charmap codesample emoticons link lists searchreplace table visualblocks wordcount",
                           toolbar:
                             "undo redo | blocks fontfamily fontsize | forecolor backcolor bold italic underline | link image table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+                          images_upload_handler: (blobInfo) =>
+                            new Promise((resolve, reject) => {
+                              UploadImage(blobInfo, resolve, reject);
+                            }),
+                          automatic_uploads: true,
                         }}
                         onEditorChange={(content) => {
                           setFieldValue("content", content);
