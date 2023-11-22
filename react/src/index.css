@@ -41,6 +41,10 @@ span.primary {
   color: var(--primary);
 }
 
+h6 {
+  line-height: 100% !important;
+}
+
 .linebreak__style__1 {
   margin: 0 10px 0 10px;
 }

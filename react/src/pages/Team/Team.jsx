@@ -6,15 +6,15 @@ import { Profile } from "../../components/Profile";
 import { TitleBox } from "../../components/TitleBox";
 
 const team = {
-  // aboutme: [
+  //   aboutme: [
   //     "I'm Nicolas, a second year PPE student from Brazil. I'm particularly interested in the link between education and social policy. I also have a small collection of model planes.",
   //     "",
-  //     "",
-  //     "",
+  //     "I'm Diogo Ferreira, a 2nd Year PPE student. I was born in Portugal, but I grew up in south east London. I have great interest in pragmatic policy creation, and would describe my political leanings as centre-left. In my spare time I like programming simple games and websites (like this one!).",
+  //     "Hi, I’m Natasha a 2nd year PPE student. I am honoured to be treasurer this year. I have a particular interest in environmental policy- you can read my article on ULEZ for more!",
   //     "I am an Economics student at the University of Leeds and Head of Research at the Leeds Think Tank society where I deploy the skills I learned during my IEA internship. In my spare time, I also run an economics education company, The Backseat Economist, and write on monetary & fiscal policy, international trade, labour market and environmental issues for different publications. ",
   //     "I'm Archie, a second year Economics and Politics student. With a left-wing political background, my primary interest is wealth inequality. ",
-  //     "",
-  // ],
+  //     "My name is Joseph Clark, I’m currently in my second year of a BSc in Economics, and enjoying it greatly. I have an interest in novel policy proposals and how markets can be influenced indirectly. I also have two (very cute) dogs back home 👍.",
+  //   ],
   aboutme: ["", "", "", "", "", "", ""], //we'll add bios back when we all have one
 };
 
