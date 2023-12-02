@@ -25,6 +25,7 @@ class SignupRequest extends FormRequest
             "name"=>"required|string|max:55",
             "email"=>"required|email|unique:users,email",
             "password"=>"required",
+            "profileId"=>"nullable|integer",
             "confirmPassword"=>"required"
         ];
     }

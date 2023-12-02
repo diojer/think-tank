@@ -11,8 +11,9 @@
 
 .logout-wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space;
+  width: 250px;
 }
 
 .login-form-box {
@@ -24,12 +25,19 @@
   display: flex;
   flex-direction: column;
   background: white;
+  align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .login-title {
   text-align: center;
   font-size: 2em;
+  font-weight: 600;
+}
+
+.linking-title {
+  text-align: center;
+  font-size: 1em;
   font-weight: 600;
 }
 

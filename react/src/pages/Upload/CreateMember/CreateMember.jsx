@@ -44,6 +44,7 @@ function CreateMember() {
       });
   };
 
+  // TODO: We should only create authors not the above stuff
   const createAuthor = (data, id) => {
     axiosClient
       .post("/authors", {

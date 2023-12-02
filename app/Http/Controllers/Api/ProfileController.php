@@ -27,7 +27,7 @@ class ProfileController extends Controller
             Storage::disk("public")->put("/images/profiles/{$profileFilename}", file_get_contents($data["profilePic"]));
         }
 
-        $user = Profile::create([
+        $profile = Profile::create([
             "year"=>$data["year"],
             "course"=>$data["course"],
             "bio"=>$data["bio"],
@@ -36,7 +36,7 @@ class ProfileController extends Controller
         ]);
 
         return response()->json([
-            "data"=>$user,
+            "data"=>$profile,
             "message"=>"Profile Created Successfully!",
             "status"=>true,
         ]);

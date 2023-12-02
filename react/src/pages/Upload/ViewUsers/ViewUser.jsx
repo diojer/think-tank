@@ -69,6 +69,51 @@ function ViewUser() {
     }
   }
 
+  function unlink(user) {
+    axiosClient
+      .put(`/users/${user.id}`, { profileId: -1 })
+      .then((response) => {
+        alert(`Account unlinked`);
+        getUsers();
+      });
+
+    axiosClient.delete(`/profiles/${user.profileId}`);
+  }
+
+  function link(user) {
+    let profileData = new FormData();
+  
+    let payload = JSON.stringify({
+      year: null,
+      course: null,
+      bio: null,
+      profilePic: null,
+      linkedIn: null,
+    });
+  
+    profileData.append("payload", payload);
+  
+    axiosClient
+      .post("/profiles", profileData, {
+        headers: {"Content-Type": "multipart/form-data"},
+      })
+      .then(function (response)  {
+        console.log(response);
+        axiosClient
+          .put(`/users/${user.id}`, { profileId: response.data.data.id })
+          .then((response) => {
+            alert(`Account linked`);
+            getUsers();
+          });
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          alert(response.data.errors);
+        }
+      })
+  }
+
   return (
     <>
       <div className="user-view-wrapper upload-subwrapper">
@@ -119,6 +164,30 @@ function ViewUser() {
                         >
                           Make Admin
                         </Button>
+                      )}
+
+                      {(u.profileId && u.profileId >= 0) ? (
+                        <>
+                          <Button
+                            onClick={(e) => {
+                              unlink(u);
+                            }}
+                            buttonStyle="btn--red"
+                          >
+                            Unlink Account
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                            onClick={(e) => {
+                              link(u);
+                            }}
+                            buttonStyle="btn--red"
+                          >
+                            Link Account
+                          </Button>
+                        </>
                       )}
 
                       <Button

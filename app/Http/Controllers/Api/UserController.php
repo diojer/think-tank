@@ -50,13 +50,25 @@ class UserController extends Controller
     {
         //For making users admins
         $data = $request->validated();
-        $role = $request["role"];
-        if ($user->hasRole($role)) {
-            $user->removeRole($role);
-            return response("Role removed", 202);
-        } else {
-            $user->assignRole($role);
-            return response("Role assigned", 202);
+
+        if ($request["role" != null]) {
+            $role = $request["role"];
+            if ($user->hasRole($role)) {
+                $user->removeRole($role);
+                return response("Role removed", 202);
+            } else {
+                $user->assignRole($role);
+                return response("Role assigned", 202);
+            }
+        }
+
+        if ($request["profileId"] != null) {
+            if ($request["profileId"] == -1) {
+                $user->update(['profileId'=>NULL]);
+            }
+            else {
+                $user->update(['profileId'=>$request["profileId"]]);
+            }
         }
     }
 
