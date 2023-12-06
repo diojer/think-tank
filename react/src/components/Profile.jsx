@@ -22,7 +22,7 @@ export const Profile = ({
         ></LazyBackgroundImage>
         <div className="profile-text">
           <p className="profile-name">{name}</p>
-          <p className="profile-position">{position}</p>
+          {Array.isArray(position) ? position.map((value, key)=>{ return <p key={key} className={`profile-position ${key}`}>{value}</p>} ) : <p className="profile-position">{position}</p>}
           <hr className="profile-text-break" />
           <p className="profile-degree">{degree}</p>
           <p className="profile-year_of_study">{year_of_study}</p>
