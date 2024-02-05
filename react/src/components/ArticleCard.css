@@ -58,6 +58,7 @@ a.article-card-title {
   font-stretch: ultra-expanded;
   font-family: Inter, sans-serif;
 }
+
 /* .article-author:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -83,9 +84,11 @@ a.article-card-title {
   .article-card-whole {
     width: 100%;
   }
+
   .article-thumbnail {
     height: 400px;
   }
+
   .article-cards-wrapper {
     flex-direction: column;
     align-items: center;

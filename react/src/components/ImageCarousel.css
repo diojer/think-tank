@@ -9,7 +9,8 @@
   font-size: 2em;
   font-weight: bold;
   margin: 0;
-  padding: 0;
+  word-wrap: break-word;
+  width: auto;
 }
 
 .carousel-article-author {
@@ -23,11 +24,16 @@
 .button-wrapper {
   margin-top: 10px;
 }
+
 .text-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   background-color: rgba(0, 0, 0, 0.447);
   padding: 20px;
-  margin-right: 50%;
-  width: auto;
+  margin-left: 18%;
+  margin-right: 18%;
+  max-width: 80%;
 }
 
 .carousel-background-image {
@@ -38,7 +44,9 @@
 @media screen and (max-width: 800px) {
   .text-wrapper {
     margin: 0;
+    max-width: 1000px;
   }
+
   .carousel-background-image {
     padding: 50px;
   }
