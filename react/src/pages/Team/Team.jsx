@@ -13,7 +13,7 @@ const team = {
       "Hi, I’m Natasha a 2nd year PPE student. I am honoured to be treasurer this year. I have a particular interest in environmental policy- you can read my article on ULEZ for more!",
       "I am an Economics student at the University of Leeds and Head of Research at the Leeds Think Tank society where I deploy the skills I learned during my IEA internship. In my spare time, I also run an economics education company, The Backseat Economist, and write on monetary & fiscal policy, international trade, labour market and environmental issues for different publications. ",
       "I'm Archie, a second year Economics and Politics student. With a left-wing political background, my primary interest is wealth inequality. ",
-      "I'm Rhoda, and I am a second year English literature student from South-east London. My favorite genres are Renaissance poetry and science fiction. I have a passion for language and love helping writers to find the most effective and unique ways to get their message across.",
+      "I'm Rhoda, and I am a second year English literature student from South-east London. I have a passion for language and love helping writers to find the most effective and unique ways to get their message across.",
       "My name is Joseph Clark, I’m currently in my second year of a BSc in Economics, and enjoying it greatly. I have an interest in novel policy proposals and how markets can be influenced indirectly. I also have two (very cute) dogs back home 👍.",
     ],
 };
