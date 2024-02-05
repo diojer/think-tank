@@ -55,16 +55,7 @@ function Aboutus() {
             </div>
             <div className="aboutus-background-text">
               <p className="aboutus-text">
-                Established in April 2023, the Leeds Think Tank (LTT) endeavours
-                to facilitate the engagement of young individuals in ongoing
-                policy dialogues, thereby amplifying the voices of the
-                underrepresented Northern communities. Through initiatives
-                encompassing funding for informative speaker engagements,
-                publication of student-authored articles in influential
-                newspapers, and collaborative delivery of skill-enhancing
-                workshops in conjunction with the university, LTT seeks to
-                empower its student members and contribute to the betterment of
-                society.
+              Established in April 2023, Leeds Think Tank (LTT) is working to engage the student body in policy dialogue through high-quality research. Alongside our regular reports and smaller-scale articles, we will host speaker and panellist events within the university. Finally, with connections to prominent newspapers, we will work to get our most impressive members’ articles published nationwide. LTT seeks to empower its student members and contribute to the betterment of society.
               </p>
             </div>
           </div>
