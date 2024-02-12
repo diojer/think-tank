@@ -102,9 +102,9 @@ function HomeSection() {
               paths={[
                 "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/events",
                 "https://engage.luu.org.uk/groups/26GTR/leeds-think-tank-society/memberships",
-                "/aboutus",
+                "mailto:thinktank@luu.group",
               ]}
-              newTabs={[true, true, false]}
+              newTabs={[true, true, true]}
             />
           </div>
         </div>
