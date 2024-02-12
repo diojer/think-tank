@@ -22,9 +22,8 @@ export const ImageCarousel = ({ articles, options }) => {
                 alt=""
               /> */}
               <LazyBackgroundImage
-                img={`${import.meta.env.VITE_API_PUBLIC_URL}${
-                  value.bannerImage
-                }`}
+                img={`${import.meta.env.VITE_API_PUBLIC_URL}${value.bannerImage
+                  }`}
                 style={{
                   height: "450px",
                   backgroundRepeat: "no-repeat",
@@ -33,17 +32,19 @@ export const ImageCarousel = ({ articles, options }) => {
                 }}
                 className="carousel-background-image"
               >
-                <div className="text-wrapper">
-                  <p className="carousel-article-title">{value.title}</p>
-                  <p className="carousel-article-author">{`By ${value.author}`}</p>
-                  <div className="button-wrapper">
-                    <Button
-                      path={`articles/${value.id}`}
-                      buttonSize="btn--medium"
-                      buttonStyle="btn--primary"
-                    >
-                      Read More
-                    </Button>
+                <div className="carousel-aligner">
+                  <div className="text-wrapper">
+                    <p className="carousel-article-title">{value.title}</p>
+                    <p className="carousel-article-author">{`By ${value.author}`}</p>
+                    <div className="button-wrapper">
+                      <Button
+                        path={`articles/${value.id}`}
+                        buttonSize="btn--medium"
+                        buttonStyle="btn--primary"
+                      >
+                        Read More
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </LazyBackgroundImage>

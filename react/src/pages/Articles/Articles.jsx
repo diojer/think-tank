@@ -40,31 +40,34 @@ function Articles() {
                     >
                         Articles<span className="hilite">.</span>
                     </TitleBox>
-                    <div className="articles-wrapper">
-                        {articles[0] ? (
-                            articles.map((value, key) => (
-                                <ArticleCard
-                                    key={key}
-                                    subject={value.subject}
-                                    thumbnail={`${
-                                        import.meta.env.VITE_API_PUBLIC_URL
-                                    }${value.cardImage}`}
-                                    title={value.title}
-                                    type="Article"
-                                    author={value.author}
-                                    path={`${value.id}`}
-                                />
-                            ))
-                        ) : (
-                            <div className="articles-WIP-message">
-                                <div className="lds-ellipsis">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
+                    <div className="articles-aligner">
+                        <div className="articles-column">
+                            <div className="articles-wrapper">
+                                {articles[0] ? (
+                                    articles.map((value, key) => (
+                                        <ArticleCard
+                                            key={key}
+                                            subject={value.subject}
+                                            thumbnail={`${import.meta.env.VITE_API_PUBLIC_URL
+                                                }${value.cardImage}`}
+                                            title={value.title}
+                                            type="Article"
+                                            author={value.author}
+                                            path={`${value.id}`}
+                                        />
+                                    ))
+                                ) : (
+                                    <div className="articles-WIP-message">
+                                        <div className="lds-ellipsis">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                        )}
+                        </div>
                     </div>
                 </>
             )}

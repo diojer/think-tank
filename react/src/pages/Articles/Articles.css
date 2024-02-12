@@ -6,6 +6,19 @@
   flex-wrap: wrap;
 }
 
+.articles-aligner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.articles-column {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .articles-WIP-message {
   text-align: left;
   color: grey;
@@ -15,6 +28,7 @@
   font-size: 2em;
   margin-bottom: 0;
 }
+
 .articles-WIP-message-text {
   font-size: 1.2em;
   margin-top: 0;
@@ -25,6 +39,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -32,8 +47,9 @@
 }
 
 .animate {
-	animation: fadeAndRise 0.5s ease-in-out;
+  animation: fadeAndRise 0.5s ease-in-out;
 }
+
 .article-card-whole {
   animation: fadeAndRise 0.5s ease-in-out;
 }
@@ -47,5 +63,5 @@
 }
 
 .article-subject {
-	animation: fadeAndRise 0.8s ease-in-out;
+  animation: fadeAndRise 0.8s ease-in-out;
 }
