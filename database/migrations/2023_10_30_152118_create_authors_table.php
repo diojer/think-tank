@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
-            $table->integer("profileId");
+            $table->integer("profileId")->nullable();
             $table->string("name");
             $table->string("role");
             $table->timestamps();

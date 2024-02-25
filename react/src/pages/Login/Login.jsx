@@ -67,10 +67,13 @@ function Login() {
       });
   };
 
-  // TODO: Fill out requesting link
-  const requestLink = () => {
+  const requestLink = (id) => {
     axiosClient
-    .post()
+      .put(`/users/${id}`, { profileId: -1 })
+      .then((response) => {
+        alert(`Account link request sent`);
+        window.location.reload();
+      });
   };
 
   return (
@@ -112,7 +115,7 @@ function Login() {
                 <>
                   <Button
                   onClick={(e) => {
-                    requestLink();
+                    requestLink(user.id);
                   }}
                   buttonStyle="btn--fourth"
                   >

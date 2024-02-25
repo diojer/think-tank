@@ -22,7 +22,7 @@ class StoreAuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "profileId"=>"required|integer",
+            "profileId"=>"nullable|integer",
             "name"=>"required|string",
             "role"=>"required|string",
         ];

@@ -60,8 +60,6 @@ Route::middleware("auth:sanctum")->group(function(){
 //Article Routes
 Route::get("/articles", [ArticleController::class, "index"]);
 Route::get("/article", [ArticleController::class, "show"]);
-// This might break it
-//Route::apiResource("/articles", [ArticleController::class, "indexAuthor"]);
 
 //For logged in users - concerning article requests
 Route::middleware("auth:sanctum")->group(function(){

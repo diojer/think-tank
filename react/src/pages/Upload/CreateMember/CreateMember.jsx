@@ -16,39 +16,10 @@ const initialValues = {
 };
 
 function CreateMember() {
-  const onCreate = (data) => {
-    let profileData = new FormData();
-  
-    let payload = JSON.stringify({
-      year: null,
-      course: null,
-      bio: null,
-      profilePic: null,
-      linkedIn: null,
-    });
-  
-    profileData.append("payload", payload);
-  
-    axiosClient
-      .post("/profiles", profileData, {
-        headers: {"Content-Type": "multipart/form-data"},
-      })
-      .then(function (response)  {
-        createAuthor(data, response.data.data.id);
-      })
-      .catch((err) => {
-        const response = err.response;
-          if (response && response.status === 422) {
-            alert(response.data.errors);
-          }
-      });
-  };
-
-  // TODO: We should only create authors not the above stuff
-  const createAuthor = (data, id) => {
+  const createAuthor = (data) => {
     axiosClient
       .post("/authors", {
-        profileId: id,
+        profileId: null,
         name: data.name,
         role: data.role,
       })
@@ -69,7 +40,7 @@ function CreateMember() {
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
-        onSubmit={onCreate}
+        onSubmit={createAuthor}
       >
         <Form className="create-member-form">
           <label>Name:</label>

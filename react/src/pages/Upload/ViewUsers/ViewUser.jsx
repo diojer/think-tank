@@ -71,18 +71,43 @@ function ViewUser() {
 
   function unlink(user) {
     axiosClient
-      .put(`/users/${user.id}`, { profileId: -1 })
+      .put(`/users/${user.id}`, { profileId: -2 })
       .then((response) => {
         alert(`Account unlinked`);
         getUsers();
       });
 
     axiosClient.delete(`/profiles/${user.profileId}`);
+
+    // Update author to be null
+    axiosClient.put()
   }
 
-  function link(user) {
+  async function link(user) {
+    // Get matching author ID
+    let authorId = 0;
+    let authorResponse;
+
+    await axiosClient
+      .get(`/authors`)
+      .then((response) => {
+        authorResponse = response.data.data;
+      });
+
+    let found = false;
+    authorResponse.map((author) => {
+      if (author["name"] == user.name) {
+        found = true;
+        authorId = author["id"];
+      }
+    });
+
+    if (found == false) {
+      alert(`No author with name "${user.name}" found`);
+      return;
+    }
+
     let profileData = new FormData();
-  
     let payload = JSON.stringify({
       year: null,
       course: null,
@@ -90,7 +115,6 @@ function ViewUser() {
       profilePic: null,
       linkedIn: null,
     });
-  
     profileData.append("payload", payload);
   
     axiosClient
@@ -98,13 +122,17 @@ function ViewUser() {
         headers: {"Content-Type": "multipart/form-data"},
       })
       .then(function (response)  {
-        console.log(response);
         axiosClient
           .put(`/users/${user.id}`, { profileId: response.data.data.id })
           .then((response) => {
-            alert(`Account linked`);
+            alert(`User account linked`);
             getUsers();
           });
+        axiosClient
+          .put(`/authors/${authorId}`, { profileId: response.data.data.id })
+          .then((response) => {
+            alert(`Author linked`);
+          })
       })
       .catch((err) => {
         const response = err.response;
@@ -166,7 +194,7 @@ function ViewUser() {
                         </Button>
                       )}
 
-                      {(u.profileId && u.profileId >= 0) ? (
+                      {u.profileId ? ((u.profileId >= 0) ? (
                         <>
                           <Button
                             onClick={(e) => {
@@ -188,7 +216,7 @@ function ViewUser() {
                             Link Account
                           </Button>
                         </>
-                      )}
+                      )) : (<></>)}
 
                       <Button
                         buttonStyle="btn--red"

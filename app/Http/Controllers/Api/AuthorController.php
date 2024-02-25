@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Author;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\DeleteAuthorRequest;
+use App\Http\Requests\UpdateAuthorRequest;
 use App\Http\Resources\AuthorResource;
 
 class AuthorController extends Controller
@@ -41,6 +42,24 @@ class AuthorController extends Controller
             "message"=>"Author Created Successfully!",
             "status"=>true,
         ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateAuthorRequest $request, Author $author)
+    {
+        //For making users admins
+        $data = $request->validated();
+
+        if ($request["profileId"] != null) {
+            if ($request["profileId"] == -1) {
+                $author->update(['profileId'=>NULL]);
+            }
+            else {
+                $author->update(['profileId'=>$request["profileId"]]);
+            }
+        }
     }
 
     /**
