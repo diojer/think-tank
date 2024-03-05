@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sponsors', function (Blueprint $table) {
-            $table->id();
-            $table->string("forename");
-            $table->string("surname");
-            $table->string("email");
+            $table->uuid('id')->primary();
+            $table->string("name");
+            $table->string("logo")->nullable();
+            $table->text("bio");
             $table->timestamps();
         });
     }

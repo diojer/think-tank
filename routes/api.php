@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\SponsorController;
 
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\ProfileController;
@@ -86,8 +87,18 @@ Route::middleware("auth:sanctum")->group(function(){
 Route::get("/reports", [ReportController::class, "index"]);
 Route::get("/report", [ReportController::class, "show"]);
 
-//For logged in users -concerning reports
+//For logged in users - concerning reports
 Route::middleware("auth:sanctum")->group(function(){
     Route::post("/report", [ReportController::class, "store"]);
     Route::apiResource("/reports", ReportController::class)->only(["create","destroy","update"]);
+});
+
+//Sponsors routes
+Route::get("/sponsors", [SponsorController::class, "index"]);
+Route::get("/sponsor", [SponsorController::class, "show"]);
+
+//For logged in users - concerning sponsors
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/sponor", [SponsorController::class, "store"]);
+    Route::apiResource("/sponsors", SponsorController::class)->only(["create","destroy","update"]);
 });
