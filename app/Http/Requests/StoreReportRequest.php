@@ -35,10 +35,10 @@ class StoreReportRequest extends FormRequest
     {
         return [
             "title"=>"required|string|max:255",
-            "author"=>"required|string|max:55",
+            "author"=>"required|string|max:255",
             "authorId"=>"required|integer",
-            "summary"=>"required|string|max:55",
-            "tags"=>"required|mimes:pdf",
+            "summary"=>"required|string|max:255",
+            "fileLocation"=>"required|mimes:pdf",
         ];
     }
 }

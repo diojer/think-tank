@@ -27,7 +27,7 @@ class ReportController extends Controller
     {
         $data = $request->validated();
 
-        $file = $request->file("file");
+        $file = $request->file("fileLocation");
 
         $filename = time()."_".$file->getClientOriginalName();
         Storage::disk("public")->put("/reports/{$filename}", file_get_contents($data["file"]));
