@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\ReportController;
 
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\ProfileController;
@@ -79,4 +80,14 @@ Route::post("mailinglist", function(StoreEmailRequest $request){
 //For logged in users - concerning mailing list requests
 Route::middleware("auth:sanctum")->group(function(){
     Route::apiResource("/mailinglist", MailinglistController::class);
+});
+
+//Reports routes
+Route::get("/reports", [ReportController::class, "index"]);
+Route::get("/report", [ReportController::class, "show"]);
+
+//For logged in users -concerning reports
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/report", [ReportController::class, "store"]);
+    Route::apiResource("/reports", ReportController::class)->only(["create","destroy","update"]);
 });
