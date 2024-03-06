@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
-use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
-use App\Http\Requests\DeleteArticleRequest;
-use App\Http\Resources\ArticleResource;
+use App\Models\Post;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+use App\Http\Requests\DeletePostRequest;
+use App\Http\Resources\PostResource;
 use Illuminate\Support\Facades\Storage;
 
-class ArticleController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return ArticleResource::collection(Article::query()->orderBy("id", "desc")->get());
+        return PostResource::collection(Post::query()->orderBy("id", "desc")->get());
     }
 
     /**
@@ -25,7 +25,31 @@ class ArticleController extends Controller
      */
     public function indexAuthor($id)
     {
-        return ArticleResource::collection(Article::author($id)->orderBy("id", "desc")->get());
+        return PostResource::collection(Post::author($id)->orderBy("id", "desc")->get());
+    }
+
+    /**
+     * Display a listing of the articles resource.
+     */
+    public function indexArticle() 
+    {
+        return PostResource::collection(Post::type("articles")->orderBy("id", "desc")->get());
+    }
+
+    /**
+     * Display a listing of the press release resource.
+     */
+    public function indexPress()
+    {
+        return PostResource::collection(Post::type("press")->orderBy("id", "desc")->get());
+    }
+
+    /**
+     * Display a listing of the press release resource.
+     */
+    public function indexMedia()
+    {
+        return PostResource::collection(Post::type("media")->orderBy("id", "desc")->get());
     }
 
     /**
@@ -39,7 +63,7 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreArticleRequest $request)
+    public function store(StorePostRequest $request)
     {
         $data = $request->validated();
 
@@ -51,7 +75,8 @@ class ArticleController extends Controller
 
         $bannerFilename = time()."_".$bannerImage->getClientOriginalName();
         Storage::disk("public")->put("/images/articles/{$bannerFilename}", file_get_contents($data["bannerImage"]));
-        $user = Article::create([
+        $user = Post::create([
+            "type"=>$data["type"],
             "title"=>$data["title"],
             "author"=>$data["author"],
             "authorId"=>$data["authorId"],
@@ -72,15 +97,15 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show(Post $post)
     {
-        return new ArticleResource($article);
+        return new PostResource($post);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Article $article)
+    public function edit(Post $post)
     {
         //
     }
@@ -88,19 +113,19 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateArticleRequest $request, Article $article)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         $data = $request->validated();
-        $article->update($data);
+        $post->update($data);
         return response(["", 201]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DeleteArticleRequest $request, Article $article)
+    public function destroy(DeletePostRequest $request, Post $post)
     {
-        $article->delete();
+        $post->delete();
         return response("", 201);
     }
 }

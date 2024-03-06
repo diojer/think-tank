@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\SponsorController;
 
@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\MailinglistController;
 
 use App\Models\MailingList;
 use App\Http\Requests\StoreEmailRequest;
-
+use App\Models\Post;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -60,13 +60,21 @@ Route::middleware("auth:sanctum")->group(function(){
 });
 
 //Article Routes
-Route::get("/articles", [ArticleController::class, "index"]);
-Route::get("/article", [ArticleController::class, "show"]);
+Route::get("/articles", 'PostController@indexArticle');
+Route::get("/article", [PostController::class, "show"]);
 
-//For logged in users - concerning article requests
+//Media and Press Routes
+Route::get("/media_appearances", 'PostController@indexMedia');
+Route::get("/press_releases", 'PostController@indexPress');
+
+//Post Routes
+Route::get("/posts", [PostController::class, "index"]);
+Route::get("/post", [PostController::class, "show"]);
+
+//For logged in users - concerning post requests
 Route::middleware("auth:sanctum")->group(function(){
-    Route::post("/article", [ArticleController::class, "store"]);
-    Route::apiResource("/articles", ArticleController::class)->only(["create","destroy","update"]);
+    Route::post("/post", [PostController::class, "store"]);
+    Route::apiResource("/posts", PostController::class)->only(["create","destroy","update"]);
 });
 
 //Mailing list routes

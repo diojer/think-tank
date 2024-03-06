@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Article extends Model
+class Post extends Model
 {
     use HasFactory;
     /**
@@ -23,6 +23,7 @@ class Article extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'type',
         'title',
         'author',
         'authorId',
@@ -40,5 +41,13 @@ class Article extends Model
     public function scopeAuthor(Builder $query, int $id): void
     {
         $query->where('authorId', '=', $id);
+    }
+
+    /**
+     * Scope a query to only include a single type.
+     */
+    public function scopeType(Builder $query, string $type): void
+    {
+        $query->where('type', '=', $type);
     }
 }
