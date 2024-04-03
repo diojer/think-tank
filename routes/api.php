@@ -60,12 +60,12 @@ Route::middleware("auth:sanctum")->group(function(){
 });
 
 //Article Routes
-Route::get("/articles", 'PostController@indexArticle');
-Route::get("/article", [PostController::class, "show"]);
+Route::get("/articles", [PostController::class, "indexArticle"]);
+Route::redirect("/article", "/post");
 
 //Media and Press Routes
-Route::get("/media_appearances", 'PostController@indexMedia');
-Route::get("/press_releases", 'PostController@indexPress');
+Route::get("/media_appearances", [ProfileController::class, "indexMedia"]);
+Route::get("/press_releases", [ProfileController::class, "indexPress"]);
 
 //Post Routes
 Route::get("/posts", [PostController::class, "index"]);
