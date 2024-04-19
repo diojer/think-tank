@@ -22,6 +22,14 @@ class ArticleController extends Controller
     }
 
     /**
+     * Display a listing of the author's resource.
+     */
+    public function indexAuthor($author)
+    {
+        return ArticleResource::collection(Article::author($author)->orderBy("id", "desc")->get());
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -47,6 +55,7 @@ class ArticleController extends Controller
         $user = Article::create([
             "title"=>$data["title"],
             "author"=>$data["author"],
+            "authorId"=>$data["authorId"],
             "subject"=>$data["subject"],
             "tags"=>$data["tags"],
             "byline"=>$data["byline"],
