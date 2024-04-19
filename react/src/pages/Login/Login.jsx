@@ -27,8 +27,8 @@ const validationSchema = Yup.object().shape({
 function Login() {
   const [errors, setErrors] = useState({});
   const [loginStatus, setLoginStatus] = useState(false);
+  const { user, token, setUser, setToken, setAdmin } = UseStateContext();
 
-  const { token, setUser, setToken, setAdmin } = UseStateContext();
   const login = (data, helpers) => {
     setErrors({});
     axiosClient
@@ -67,6 +67,15 @@ function Login() {
       });
   };
 
+  const requestLink = (id) => {
+    axiosClient
+      .put(`/users/${id}`, { profileId: -1 })
+      .then((response) => {
+        alert(`Account link request sent`);
+        window.location.reload();
+      });
+  };
+
   return (
     <div
       className="background-image"
@@ -81,6 +90,39 @@ function Login() {
           <>
             <p className="login-title">You are logged in!</p>
             <div className="logout-wrapper">
+              {user.profileId ? (
+                <>
+                  {(user.profileId >= 0) ? (
+                    <>
+                      <Button
+                        onClick={(e) => {
+                          // TODO: Implement editing of profile
+                          // This is just a placeholder
+                          logout();
+                        }}
+                        buttonStyle="btn--fourth"
+                      >
+                        Unlink Account
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <p className="linking-title">Waiting for admin to link account</p>
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  <Button
+                  onClick={(e) => {
+                    requestLink(user.id);
+                  }}
+                  buttonStyle="btn--fourth"
+                  >
+                    Link Account
+                  </Button>
+                </>
+              )}
               <Button
                 onClick={(e) => {
                   logout();

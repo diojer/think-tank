@@ -32,9 +32,13 @@
 .login-title {
   text-align: center;
   font-size: 2em;
-  /* font-weight: 600; */
-  margin: 0px;
-  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.linking-title {
+  text-align: center;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 .login-form-wrapper {

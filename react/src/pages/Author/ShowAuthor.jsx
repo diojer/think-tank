@@ -1,22 +1,24 @@
-import "./ShowProfile.css";
+import "./ShowAuthor.css";
 import { ArticleCard } from "../../components/ArticleCard";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axiosClient from "../../utility/axios-client";
 
-function ShowProfile() {
-  const { profile } = useParams();
+function ShowAuthor() {
+  const { id } = useParams();
   const [selectedProfile, setSelectedProfile] = useState(null);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getProfile(profile);
-    getArticles(selectedProfile.profileId);
+    getInformation(id);
   }, []);
 
-  const getProfile = (key) => {
-    axiosClient.get(`/profile/${key}`).then(({ data }) => {
+  const getInformation = (key) => {
+    axiosClient.get(`/profiles/${key}`).then(({ data }) => {
       setSelectedProfile(data.data);
+      getArticles(data.data.profileId);
     });
   };
 
@@ -62,7 +64,7 @@ function ShowProfile() {
               <p className="show-profile-aboutme">{selectedProfile.bio}</p>
             </div>
             <div className="show-profile-articles">
-              {articles[1] ? ( //starts rendering articles when the API responds
+              {articles[0] ? ( //starts rendering articles when the API responds
                 articles.map((value, key) => {
                   return (
                     <ArticleCard
@@ -93,4 +95,4 @@ function ShowProfile() {
   );
 }
 
-export default ShowProfile;
+export default ShowAuthor;

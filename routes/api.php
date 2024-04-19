@@ -5,8 +5,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\SponsorController;
 
+use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\ProfileController;
 
 use App\Http\Controllers\Api\UserController;
@@ -14,7 +17,7 @@ use App\Http\Controllers\Api\MailinglistController;
 
 use App\Models\MailingList;
 use App\Http\Requests\StoreEmailRequest;
-
+use App\Models\Post;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -46,24 +49,32 @@ Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 //Author routes
-Route::apiResource("/profile", ProfileController::class)->only(["show"]);
+Route::middleware("auth:sanctum")->group(function(){
+    Route::apiResource("/authors", AuthorController::class);
+});
 
 // For logged in users - concerning profile requests
 Route::middleware("auth:sanctum")->group(function(){
-    Route::post("/profile", [ProfileController::class, "store"]);
+    Route::post("/profiles", [ProfileController::class, "store"]);
+    Route::delete("/profiles/{profile}", [ProfileController::class, "destroy"]);
 });
 
 //Article Routes
-Route::get("/articles", [ArticleController::class, "index"]);
-Route::get("/article", [ArticleController::class, "show"]);
-Route::apiResource("/articles", ArticleController::class)->only(["index", "show"]);
-Route::apiResource("/articles/author", ArticleController::class)->only(["indexAuthor"]);
+Route::get("/articles", [PostController::class, "indexArticle"]);
+Route::redirect("/article", "/post");
 
-//For logged in users - concerning article requests
+//Media and Press Routes
+Route::get("/media_appearances", [ProfileController::class, "indexMedia"]);
+Route::get("/press_releases", [ProfileController::class, "indexPress"]);
+
+//Post Routes
+Route::get("/posts", [PostController::class, "index"]);
+Route::get("/post", [PostController::class, "show"]);
+
+//For logged in users - concerning post requests
 Route::middleware("auth:sanctum")->group(function(){
-    Route::post("/article", [ArticleController::class, "store"]);
-    Route::post("/article/image", [ImageController::class, "storeArticleImage"]);
-    Route::apiResource("/articles", ArticleController::class)->only(["create","destroy","update"]);
+    Route::post("/post", [PostController::class, "store"]);
+    Route::apiResource("/posts", PostController::class)->only(["create","destroy","update"]);
 });
 
 //Mailing list routes
@@ -78,4 +89,24 @@ Route::post("/mailinglist", function(StoreEmailRequest $request){
 //For logged in users - concerning mailing list requests
 Route::middleware("auth:sanctum")->group(function(){
     Route::apiResource("/mailinglist", MailinglistController::class)->only(["destroy", "index", "show"]);
+});
+
+//Reports routes
+Route::get("/reports", [ReportController::class, "index"]);
+Route::get("/report", [ReportController::class, "show"]);
+
+//For logged in users - concerning reports
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/report", [ReportController::class, "store"]);
+    Route::apiResource("/reports", ReportController::class)->only(["create","destroy","update"]);
+});
+
+//Sponsors routes
+Route::get("/sponsors", [SponsorController::class, "index"]);
+Route::get("/sponsor", [SponsorController::class, "show"]);
+
+//For logged in users - concerning sponsors
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/sponor", [SponsorController::class, "store"]);
+    Route::apiResource("/sponsors", SponsorController::class)->only(["create","destroy","update"]);
 });

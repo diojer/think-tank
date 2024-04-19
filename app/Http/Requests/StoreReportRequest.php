@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreArticleRequest extends FormRequest
+class StoreReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,13 +35,10 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             "title"=>"required|string|max:255",
-            "author"=>"required|string|max:55",
-            "subject"=>"required|string|max:55",
-            "tags"=>"nullable|string",
-            "byline"=>"nullable|string",
-            "content"=>"required|string",
-            "cardImage"=>"required|image",
-            "bannerImage"=>"required|image",
+            "author"=>"required|string|max:255",
+            "authorId"=>"required|integer",
+            "summary"=>"required|string|max:255",
+            "fileLocation"=>"required|mimes:pdf",
         ];
     }
 }

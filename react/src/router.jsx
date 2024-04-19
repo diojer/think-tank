@@ -28,6 +28,8 @@ import Edit from "./pages/Edit/Edit";
 import EditArticle from "./pages/Edit/EditArticle/EditArticle";
 import ViewUser from "./pages/Upload/ViewUsers/ViewUser";
 import ViewEmails from "./pages/Upload/ViewEmails/ViewEmails";
+import ViewAuthors from "./pages/Upload/ViewAuthors/ViewAuthors";
+import CreateMember from "./pages/Upload/CreateMember/CreateMember";
 
 const router = createHashRouter([
   {
@@ -97,7 +99,7 @@ const router = createHashRouter([
         element: <Register />,
       },
       {
-        path: "/profile",
+        path: "/profiles/:profile",
         element: <ShowProfile />,
       },
     ],
@@ -125,6 +127,14 @@ const router = createHashRouter([
           {
             path: "/portal/upload/emails",
             element: <ViewEmails />,
+          },
+          {
+            path: "/portal/upload/author",
+            element: <CreateMember />,
+          },
+          {
+            path: "/portal/upload/authors",
+            element: <ViewAuthors />,
           },
         ],
       },

@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,8 +12,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Article extends Model
+class Report extends Model
 {
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     use HasFactory;
     /**
      * The attributes that are mass assignable.
@@ -26,19 +27,7 @@ class Article extends Model
         'title',
         'author',
         'authorId',
-        'subject',
-        'tags',
-        'byline',
-        'content',
-        'cardImage',
-        'bannerImage',
+        'summary',
+        'fileLocation',
     ];
-
-    /**
-     * Scope a query to only include a single author.
-     */
-    public function scopeAuthor(Builder $query, int $id): void
-    {
-        $query->where('authorId', '=', $id);
-    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteArticleRequest extends FormRequest
+class StoreAuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,9 @@ class DeleteArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "profileId"=>"nullable|integer",
+            "name"=>"required|string",
+            "role"=>"required|string",
         ];
     }
 }

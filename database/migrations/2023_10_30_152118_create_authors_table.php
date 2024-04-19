@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reports', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string("title");
-            $table->string("author");
-            $table->integer("authorId");
-            $table->text("summary");
-            $table->string("file_location");
+        Schema::create('authors', function (Blueprint $table) {
+            $table->id();
+            $table->integer("profileId")->nullable();
+            $table->string("name");
+            $table->string("role");
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('authors');
     }
 };

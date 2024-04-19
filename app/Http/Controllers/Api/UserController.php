@@ -27,36 +27,28 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //We won't need this.
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //For profile pages?
-        return new UserResource($user);
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        //For making users admins
-        $data = $request->validated();
-        $role = $request["role"];
-        if ($user->hasRole($role)) {
-            $user->removeRole($role);
-            return response("Role removed", 202);
-        } else {
-            $user->assignRole($role);
-            return response("Role assigned", 202);
+        if ($request["role" != null]) {
+            $role = $request["role"];
+            if ($user->hasRole($role)) {
+                $user->removeRole($role);
+                return response("Role removed", 202);
+            } else {
+                $user->assignRole($role);
+                return response("Role assigned", 202);
+            }
+        }
+
+        if ($request["profileId"] != null) {
+            if ($request["profileId"] == -2) {
+                $user->update(['profileId'=>NULL]);
+            }
+            else {
+                $user->update(['profileId'=>$request["profileId"]]);
+            }
         }
     }
 

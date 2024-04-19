@@ -18,7 +18,7 @@ function Upload() {
           <Button>Press Report</Button>
           <Button>Media Appearance</Button>
           <Button>Job/Position</Button>
-          <Button>Team Member</Button>
+          <Button path="author">Team Member</Button>
           <Button>Sponsor</Button>
         </div>
         <p className="view-buttons-header upload-header">View/edit...</p>
@@ -27,6 +27,7 @@ function Upload() {
           <Button path="emails">Mailing List</Button>
           <Button>Sponsors</Button>
           <Button path="users">Registered Users</Button>
+          <Button path="authors">Authors</Button>
         </div>
       </div>
       <hr></hr>

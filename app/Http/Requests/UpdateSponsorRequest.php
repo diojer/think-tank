@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProfileRequest extends FormRequest
+class UpdateSponsorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,6 +13,7 @@ class StoreProfileRequest extends FormRequest
     {
         return $this->user()->hasRole("admin");
     }
+
 
     /**
      * Prepare the data for validation.
@@ -34,11 +35,9 @@ class StoreProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "year"=>"nullable|string|max:3",
-            "course"=>"nullable|string",
-            "bio"=>"nullable|string",
-            "profilePic"=>"nullable|image",
-            "linkedIn"=>"nullable|string",
+            "name"=>"required|string|max:55",
+            "logo"=>"nullable|image",
+            "bio"=>"required|string|max:2000",
         ];
     }
 }
