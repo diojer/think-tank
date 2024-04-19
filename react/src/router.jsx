@@ -14,6 +14,7 @@ import Reports from "./pages/Reports/Reports";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Sponsors from "./pages/Sponsors/Sponsors";
+import IEA from "./pages/Sponsors/IEA";
 import PageNotFound from "./pages/Errors/404/PageNotFound";
 import MediaAppearances from "./pages/MediaAppearances/MediaAppearances";
 import PressRelease from "./pages/PressRelease/PressRelease";
@@ -79,6 +80,12 @@ const router = createHashRouter([
       {
         path: "/sponsors",
         element: <Sponsors />,
+        children: [
+          {
+            path: "/sponsors/iea",
+            element: <IEA />,
+          },
+        ],
       },
       {
         path: "/login",
