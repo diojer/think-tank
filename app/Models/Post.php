@@ -4,18 +4,17 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Uuid;
 
 class Post extends Model
 {
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     use HasFactory;
     /**
      * The attributes that are mass assignable.
@@ -49,5 +48,14 @@ class Post extends Model
     public function scopeType(Builder $query, string $type): void
     {
         $query->where('type', '=', $type);
+    }
+
+    /**
+     * Atomatically add a UUID to the model
+     */
+    public static function booted() {
+        static::creating(function ($model) {
+            $model->id = Str::uuid();
+        });
     }
 }
