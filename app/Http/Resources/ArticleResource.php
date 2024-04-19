@@ -19,6 +19,7 @@ class ArticleResource extends JsonResource
             "title"=>$this->title,
             "subject"=>$this->subject,
             "author"=>$this->author,
+            "authorId"=>$this->authorId,
             "content"=>$this->content,
             "tags"=>$this->tags,
             "byline"=>$this->byline,

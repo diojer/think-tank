@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->string("author");
+            $table->integer("authorId");
             $table->string("subject");
             $table->text("byline")->nullable();
             $table->mediumText("content");
