@@ -61,7 +61,12 @@ Route::middleware("auth:sanctum")->group(function(){
 
 //Article Routes
 Route::get("/articles", [PostController::class, "indexArticle"]);
-Route::redirect("/article", "/post");
+
+//For old article routes
+Route::get("/article", [PostController::class, "show"]);
+Route::middleware("auth:sanctum")->group(function(){
+    Route::post("/article", [PostController::class, "store"]);
+});
 
 //Media and Press Routes
 Route::get("/media_appearances", [ProfileController::class, "indexMedia"]);

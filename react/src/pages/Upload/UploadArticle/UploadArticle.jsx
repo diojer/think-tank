@@ -34,8 +34,10 @@ const onUpload = (data) => {
   formData.append("cardImage", data.cardImage);
 
   let payload = JSON.stringify({
+    type: "article",
     title: data.title,
     author: data.author,
+    authorId: null,
     subject: data.subject,
     tags: data.tags,
     byline: data.byline,
@@ -45,7 +47,7 @@ const onUpload = (data) => {
   formData.append("payload", payload);
 
   axiosClient
-    .post("/article", formData, {
+    .post("/article/", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then(({ data }) => {
