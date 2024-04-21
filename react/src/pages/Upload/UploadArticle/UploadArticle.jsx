@@ -40,6 +40,7 @@ const onUpload = (data) => {
     tags: data.tags,
     byline: data.byline,
     content: data.content,
+    type: "article",
   });
 
   formData.append("payload", payload);

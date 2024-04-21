@@ -33,7 +33,7 @@ class PostController extends Controller
      */
     public function indexArticle()
     {
-        return PostResource::collection(Post::type("articles")->orderBy("id", "desc")->get());
+        return PostResource::collection(Post::type("article")->orderBy("id", "desc")->get());
     }
 
     /**
@@ -89,7 +89,7 @@ class PostController extends Controller
         ]);
 
         return response([
-            "message"=>"Article Uploaded Successfully!",
+            "message"=>"Post Uploaded Successfully!",
             "status"=>true,
         ]);
     }

@@ -16,7 +16,6 @@ import Register from "./pages/Register/Register";
 import Sponsors from "./pages/Sponsors/Sponsors";
 import IEA from "./pages/Sponsors/IEA";
 import PageNotFound from "./pages/Errors/404/PageNotFound";
-import ShowProfile from "./pages/Profile/ShowProfile";
 import MediaAppearances from "./pages/MediaAppearances/MediaAppearances";
 import PressRelease from "./pages/PressRelease/PressRelease";
 
@@ -97,10 +96,6 @@ const router = createHashRouter([
       {
         path: "/register",
         element: <Register />,
-      },
-      {
-        path: "/profiles/:profile",
-        element: <ShowProfile />,
       },
     ],
   },
