@@ -37,7 +37,7 @@ class StorePostRequest extends FormRequest
             "type"=>"required|string|max:10",
             "title"=>"required|string|max:255",
             "author"=>"required|string|max:55",
-            "authorId"=>"required|integer",
+            "authorId"=>"nullable|integer",
             "subject"=>"required|string|max:55",
             "tags"=>"nullable|string",
             "byline"=>"nullable|string",
