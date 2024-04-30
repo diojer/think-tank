@@ -17,9 +17,15 @@ use App\Http\Controllers\Api\MailinglistController;
 
 use App\Models\MailingList;
 use App\Http\Requests\StoreEmailRequest;
+use App\Http\Requests\StorePostImageRequest;
 use App\Models\Post;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+
+use Namshi\JOSE\SimpleJWS;
+use Illuminate\Support\Facades\Storage;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +40,11 @@ use Spatie\Permission\Models\Role;
 
 
 //For logged in users - concerning user requests
-Route::middleware("auth:sanctum")->group(function(){
-    Route::get("/me", function(Request $request) {
+Route::middleware("auth:sanctum")->group(function () {
+    Route::get("/me", function (Request $request) {
         $user = $request->user();
         $admin = $user->hasRole("admin");
-        return response(["user"=>$user, "admin"=>$admin]);
+        return response(["user" => $user, "admin" => $admin]);
     });
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::apiResource("/users", UserController::class);
@@ -49,12 +55,12 @@ Route::post("/signup", [AuthController::class, "signup"]);
 Route::post("/login", [AuthController::class, "login"]);
 
 //Author routes
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::apiResource("/authors", AuthorController::class);
 });
 
 // For logged in users - concerning profile requests
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::post("/profiles", [ProfileController::class, "store"]);
     Route::delete("/profiles/{profile}", [ProfileController::class, "destroy"]);
 });
@@ -64,7 +70,7 @@ Route::get("/articles", [PostController::class, "indexArticle"]);
 
 //For old article routes
 Route::get("/article", [PostController::class, "show"]);
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::post("/article", [PostController::class, "store"]);
 });
 
@@ -77,22 +83,22 @@ Route::get("/posts", [PostController::class, "index"]);
 Route::get("/post", [PostController::class, "show"]);
 
 //For logged in users - concerning post requests
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::post("/post", [PostController::class, "store"]);
-    Route::apiResource("/posts", PostController::class)->only(["create","destroy","update"]);
+    Route::apiResource("/posts", PostController::class)->only(["create", "destroy", "update"]);
 });
 
 //Mailing list routes
-Route::post("/mailinglist", function(StoreEmailRequest $request){
+Route::post("/mailinglist", function (StoreEmailRequest $request) {
     $data = $request->validated();
     MailingList::create([
-        "email"=>$data["email"],
+        "email" => $data["email"],
     ]);
     return response(["", 201]);
 });
 
 //For logged in users - concerning mailing list requests
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::apiResource("/mailinglist", MailinglistController::class)->only(["destroy", "index", "show"]);
 });
 
@@ -101,9 +107,9 @@ Route::get("/reports", [ReportController::class, "index"]);
 Route::get("/report", [ReportController::class, "show"]);
 
 //For logged in users - concerning reports
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::post("/report", [ReportController::class, "store"]);
-    Route::apiResource("/reports", ReportController::class)->only(["create","destroy","update"]);
+    Route::apiResource("/reports", ReportController::class)->only(["create", "destroy", "update"]);
 });
 
 //Sponsors routes
@@ -111,7 +117,25 @@ Route::get("/sponsors", [SponsorController::class, "index"]);
 Route::get("/sponsor", [SponsorController::class, "show"]);
 
 //For logged in users - concerning sponsors
-Route::middleware("auth:sanctum")->group(function(){
+Route::middleware("auth:sanctum")->group(function () {
     Route::post("/sponor", [SponsorController::class, "store"]);
-    Route::apiResource("/sponsors", SponsorController::class)->only(["create","destroy","update"]);
+    Route::apiResource("/sponsors", SponsorController::class)->only(["create", "destroy", "update"]);
+});
+
+//Image Uploading
+
+Route::post("/images", function (StorePostImageRequest $request) {
+    $data = $request->validated();
+    try {
+        $image = $request->file("image");
+        $imageFilepath = time() . "_" . $image->getClientOriginalName();
+        Storage::disk("public")->put("/images/articles/{$imageFilepath}", file_get_contents($data["image"]));
+        $response = json_encode([
+            "message"=>"Image uploaded successfully",
+            "filepath"=>$imageFilepath
+        ]);
+        return response($response, 201);
+    } catch (Exception $e) {
+        return response($e, 500);
+    }
 });

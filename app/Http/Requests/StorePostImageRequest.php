@@ -3,15 +3,19 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Namshi\JOSE\SimpleJWS;
 
-class StoreArticleImageRequest extends FormRequest
+class StorePostImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return $this->user()->hasRole("admin");
+        $authorization_token = $this->header("authorization");
+        $jwt_public = env("CLERK_PUBLIC_JWT", null);
+        $jws = SimpleJWS::load($authorization_token);
+        return $jws->isValid($jwt_public, "RS256");
     }
 
     /**
